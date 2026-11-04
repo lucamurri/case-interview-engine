@@ -94,6 +94,8 @@ for (const file of files) {
     for (const d of ex.data || []) {
       if (typeof d.value !== 'number' && !(d.value in values)) fail(`${ex.id}: bar value "${d.value}" is not a number or known name`);
     }
+    const ref = ex.reference?.value;
+    if (ref !== undefined && typeof ref !== 'number' && !(ref in values)) fail(`${ex.id}: reference value "${ref}" is not a number or known name`);
   }
 
   const answerCalc = meta.answer?.calc;

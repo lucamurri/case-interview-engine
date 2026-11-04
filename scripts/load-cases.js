@@ -174,7 +174,7 @@ export function formatNumber(value, { unit = '', decimals } = {}) {
     minimumFractionDigits: decimals ?? 0,
     maximumFractionDigits: d,
   });
-  const sign = v < 0 && digits.replace(/[0.,]/g, '') !== '' ? '-' : '';
+  const sign = v < 0 && digits.replace(/[0.,]/g, '') !== '' ? '−' : ''; // true minus sign
   return `${sign}${prefix}${digits}${suffix}`;
 }
 
@@ -313,9 +313,7 @@ export function renderCase(raw) {
       const v = typeof d.value === 'number' ? d.value : values[d.value];
       return { label: String(d.label), value: v, display: formatNumber(v, { unit: ex.unit, decimals: ex.decimals }) };
     }),
-    reference: ex.reference
-      ? { value: ex.reference.value, label: String(ex.reference.label), display: formatNumber(ex.reference.value, { unit: ex.unit, decimals: ex.decimals }) }
-      : null,
+    reference: ex.reference ? referenceLine(ex, values) : null,
     note: mdInline(fill(ex.note)),
     insight: ex.insight ? md(fill(ex.insight)) : null,
   }));
@@ -335,6 +333,12 @@ export function renderCase(raw) {
     keyNumbers,
     answer: meta.answer?.headline ? mdInline(fill(meta.answer.headline)) : '',
   };
+}
+
+/** A bar chart's dashed reference line; its value is a number or a name. */
+function referenceLine(ex, values) {
+  const v = typeof ex.reference.value === 'number' ? ex.reference.value : values[ex.reference.value];
+  return { value: v, label: String(ex.reference.label), display: formatNumber(v, { unit: ex.unit, decimals: ex.decimals }) };
 }
 
 /** The short version of a case used by the library page. */

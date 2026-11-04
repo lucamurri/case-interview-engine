@@ -40,7 +40,8 @@ answer:
 # EXHIBITS — 1 to 3. Shown one at a time in practice mode.
 # kind: table → columns + rows (cells can use {{placeholders}})
 # kind: bar   → data list of { label, value } where value is a number or a name;
-#               optional `unit`, `decimals`, and `reference: { value, label }`.
+#               optional `unit`, `decimals`, and `reference: { value, label }`
+#               (reference value can also be a number or a name).
 # Every note must say the data is illustrative.
 exhibits:
   - id: exhibit-1

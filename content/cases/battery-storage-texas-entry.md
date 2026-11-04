@@ -76,7 +76,7 @@ exhibits:
       - { label: "2023", value: 5 }
       - { label: "2024", value: 9 }
       - { label: "2025", value: storage_gw_2025 }
-    reference: { value: 4, label: "Ancillary-services requirement" }
+    reference: { value: anc_need_gw, label: "Ancillary-services requirement" }
     note: "Illustrative data created for this practice case; not official grid statistics."
     insight: |
       Storage has grown fast and is now about {{oversupply}} the amount of

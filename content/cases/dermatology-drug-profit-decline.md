@@ -34,7 +34,7 @@ calculations:
   - { id: net_23, label: "Net price per tube, FY2023", formula: "list_23 * (1 - gtn_23)", expected: 325, unit: "$/tube" }
   - { id: net_25, label: "Net price per tube, FY2025", formula: "list_25 * (1 - gtn_25)", expected: 243, unit: "$/tube" }
   - { id: rev_23, label: "Net revenue, FY2023", formula: "units_23 * net_23", expected: 1300, unit: "$M" }
-  - { id: rev_25, label: "Net revenue, FY2025", formula: "units_25 * net_25", expected: 777.6, unit: "$M" }
+  - { id: rev_25, label: "Net revenue, FY2025", formula: "units_25 * net_25", expected: 777.6, unit: "$M", decimals: 1 }
   - { id: cogs_23, label: "Cost of goods, FY2023", formula: "units_23 * cogs_unit", expected: 80, unit: "$M" }
   - { id: cogs_25, label: "Cost of goods, FY2025", formula: "units_25 * cogs_unit", expected: 64, unit: "$M" }
   - { id: op_23, label: "Operating profit, FY2023", formula: "rev_23 - cogs_23 - sga_23", expected: 820, unit: "$M" }
@@ -120,7 +120,7 @@ The CEO has asked us: **why has Dermavel's profit fallen, and what should Corvan
 - Q: Are there other Corvane products affected?
   A: No — focus on Dermavel only.
 - Q: Has the cost of making the cream changed?
-  A: No, cost of goods is stable at about {{cogs_unit}} per tube.
+  A: No, cost of goods is stable at about {{cogs_unit}}.
 
 ## Structure
 

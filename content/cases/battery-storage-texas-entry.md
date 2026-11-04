@@ -140,7 +140,7 @@ A market-entry structure that ends in a decision about **how** to enter, not onl
 - **2. Does the first project make money?**
   - Revenue per year, by stream, today and in future
   - Upfront cost and operating cost
-  - Payback versus the {{hurdle_years}} hurdle
+  - Payback versus the hurdle of {{hurdle_years}}
 - **3. Can Halden win?**
   - Capabilities it brings from Europe (engineering, operations, supplier deals)
   - Gaps: US team, trading know-how, relationships
@@ -154,7 +154,7 @@ Top candidates flag early that **revenue durability** is the crux: a fast-growin
 
 ## Math walkthrough
 
-> **Ask:** Does the project meet Halden's {{hurdle_years}} payback hurdle — on a merchant basis and under the tolling offer?
+> **Ask:** Does the project meet Halden's payback hurdle of {{hurdle_years}} — on a merchant basis and under the tolling offer?
 
 **1. Size and cost.**
 Energy = 100 MW × 2 h = **{{energy_mwh}}** = 200,000 kWh. Investment = 200,000 × $300 = **{{capex}}**.
@@ -170,7 +170,7 @@ Naive payback = $60M ÷ $9.8M ≈ **{{payback_naive}}** — this looks like it c
 **3. Realistic merchant case (Exhibit 1 + analyst forecast).**
 From year 3, ancillary revenue halves to {{anc_rev_later}}, so annual cash = $2.4M + $3.0M + $3.0M − $1.6M = **{{ebitda_later}}**.
 After two years Halden has recovered 2 × $9.8M = $19.6M, leaving $40.4M ÷ $6.8M ≈ 5.9 more years.
-Payback ≈ **{{payback_merchant}}** — it **fails** the {{hurdle_years}} hurdle.
+Payback ≈ **{{payback_merchant}}** — it **fails** the hurdle of {{hurdle_years}}.
 
 **4. Tolling offer (Exhibit 3).**
 Revenue = 100,000 kW × $9 × 12 = **{{toll_rev}}**; cash = $10.8M − $1.6M = **{{ebitda_toll}}**.
@@ -186,7 +186,7 @@ Merchant: 2 × $9.8M + 8 × $6.8M = **{{cash10_merchant}}**. Tolled: 10 × $9.2M
 
 > **Ask:** What is your recommendation to the board?
 
-**Halden should enter Texas with this project, but under the tolling contract rather than as a pure merchant plant: the toll pays back in {{payback_toll}}, inside the {{hurdle_years}} hurdle, while the merchant case only pays back in ~{{payback_merchant}} once ancillary prices fall.**
+**Halden should enter Texas with this project, but under the tolling contract rather than as a pure merchant plant: the toll pays back in {{payback_toll}}, inside the hurdle of {{hurdle_years}}, while the merchant case only pays back in ~{{payback_merchant}} once ancillary prices fall.**
 
 1. **The market is attractive but crowding:** installed storage is already {{oversupply}} the grid's ancillary need, so the revenue stream that makes today's numbers look good will shrink.
 2. **The toll de-risks the first project:** {{cash10_toll}} of cash over ten years versus {{cash10_merchant}} merchant, and a predictable revenue line helps Halden finance the project.

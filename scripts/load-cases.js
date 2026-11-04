@@ -139,7 +139,7 @@ export function computeCase(meta) {
 
 /**
  * Format a number for display using its unit:
- *   "%"    0.06  → "6%"          "pts" 0.2 → "20 pts" (percentage points)
+ *   "%"    0.06  → "6%"          "pts" 0.2 → "20 pts" (percentage points; 1 → "1 pt")
  *   "$M"   571   → "$571M"       "$"   30  → "$30"
  *   "$/tube" 243 → "$243/tube"   "x"   6.5 → "6.5x"
  *   anything else → number + space + unit ("million", "years", ...)
@@ -156,7 +156,7 @@ export function formatNumber(value, { unit = '', decimals } = {}) {
     suffix = '%';
   } else if (unit === 'pts') {
     v = value * 100;
-    suffix = ' pts';
+    suffix = Math.abs(v) === 1 ? ' pt' : ' pts';
   } else if (currency) {
     prefix = currency[1];
     const rest = currency[2];

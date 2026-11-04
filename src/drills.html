@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mental math drills — Case Interview Engine</title>
+  <meta name="description" content="Timed mental-math drills for case interviews: percentages, growth rates, break-evens and big-number multiplication.">
+  <script>try{var t=localStorage.getItem('cie.theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <!-- @header -->
+
+  <main id="main" class="wrap wrap-narrow">
+    <h1>Mental math drills</h1>
+    <p class="lede">Case math is mostly percentages, growth and big numbers, done fast and out loud. Warm up here before a case.</p>
+
+    <!-- 1. Choose a drill -->
+    <form class="panel" data-setup aria-labelledby="h-setup">
+      <h2 id="h-setup">Choose a drill</h2>
+      <fieldset class="choice-group">
+        <legend>Topic</legend>
+        <div class="choices" data-categories></div>
+      </fieldset>
+      <fieldset class="choice-group">
+        <legend>Length</legend>
+        <div class="choices choices-2">
+          <label class="choice"><input type="radio" name="roundLength" value="ten" checked><span><strong>10 questions</strong><small>Untimed per question; accuracy counts.</small></span></label>
+          <label class="choice"><input type="radio" name="roundLength" value="sprint"><span><strong>2-minute sprint</strong><small>As many as you can before time runs out.</small></span></label>
+        </div>
+      </fieldset>
+      <p class="tip">Type answers like <code>168</code>, <code>25%</code>, <code>1.44B</code> or <code>60,000</code>. Answers within about 1% count (a little more for "roughly" questions).</p>
+      <button class="button button-large" type="submit">Start drill</button>
+      <p class="muted best" data-best></p>
+    </form>
+
+    <!-- 2. Play -->
+    <section class="panel drill" data-play hidden aria-labelledby="h-play">
+      <div class="drill-bar">
+        <h2 id="h-play" class="drill-progress" data-progress></h2>
+        <p class="drill-score" data-score></p>
+        <span class="visually-hidden" aria-live="polite" data-announce></span>
+      </div>
+      <form class="drill-form" data-answer-form autocomplete="off">
+        <label for="answer" class="drill-question" data-question></label>
+        <div class="drill-input">
+          <input id="answer" name="answer" type="text" inputmode="decimal" enterkeyhint="go" spellcheck="false" aria-describedby="answer-unit feedback">
+          <span id="answer-unit" class="unit" data-unit></span>
+        </div>
+        <div class="button-row">
+          <button class="button" type="submit" data-submit>Check</button>
+          <button class="button button-quiet" type="button" data-skip>Skip</button>
+          <button class="button button-quiet" type="button" data-quit>End round</button>
+        </div>
+      </form>
+      <div id="feedback" class="feedback" data-feedback role="status"></div>
+    </section>
+
+    <!-- 3. Results -->
+    <section class="panel" data-results hidden aria-labelledby="h-results" tabindex="-1">
+      <h2 id="h-results">Round complete</h2>
+      <div class="stats" data-summary></div>
+      <div data-review></div>
+      <div class="button-row">
+        <button class="button" type="button" data-again>Go again</button>
+        <button class="button button-outline" type="button" data-change>Change drill</button>
+        <a class="button button-quiet" href="progress.html">See my progress</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- @footer -->
+  <script type="module" src="js/theme.js"></script>
+  <script type="module" src="js/drills.js"></script>
+</body>
+</html>

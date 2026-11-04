@@ -9,10 +9,11 @@
     "build": "node scripts/build.js",
     "lint:content": "node scripts/lint-content.js",
     "test:math": "node scripts/test-math.js",
-    "test": "npm run lint:content && npm run test:math",
+    "test": "npm run lint:content && npm run test:math && npm run test:drills",
     "serve": "node scripts/serve.js",
     "dev": "npm run build && npm run serve",
-    "preview": "node scripts/preview-case.js"
+    "preview": "node scripts/preview-case.js",
+    "test:drills": "node scripts/test-drills.js"
   },
   "devDependencies": {
     "js-yaml": "^5.5.0",

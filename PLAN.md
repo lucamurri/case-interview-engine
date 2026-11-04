@@ -247,6 +247,18 @@ Totals: **Type** 8 sizing / 7 profitability / 5 entry / 4 pricing / 3 M&A / 3 op
 
 ---
 
+## 4b. Adjustments made while building Phase 2
+
+Small changes to the schema above, found while building the engine. `content/cases/_template.md` is now the authoritative format.
+
+- **"Interviewer questions" section removed.** Instead, Structure, Math walkthrough and Synthesis can begin with `> **Ask:** …`. Practice mode shows that question first and hides the rest until the user reveals it. Interviewer-led cases must have all three Asks (the linter checks).
+- **Clarifiers** are written as `- Q: …` / `A: …` pairs, so each answer can be revealed individually.
+- **Exhibits** gained `ask` (what the interviewer says when handing it over) and `insight` (the takeaway, revealed on demand). `reveal_at` was dropped: exhibits appear in order in the Exhibits step.
+- **Bar charts** take values as numbers or input names, plus an optional `reference` line.
+- **Calculations** take `unit` and `decimals` for display; `{{name:2}}` forces 2 decimals in text.
+
+---
+
 ## 5. Remaining phases (unchanged from your brief)
 
 2. Engine + 3 sample cases → 3. Remaining 27 cases in ~4 batches of 7, `npm test` after each → 4. Drills, frameworks, partner mode, export → 5. Public repo + Pages + Actions → 6. README, screenshot/GIF, link and accessibility checks, LinkedIn draft.

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Case Interview Engine — free, original consulting case practice</title>
+  <meta name="description" content="A free library of original consulting case interviews with a step-by-step practice mode, timer and self-scoring.">
+  <!-- Apply the saved light/dark theme before the page paints (avoids a flash). -->
+  <script>try{var t=localStorage.getItem('cie.theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <!-- @header -->
+
+  <main id="main" class="wrap">
+    <section class="hero">
+      <h1>Practice cases like the real thing.</h1>
+      <p class="lede">Original consulting cases across healthcare, energy, tech and more. Pick one, start the timer, and work through it step by step — then score yourself.</p>
+    </section>
+
+    <form class="filters" role="search" aria-label="Filter cases" data-filters>
+      <div class="field field-search">
+        <label for="q">Search</label>
+        <input id="q" name="q" type="search" placeholder="e.g. pricing, GLP-1, Texas" autocomplete="off">
+      </div>
+      <div class="field">
+        <label for="f-type">Type</label>
+        <select id="f-type" name="type"></select>
+      </div>
+      <div class="field">
+        <label for="f-industry">Industry</label>
+        <select id="f-industry" name="industry"></select>
+      </div>
+      <div class="field">
+        <label for="f-difficulty">Difficulty</label>
+        <select id="f-difficulty" name="difficulty"></select>
+      </div>
+      <div class="field">
+        <label for="f-format">Format</label>
+        <select id="f-format" name="format"></select>
+      </div>
+      <button type="reset" class="button button-quiet nowrap">Clear filters</button>
+    </form>
+
+    <p class="result-count" aria-live="polite" data-count></p>
+    <ul class="case-grid" data-case-list></ul>
+    <p class="empty-state" data-empty hidden>No cases match those filters. Try clearing one.</p>
+  </main>
+
+  <!-- @footer -->
+  <script type="module" src="js/theme.js"></script>
+  <script type="module" src="js/library.js"></script>
+</body>
+</html>

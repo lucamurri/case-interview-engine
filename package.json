@@ -11,7 +11,8 @@
     "test:math": "node scripts/test-math.js",
     "test": "npm run lint:content && npm run test:math",
     "serve": "node scripts/serve.js",
-    "dev": "npm run build && npm run serve"
+    "dev": "npm run build && npm run serve",
+    "preview": "node scripts/preview-case.js"
   },
   "devDependencies": {
     "js-yaml": "^5.5.0",

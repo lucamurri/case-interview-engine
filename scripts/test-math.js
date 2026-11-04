@@ -9,11 +9,13 @@
  *   - a formula refers to a name that isn't defined before it
  *   - an input and a calculation share the same name
  *   - a {{placeholder}} in the text or exhibits doesn't resolve
+ *   - a result is typed into the text after "=" or "≈" instead of coming
+ *     from a checked calculation (e.g. "= $19.6M" instead of "= {{cash_2y}}")
  *   - a bar-chart value refers to an unknown name
  *   - `answer.calc` doesn't point at a calculation
  */
 import { evaluate } from './calc.js';
-import { caseFiles, readCase, computeCase, findMissingPlaceholders, DEFAULT_TOLERANCE } from './load-cases.js';
+import { caseFiles, readCase, computeCase, findMissingPlaceholders, findTypedResults, DEFAULT_TOLERANCE } from './load-cases.js';
 
 let failures = 0;
 const fail = (msg) => {
@@ -81,6 +83,12 @@ for (const file of files) {
   }
 
   for (const name of findMissingPlaceholders(raw, values)) fail(`placeholder {{${name}}} doesn't match any input or calculation`);
+
+  for (const [key, text] of Object.entries(raw.sections)) {
+    for (const snippet of findTypedResults(text)) {
+      fail(`${key}: "${snippet}" — a result after "=" or "≈" must be a {{placeholder}} so it is checked`);
+    }
+  }
 
   for (const ex of meta.exhibits || []) {
     for (const d of ex.data || []) {

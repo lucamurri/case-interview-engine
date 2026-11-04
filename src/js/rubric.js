@@ -9,7 +9,7 @@ import { escapeHtml, formatDuration } from './labels.js';
 
 export const RUBRIC = [
   { key: 'structure', name: 'Structure', hint: 'Was your approach MECE, tailored to this case and clearly laid out?' },
-  { key: 'math', name: 'Math', hint: 'Were your calculations correct, organised and sanity-checked?' },
+  { key: 'math', name: 'Math', hint: 'Were your calculations correct, organized and sanity-checked?' },
   { key: 'judgment', name: 'Business judgment', hint: 'Did you draw "so what" insights and make sensible assumptions?' },
   { key: 'synthesis', name: 'Synthesis', hint: 'Did you lead with the answer, back it up, and add risks and next steps?' },
   { key: 'communication', name: 'Communication', hint: 'Were you clear, concise and easy to follow?' },

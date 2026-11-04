@@ -166,7 +166,7 @@ README.md, LICENSE (MIT), content/LICENSE (CC BY-NC 4.0)
 ### Design direction
 - Clean, single-column reading layout (~70 characters per line), generous spacing.
 - System fonts (fast, no external downloads), with tabular numbers for math.
-- One accent colour — proposal: **deep teal `#0F766E`** (passes WCAG AA contrast on white; a lighter tint is used in dark mode).
+- One accent color — proposal: **deep teal `#0F766E`** (passes WCAG AA contrast on white; a lighter tint is used in dark mode).
 - Dark mode toggle that also respects the phone's system setting, remembered between visits.
 - Mobile-first; large tap targets; sticky "Next step" button and timer on phones.
 - Accessibility: WCAG AA contrast, full keyboard navigation with visible focus, labelled buttons, the timer announces start/stop and each minute to screen readers (not every second), charts also shown as data tables.
@@ -191,12 +191,12 @@ Totals: **Type** 8 sizing / 7 profitability / 5 entry / 4 pricing / 3 M&A / 3 op
 |---|---|---|---|---|---|
 | 1 | Weekly Shots: US demand for GLP-1 weight-management pens | Pharma & healthcare | Intermediate | Interviewer-led | 25 |
 | 2 | Plugged In: home EV chargers in Germany | Energy | Beginner | Candidate-led | 20 |
-| 3 ★ | Copilot Seats: AI coding-assistant licences among US developers | Tech & AI | Beginner | Interviewer-led | 20 |
+| 3 ★ | Copilot Seats: AI coding-assistant licenses among US developers | Tech & AI | Beginner | Interviewer-led | 20 |
 | 4 | Always On: continuous glucose monitors for type 2 diabetes in the US | Pharma & healthcare | Intermediate | Candidate-led | 25 |
 | 5 | Milk Alternatives: plant-based milk used by US cafés | Consumer & retail | Beginner | Interviewer-led | 20 |
 | 6 | Robots on the Line: industrial robot demand in Mexican auto plants | Other (industrials) | Advanced | Candidate-led | 30 |
 | 7 | Boiler Swap: residential heat-pump installations in the UK | Energy | Intermediate | Interviewer-led | 25 |
-| 8 | Power-Hungry Models: US electricity demand from AI data centres | Tech & AI | Advanced | Candidate-led | 30 |
+| 8 | Power-Hungry Models: US electricity demand from AI data centers | Tech & AI | Advanced | Candidate-led | 30 |
 
 ### Profitability (7)
 | # | Working title | Industry | Difficulty | Format | Time |
@@ -268,6 +268,6 @@ Small changes to the schema above, found while building the engine. `content/cas
 ## 6. Decisions I need from you
 
 1. **GitHub account.** The `gh` CLI on this Mac is logged in as **`defking1`**. If the repo goes there, the live URL will be `https://defking1.github.io/case-interview-engine/`. Is that the account you want on your LinkedIn, or should we use a different one?
-2. **Accent colour.** Deep teal `#0F766E` OK, or would you prefer something else (e.g. a Booth-style maroon)?
+2. **Accent color.** Deep teal `#0F766E` OK, or would you prefer something else (e.g. a Booth-style maroon)?
 3. **Case list.** Any titles to swap, or industries/topics you'd like more of (e.g. medtech, payers, oncology)?
 4. **Sample cases.** Happy with #3, #9 and #17 for Phase 2?

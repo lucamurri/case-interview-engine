@@ -52,12 +52,15 @@ calculations:
   # --- Inside the net price ---
   - { id: list_effect, label: "Net price gained from the list-price increase", formula: "(list_25 - list_23) * (1 - gtn_23)", expected: 26, unit: "$/tube" }
   - { id: gtn_effect, label: "Net price lost to higher gross-to-net", formula: "list_25 * (gtn_23 - gtn_25)", expected: -108, unit: "$/tube" }
+  - { id: net_change, label: "Change in net price per tube", formula: "net_25 - net_23", expected: -82, unit: "$/tube" }
+  - { id: controllable_gtn, label: "Gross-to-net increase from PBM rebates and copay support", formula: "rebate_chg + copay_chg", expected: 0.17, unit: "pts" }
   - { id: gtn_change, label: "Increase in gross-to-net", formula: "gtn_25 - gtn_23", expected: 0.20, unit: "pts" }
   - { id: gtn_components, label: "Sum of gross-to-net components (Exhibit 2)", formula: "rebate_chg + copay_chg + gov_chg + dist_chg", expected: 0.20, unit: "pts" }
   # --- Should Corvane cut copay assistance? ---
   - { id: new_gtn, label: "Gross-to-net after the copay cut", formula: "gtn_25 - copay_cut", expected: 0.50, unit: "%" }
   - { id: new_net, label: "Net price after the copay cut", formula: "list_25 * (1 - new_gtn)", expected: 270, unit: "$/tube" }
   - { id: new_units, label: "Tubes after 5% volume loss", formula: "units_25 * (1 - volume_loss)", expected: 3.04, unit: "million tubes" }
+  - { id: new_rev, label: "Revenue after the copay cut, less cost of goods", formula: "new_units * (new_net - cogs_unit)", expected: 760, unit: "$M" }
   - { id: new_op, label: "Operating profit after the copay cut", formula: "new_units * (new_net - cogs_unit) - sga_25", expected: 340, unit: "$M" }
   - { id: op_gain, label: "Profit gain from the copay cut", formula: "new_op - op_25", expected: 46.4, unit: "$M", decimals: 1 }
   - { id: contrib_25, label: "Contribution (revenue minus cost of goods), FY2025", formula: "units_25 * (net_25 - cogs_unit)", expected: 713.6, unit: "$M", decimals: 1 }
@@ -98,7 +101,7 @@ exhibits:
     note: "Illustrative data created for this practice case."
     insight: |
       Rebates to pharmacy benefit managers (PBMs) and copay assistance explain
-      17 of the 20 points. Both are decisions Corvane controls, at least partly.
+      {{controllable_gtn}} of the {{gtn_change}}. Both are decisions Corvane controls, at least partly.
 ---
 
 ## Prompt
@@ -146,7 +149,7 @@ State a hypothesis early: *"List price rose, so I suspect volume fell to the new
 
 **1. Net price per tube.**
 FY2023: $500 × (1 − 35%) = **{{net_23}}**. FY2025: $540 × (1 − 55%) = **{{net_25}}**.
-The bigger discount changed net price by {{gtn_effect}}, while the list increase added +{{list_effect}} — a net drop of $82 per tube.
+The bigger discount changed net price by {{gtn_effect}}, while the list increase added +{{list_effect}} — a net change of {{net_change}}.
 
 **2. Profit in each year.**
 FY2023: 4.0m × $325 = {{rev_23}} revenue − {{cogs_23}} COGS − {{sga_23}} SG&A = **{{op_23}}**.
@@ -168,7 +171,7 @@ Volume and net price each explain about half. Share fell from {{share_23}} to {{
 **4. The copay cut.**
 New gross-to-net = 55% − 5 pts = {{new_gtn}}, so net price = $540 × 50% = **{{new_net}}**.
 New volume = 3.2m × 95% = {{new_units}}.
-New profit = 3.04m × ($270 − $20) − $420M = $760M − $420M = **{{new_op}}**, up **{{op_gain}}**.
+New profit = 3.04m × ($270 − $20) − $420M = {{new_rev}} − $420M = **{{new_op}}**, up **{{op_gain}}**.
 
 **5. How much volume can we afford to lose?**
 Today's contribution = 3.2m × ($243 − $20) = {{contrib_25}}. After the cut, each tube contributes $250, so break-even volume = $713.6M ÷ $250 ≈ {{breakeven_units}}.
@@ -176,7 +179,7 @@ That means the cut still pays off unless volume falls by more than **~{{max_volu
 
 ## Synthesis
 
-> **Ask:** Summarise your recommendation for the CEO.
+> **Ask:** Summarize your recommendation for the CEO.
 
 **Dermavel's profit fell {{profit_drop}} ({{profit_drop_pct}}) because Corvane is selling 20% fewer tubes *and* keeping much less of each sale: the gross-to-net discount jumped from 35% to 55%, wiping out the list-price increase. Corvane should rein in the discounts it controls, starting with a targeted copay cut worth roughly {{op_gain}} a year.**
 
@@ -184,7 +187,7 @@ That means the cut still pays off unless volume falls by more than **~{{max_volu
 2. **Net price ({{price_effect}}):** PBM rebates (+10 pts) and copay assistance (+7 pts) drove most of the extra discount.
 3. **Action:** trimming copay support by 5 points adds ~{{op_gain}} and stays profitable unless volume drops more than ~{{max_volume_loss}}; target it at patients with good insurance coverage so adherent patients aren't hurt.
 
-**Next steps:** renegotiate PBM contracts using real outcomes data; focus the sales force on dermatologists where Dermavel still wins; prepare a lifecycle plan for the 2028 patent expiry (new formulation, authorised generic).
+**Next steps:** renegotiate PBM contracts using real outcomes data; focus the sales force on dermatologists where Dermavel still wins; prepare a lifecycle plan for the 2028 patent expiry (new formulation, authorized generic).
 
 ## Common mistakes
 
@@ -212,4 +215,4 @@ Group ideas by **patient, prescriber and payer**:
 - **Prescriber:** publish head-to-head or real-world data showing where a topical is the better choice (for example, patients who want to avoid systemic side effects); focus field teams on high-volume dermatologists.
 - **Payer:** offer outcomes-based contracts (rebates tied to results) instead of blanket rebates, so Corvane only pays more when the drug works.
 
-A top candidate prioritises: "The fastest lever is focusing on the patients for whom a topical is clinically preferable; the most valuable longer-term lever is a new formulation that can extend the franchise past 2028."
+A top candidate prioritizes: "The fastest lever is focusing on the patients for whom a topical is clinically preferable; the most valuable longer-term lever is a new formulation that can extend the franchise past 2028."

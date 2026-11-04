@@ -1,6 +1,6 @@
 /* ==========================================================================
    Case Interview Engine — single stylesheet
-   1. Theme colours (light + dark)
+   1. Theme colors (light + dark)
    2. Base and typography
    3. Layout: header, footer, containers
    4. Components: buttons, tags, forms
@@ -9,8 +9,8 @@
    7. Utilities and accessibility helpers
    ========================================================================== */
 
-/* 1. Theme colours ------------------------------------------------------- */
-/* One accent colour (deep teal). All text colours meet WCAG AA contrast. */
+/* 1. Theme colors ------------------------------------------------------- */
+/* One accent color (deep teal). All text colors meet WCAG AA contrast. */
 :root {
   --bg: #f7f7f5;
   --surface: #ffffff;

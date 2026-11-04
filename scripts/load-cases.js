@@ -205,6 +205,31 @@ export function findMissingPlaceholders(raw, values) {
   return [...new Set(missing)];
 }
 
+/**
+ * Find results typed directly into the text, which the math test can't check.
+ * After every "=" or "≈" the value must be a {{placeholder}}, OR the start
+ * of a longer expression (e.g. "= 100 MW × 2 h" restates inputs, which is fine).
+ *   "= {{capex}}"           ok — checked placeholder
+ *   "= 200 × $300 = {{x}}"  ok — "200" is followed by an operator
+ *   "= $19.6M"              flagged — a typed result
+ * Returns the offending snippets.
+ */
+export function findTypedResults(markdown) {
+  if (!markdown) return [];
+  const found = [];
+  const re = /[=≈]/g;
+  let m;
+  while ((m = re.exec(markdown))) {
+    const after = markdown.slice(m.index + 1);
+    const num = /^[\s*]*(?:~\s*)?([-−]?[$€£]?\d[\d,.]*)(\s?[A-Za-z%][A-Za-z%/-]*|\/[A-Za-z-]+)?/.exec(after);
+    if (!num) continue; // starts with a placeholder, word or bracket
+    const rest = after.slice(num[0].length);
+    if (/^\s*[×*÷/+\-−(]/.test(rest)) continue; // part of a longer expression
+    found.push(markdown.slice(m.index, m.index + 1 + num[0].length).replace(/\s+/g, ' ').trim());
+  }
+  return found;
+}
+
 function scanDeep(obj, fn) {
   if (typeof obj === 'string') fn(obj);
   else if (Array.isArray(obj)) obj.forEach((o) => scanDeep(o, fn));

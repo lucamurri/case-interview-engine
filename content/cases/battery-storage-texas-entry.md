@@ -33,6 +33,7 @@ calculations:
   - { id: oversupply, label: "Installed storage vs. ancillary need", formula: "storage_gw_2025 / anc_need_gw", expected: 3.25, unit: "x" }
   # --- Project size and cost ---
   - { id: energy_mwh, label: "Energy capacity", formula: "power_mw * duration_h", expected: 200, unit: "MWh" }
+  - { id: energy_kwh, label: "Energy capacity in kWh", formula: "energy_mwh * 1000", expected: 200000, unit: "kWh" }
   - { id: capex, label: "Upfront investment", formula: "energy_mwh * 1000 * capex_kwh / 1e6", expected: 60, unit: "$M" }
   # --- Merchant revenues today ---
   - { id: arb_rev, label: "Energy arbitrage revenue per year", formula: "energy_mwh * cycles * spread / 1e6", expected: 2.4, unit: "$M", decimals: 1 }
@@ -43,11 +44,16 @@ calculations:
   # --- Merchant revenues after ancillary prices fall ---
   - { id: anc_rev_later, label: "Ancillary revenue per year, from year 3", formula: "power_mw * 1000 * anc_price_later / 1e6", expected: 3.0, unit: "$M", decimals: 1 }
   - { id: ebitda_later, label: "Operating cash flow per year, from year 3", formula: "arb_rev + anc_rev_later + scarcity_rev - om_cost", expected: 6.8, unit: "$M", decimals: 1 }
+  - { id: cash_2y, label: "Cash recovered in the first two years", formula: "years_full_anc * ebitda_now", expected: 19.6, unit: "$M", decimals: 1 }
+  - { id: remaining_capex, label: "Investment still to recover after two years", formula: "capex - cash_2y", expected: 40.4, unit: "$M", decimals: 1 }
+  - { id: years_after, label: "Further years needed at the lower cash flow", formula: "remaining_capex / ebitda_later", expected: 5.94, unit: "years", decimals: 1 }
   - { id: payback_merchant, label: "Realistic merchant payback", formula: "years_full_anc + (capex - years_full_anc * ebitda_now) / ebitda_later", expected: 7.94, unit: "years", decimals: 1 }
   # --- Tolling contract ---
   - { id: toll_rev, label: "Tolling revenue per year", formula: "power_mw * 1000 * toll_price * 12 / 1e6", expected: 10.8, unit: "$M", decimals: 1 }
   - { id: ebitda_toll, label: "Operating cash flow per year, tolled", formula: "toll_rev - om_cost", expected: 9.2, unit: "$M", decimals: 1 }
   - { id: payback_toll, label: "Tolled payback", formula: "capex / ebitda_toll", expected: 6.52, unit: "years", decimals: 1 }
+  - { id: cash_needed, label: "Annual cash needed to pay back within the hurdle", formula: "capex / hurdle_years", expected: 8.571, unit: "$M", decimals: 2 }
+  - { id: rev_needed, label: "Annual revenue needed (cash + O&M)", formula: "cash_needed + om_cost", expected: 10.171, unit: "$M", decimals: 2 }
   - { id: min_toll_price, label: "Lowest toll price that meets the 7-year hurdle", formula: "(capex / hurdle_years + om_cost) * 1e6 / (power_mw * 1000 * 12)", expected: 8.48, unit: "$/kW-month" }
   # --- 10-year comparison ---
   - { id: cash10_merchant, label: "10-year operating cash, merchant", formula: "years_full_anc * ebitda_now + (horizon - years_full_anc) * ebitda_later", expected: 74.0, unit: "$M" }
@@ -116,7 +122,7 @@ Halden's first project would be a **100 MW, 2-hour battery**. The board has aske
 - Q: What is Halden's objective and investment criterion?
   A: Build a profitable US platform over five years. Each project must pay back its investment within **{{hurdle_years}}**.
 - Q: How does a battery make money in Texas?
-  A: Three ways: buying power when it is cheap and selling when it is expensive (*arbitrage*); being paid to stand ready to stabilise the grid (*ancillary services*); and selling during rare extreme price spikes (*scarcity events*).
+  A: Three ways: buying power when it is cheap and selling when it is expensive (*arbitrage*); being paid to stand ready to stabilize the grid (*ancillary services*); and selling during rare extreme price spikes (*scarcity events*).
 - Q: Why Texas rather than another state?
   A: Texas has a large, fast-growing grid with lots of solar and wind, a market that is open to independent battery owners, and quick permitting.
 - Q: Does Halden have any US presence?
@@ -157,7 +163,7 @@ Top candidates flag early that **revenue durability** is the crux: a fast-growin
 > **Ask:** Does the project meet Halden's payback hurdle of {{hurdle_years}} — on a merchant basis and under the tolling offer?
 
 **1. Size and cost.**
-Energy = 100 MW × 2 h = **{{energy_mwh}}** = 200,000 kWh. Investment = 200,000 × $300 = **{{capex}}**.
+Energy = 100 MW × 2 h = **{{energy_mwh}}** = {{energy_kwh}}. Investment = 200,000 kWh × $300 = **{{capex}}**.
 
 **2. Merchant revenue today.**
 - Arbitrage: 200 MWh × 300 cycles × $40 = **{{arb_rev}}**
@@ -169,7 +175,7 @@ Naive payback = $60M ÷ $9.8M ≈ **{{payback_naive}}** — this looks like it c
 
 **3. Realistic merchant case (Exhibit 1 + analyst forecast).**
 From year 3, ancillary revenue halves to {{anc_rev_later}}, so annual cash = $2.4M + $3.0M + $3.0M − $1.6M = **{{ebitda_later}}**.
-After two years Halden has recovered 2 × $9.8M = $19.6M, leaving $40.4M ÷ $6.8M ≈ 5.9 more years.
+After two years Halden has recovered 2 × $9.8M = {{cash_2y}}, leaving {{remaining_capex}} ÷ {{ebitda_later}} ≈ {{years_after}} to go.
 Payback ≈ **{{payback_merchant}}** — it **fails** the hurdle of {{hurdle_years}}.
 
 **4. Tolling offer (Exhibit 3).**
@@ -177,7 +183,7 @@ Revenue = 100,000 kW × $9 × 12 = **{{toll_rev}}**; cash = $10.8M − $1.6M = *
 Payback = $60M ÷ $9.2M ≈ **{{payback_toll}}** — it **passes**.
 
 **5. Negotiation floor.**
-To pay back in 7 years Halden needs $60M ÷ 7 ≈ $8.57M of cash a year, i.e. $10.17M of revenue, i.e. **~{{min_toll_price:2}}**. Any toll above that clears the hurdle.
+To pay back in 7 years Halden needs $60M ÷ 7 ≈ {{cash_needed}} of cash a year, i.e. {{rev_needed}} of revenue (adding back O&M), i.e. **~{{min_toll_price:2}}**. Any toll above that clears the hurdle.
 
 **6. Ten-year comparison.**
 Merchant: 2 × $9.8M + 8 × $6.8M = **{{cash10_merchant}}**. Tolled: 10 × $9.2M = **{{cash10_toll}}**. The toll is worth about **{{toll_advantage}}** more, unless scarcity revenue turns out far higher than average.
@@ -216,9 +222,9 @@ Beyond this single project, how could Halden build a lasting competitive advanta
 
 Strong answers think about what is hard to copy:
 
-- **Better trading:** an in-house optimisation and trading team (or software) that captures more of the arbitrage and scarcity value than competitors — the main differentiator once ancillary revenues fall.
+- **Better trading:** an in-house optimization and trading team (or software) that captures more of the arbitrage and scarcity value than competitors — the main differentiator once ancillary revenues fall.
 - **Better sites:** secure grid-connection points near large solar farms or congested areas where price spreads are largest.
 - **Lower cost:** use Halden's European supplier relationships and a standard design to build cheaper and faster.
-- **Partnerships:** co-locate with solar developers, or offer tolls to data-centre operators who need reliable power.
+- **Partnerships:** co-locate with solar developers, or offer tolls to data-center operators who need reliable power.
 
-A top candidate prioritises trading capability: "Hardware is becoming a commodity; the value is shifting to how well you operate it."
+A top candidate prioritizes trading capability: "Hardware is becoming a commodity; the value is shifting to how well you operate it."

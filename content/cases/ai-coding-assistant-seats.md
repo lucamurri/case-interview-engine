@@ -81,6 +81,17 @@ calculations:
     formula: "large_mix * large_adopt / business_adopt"
     expected: 0.70
     unit: "%"
+  - id: simple_avg_adopt
+    label: "Simple (unweighted) average adoption — the wrong way"
+    formula: "(large_adopt + mid_adopt + small_adopt) / 3"
+    expected: 0.337
+    unit: "%"
+    decimals: 0
+  - id: avg_seat_price
+    label: "Average revenue per seat per month (sanity check)"
+    formula: "total_rev / (business_seats_m + indie_seats_m) / 12"
+    expected: 28.01
+    unit: "$"
   - id: lumen_rev
     label: "Lumen revenue at its 3-year share goal"
     formula: "total_rev * target_share"
@@ -187,13 +198,13 @@ Self-paid = {{indie_seats_m:3}} × $10 × 12 ≈ **{{indie_rev}}**.
 
 - Multiplying all {{us_devs_m}} developers by one adoption rate and one price, which hides the business-versus-individual split that drives the recommendation.
 - Forgetting to convert the monthly price to annual (×12) — an error of 12×.
-- Using a simple average of the three adoption rates (34%) instead of the weighted average ({{business_adopt}}).
+- Using a simple average of the three adoption rates ({{simple_avg_adopt}}) instead of the weighted average ({{business_adopt}}).
 - Giving a number with no "so what" for Lumen.
 
 ## What top candidates do differently
 
 - Segment by **who pays** before being prompted, and explain why.
-- Sanity-check the answer: "about {{total_rev}} across ~1.7 million seats is roughly $28 per seat per month on average — consistent with mostly business pricing."
+- Sanity-check the answer: "about {{total_rev}} across ~1.7 million seats is roughly {{avg_seat_price}} per seat per month on average — consistent with mostly business pricing."
 - Land the number in one sentence, then pivot straight to the implication for Lumen.
 
 ## Creative question
@@ -208,4 +219,4 @@ A strong answer groups ideas rather than listing them:
 - **Reach new customers:** international markets with large developer bases; adjacent users such as data analysts and IT operations staff who write scripts.
 - **New channels:** partnerships with cloud providers or code-hosting platforms that resell Lumen inside their marketplaces.
 
-Top candidates close by prioritising: "I'd start with enterprise premium tiers, because the exhibit shows large companies are where the money already is."
+Top candidates close by prioritizing: "I'd start with enterprise premium tiers, because the exhibit shows large companies are where the money already is."

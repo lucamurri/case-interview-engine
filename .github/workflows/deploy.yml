@@ -1,0 +1,55 @@
+# Test, build and publish the site to GitHub Pages on every push to main.
+#
+# 1. "test-and-build": installs the two build libraries, runs the content
+#    linter, the math test and the drills test, then builds dist/.
+#    If any check fails, nothing is published.
+# 2. "deploy": publishes dist/ to GitHub Pages.
+#
+# Free for public repositories; a full run takes about a minute.
+name: Test and deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:          # run the checks (but don't deploy) on pull requests
+  workflow_dispatch:     # allows a manual run from the Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Only one deployment at a time; a newer push cancels an older one in progress.
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Check content and math
+        run: npm test
+      - name: Build site
+        run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: dist
+
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: test-and-build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

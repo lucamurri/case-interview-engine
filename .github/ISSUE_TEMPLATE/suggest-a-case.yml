@@ -1,0 +1,55 @@
+name: Suggest a case
+description: Propose an idea for a new practice case.
+title: "Case idea: "
+labels: ["case idea"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping grow the library! Please only suggest **original** ideas —
+        not cases copied or adapted from school casebooks, firm websites or books.
+  - type: input
+    id: title
+    attributes:
+      label: Working title
+      placeholder: "e.g. Cold Chain: sizing refrigerated trucking for biologics"
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Case type
+      options: [Market sizing, Profitability, Market entry, Pricing, M&A / investment, Operations]
+    validations:
+      required: true
+  - type: dropdown
+    id: industry
+    attributes:
+      label: Industry
+      options: [Pharma & healthcare, Energy, Consumer & retail, Tech & AI, Other]
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty
+      options: [Beginner, Intermediate, Advanced]
+  - type: textarea
+    id: idea
+    attributes:
+      label: The situation and the question
+      description: What is the client facing, and what should the candidate figure out?
+    validations:
+      required: true
+  - type: textarea
+    id: twist
+    attributes:
+      label: The key insight or twist (optional)
+      description: What should a strong candidate notice that others miss?
+  - type: checkboxes
+    id: original
+    attributes:
+      label: Originality
+      options:
+        - label: This idea is my own and not taken from a published casebook.
+          required: true

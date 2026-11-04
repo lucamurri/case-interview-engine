@@ -1,0 +1,18 @@
+name: Report a mistake
+description: Found a typo, a confusing step or a wrong number? Tell us.
+title: "Fix: "
+labels: ["content fix"]
+body:
+  - type: input
+    id: case
+    attributes:
+      label: Which case or page?
+      placeholder: "e.g. Patent Cliff, math step 3"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What's wrong?
+    validations:
+      required: true

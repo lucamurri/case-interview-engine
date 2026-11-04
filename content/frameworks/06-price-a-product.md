@@ -1,6 +1,6 @@
 ---
-title: "Pricing"
-order: 40
+title: "6. How should we price a product?"
+order: 6
 type: pricing
 summary: "Triangulate between cost, competitors and customer value — then design how the price is paid."
 ---
@@ -38,3 +38,7 @@ Then decide the **structure**: one price or tiers (good / better / best), per un
 - Ignoring elasticity: a higher price can lose more volume than it gains in margin.
 - Forgetting cannibalization when adding a cheaper tier.
 - Confusing markup (on cost) with margin (on price): a 40% markup is only a 29% margin.
+
+## Coach's note
+
+Say the three anchors out loud (cost floor, competitor reference, value ceiling). Then make a call on where to sit between them, and why. Interviewers reward the **structure of the payment** as much as the number: tiers, subscriptions, outcome-based deals. In healthcare, always ask who pays, because it's rarely the patient.

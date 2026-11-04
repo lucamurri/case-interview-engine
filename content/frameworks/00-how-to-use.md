@@ -1,5 +1,5 @@
 ---
-title: "Frameworks are a starting point, not a script"
+title: "The top 10 case questions, and how to use frameworks"
 order: 0
 summary: "How to use these guides without sounding like you memorized them."
 ---
@@ -16,15 +16,23 @@ Use the guides below as a mental checklist, then adapt:
 
 A useful test: if you crossed out the case name, could your structure be used for any company? If yes, it isn't tailored enough.
 
-## Choosing your approach
+## The top 10 case questions
 
-| If the question is about… | Start with… |
-|---|---|
-| How big is it? | Market sizing |
-| Why are profits falling? | Profitability |
-| Should we go into X? | Market entry |
-| What should we charge? | Pricing |
-| Should we buy / invest in X? | M&A / investment |
-| Why can't we make / deliver enough? | Operations |
+Most case interviews, whatever the industry, come down to one of these ten questions. Recognize which one you're facing in the first minute, and you know where to start:
 
-Many real cases combine two: a market-entry case usually contains a sizing; an M&A case usually contains a profitability check of the target.
+| # | The question | Typical prompt |
+|---|---|---|
+| 1 | How do we improve profits? | "Margins fell from 20% to 12%." |
+| 2 | How do we grow the business? | "The CEO wants to double revenue in five years." |
+| 3 | How do we cut costs? | "We need to take out 15% of operating costs." |
+| 4 | Should we enter a new market? | "Should we launch in India?" |
+| 5 | How should we launch a new product? | "We have a new device. How do we bring it to hospitals?" |
+| 6 | How should we price a product? | "What should we charge for our new therapy?" |
+| 7 | Should we make this investment? | "Is a new $50M plant worth it?" |
+| 8 | Should we acquire a business? | "Should we buy this biotech?" |
+| 9 | How should we respond to a competitive threat? | "A rival just cut prices by 30%." |
+| 10 | How do we optimize a process? | "We can't fill orders fast enough." |
+
+Many real cases combine two: a market-entry case usually contains a sizing, and an acquisition usually contains a profitability check of the target. Market sizing is covered as a **bonus** at the end, because it shows up inside most of the ten.
+
+Each guide below gives an original issue tree, the questions that unlock it, how to adapt it by industry, common traps, and a **coach's note** on what interviewers are really looking for.

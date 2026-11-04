@@ -1,6 +1,6 @@
 ---
-title: "Operations"
-order: 60
+title: "10. How do we optimize a process?"
+order: 10
 type: operations
 summary: "Find the bottleneck, quantify the gap, and fix the cheapest constraint first."
 ---
@@ -36,3 +36,7 @@ For machines, **overall equipment effectiveness (OEE) = availability × speed ×
 - Adding capacity everywhere instead of at the bottleneck.
 - Forgetting that fixing one bottleneck moves it to the next step — say where it moves.
 - Ignoring the cost of the backlog itself (lost sales, penalties, customer goodwill).
+
+## Coach's note
+
+Draw the process as boxes in a row and write a capacity under each one. The interviewer will usually hand you the data for exactly that. Name the bottleneck, quantify the gap against demand, and always say **where the bottleneck moves next** once you fix it. That last step is what separates good answers from great ones.

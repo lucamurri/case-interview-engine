@@ -32,7 +32,7 @@ The cases lean toward the industries I know and care about: **pharma & healthcar
 | **Partner mode** | An interviewer view for practicing with a friend: what to read aloud, what to reveal only if asked, the questions to ask in order, and what a good answer looks like. Exhibits can be shown full-screen to the candidate. |
 | **Self-score rubric** | Score structure, math, business judgment, synthesis and communication (1–5). Progress is saved in your browser; export it as JSON or CSV. |
 | **Mental math drills** | Randomized percentages, growth rates, break-evens and big-number multiplication, in 10-question rounds or 2-minute sprints. |
-| **Frameworks cheat sheet** | Short, original guides to each case type, focused on *adapting* a structure rather than reciting it. |
+| **Top 10 case frameworks** | The ten questions behind most cases (profits, growth, cost cutting, market entry, launch, pricing, investment, acquisition, competitive response, process), each with an original issue tree and a coach's note, focused on *adapting* a structure rather than reciting it. |
 | **Accessible and mobile-first** | Dark mode, keyboard navigation, screen-reader labels, WCAG AA contrast. Audited with axe-core with zero issues. |
 
 Every case includes a client prompt, clarifying information, a MECE issue tree, 1–3 exhibits, a step-by-step math walkthrough, an answer-first synthesis, common mistakes, what top candidates do differently, and a creative brainstorm question with a model answer.
@@ -108,7 +108,7 @@ npm run preview -- gene-therapy-pricing   # read one case as plain text
 
 ```
 content/cases/        one Markdown file per case (what you edit)
-content/frameworks/   the frameworks cheat sheet
+content/frameworks/   the Top 10 frameworks guides
 src/                  pages, styles and browser code
 scripts/              build, tests, link checker, local server
 .github/workflows/    test-and-deploy pipeline

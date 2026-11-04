@@ -1,6 +1,6 @@
 ---
-title: "Market sizing"
-order: 10
+title: "Bonus: How big is the market?"
+order: 90
 type: market-sizing
 summary: "Turn a big, vague number into a few small, defensible ones."
 ---
@@ -39,3 +39,7 @@ Then **segment** wherever behavior differs a lot: by customer type, age, income,
 - Forgetting ×12 for monthly prices or ÷ lifetime for durable goods.
 - Giving a number with no **sanity check** (compare with a known anchor, or size it a second way).
 - Stopping at the number. Always say what it means for the client's decision.
+
+## Coach's note
+
+Market sizing isn't a question type of its own in the top 10, but it shows up inside almost all of them (entry, launch, investment). Treat it as a tool: state your approach, segment where behavior differs, round aggressively, and **sanity-check** with a second method or a known anchor.

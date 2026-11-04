@@ -1,6 +1,6 @@
 ---
-title: "Market entry"
-order: 30
+title: "4. Should we enter a new market?"
+order: 4
 type: market-entry
 summary: "Answer whether to enter AND how — the second half is where most candidates stop short."
 ---
@@ -36,3 +36,7 @@ A client is considering a new country, customer segment, product category or bus
 - Using today's revenues when the market is about to get crowded.
 - Ignoring the client's capabilities — an attractive market isn't automatically an attractive market *for this client*.
 - No number: always compute a break-even share or payback and compare it with what's realistic.
+
+## Coach's note
+
+Most candidates answer "should we?" and forget "how?". Mention entry modes (build, partner, acquire) in your first structure, even briefly. Then anchor the economics in **one number**, such as the market share needed to break even, and compare it with what competitors have achieved. That single comparison often decides the case.

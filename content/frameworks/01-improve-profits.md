@@ -1,6 +1,6 @@
 ---
-title: "Profitability"
-order: 20
+title: "1. How do we improve profits?"
+order: 1
 type: profitability
 summary: "Find which part of the profit equation moved, then ask why."
 ---
@@ -41,3 +41,7 @@ Work **quantitatively**: get the numbers for two periods, find which line moved 
 - Saying "price fell" when *list* price rose but *net* price fell.
 - Fixing the symptom ("cut costs") without identifying the cause.
 - Forgetting that some "unprofitable" units feed profit elsewhere (an ED that fills hospital beds; a razor that sells blades).
+
+## Coach's note
+
+This is the question behind more cases than any other, and interviewers use it to test **discipline**. They want to see you ask for numbers early and find the line that moved before you brainstorm. A strong move is to say, "Before I list causes, can we look at revenue and costs over the last few years?" Then segment until the problem becomes obvious.

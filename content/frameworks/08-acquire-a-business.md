@@ -1,6 +1,6 @@
 ---
-title: "M&A and investment"
-order: 50
+title: "8. Should we acquire a business?"
+order: 8
 type: m-and-a
 summary: "Is it a good business, is it worth more to us than we pay, and can we actually capture the value?"
 ---
@@ -34,3 +34,7 @@ A client is considering buying a company, investing in a business, or (for priva
 - Valuing the target without asking about the price.
 - Counting synergies that you'd have to pay away, or that take years to arrive.
 - Ignoring the "do nothing" or "build instead" alternatives.
+
+## Coach's note
+
+The cleanest test is one sentence: **the premium we pay must be smaller than the synergies we can realistically capture**. Get the standalone value, add believable synergies minus integration costs, and compare with the price. Then think about deal structure (earn-outs, contingent payments) to bridge the gap between buyer and seller.

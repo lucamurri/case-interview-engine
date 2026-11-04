@@ -1,6 +1,6 @@
 # Case Interview Engine
 
-**A free library of 30 original consulting case interviews, with a step-by-step practice mode, a partner mode for practicing with a friend, and math that is verified by automated tests.**
+**A free library of 50 original consulting case interviews, with a step-by-step practice mode, a partner mode for practicing with a friend, and math that is verified by automated tests.**
 
 ### ▶ [Try it live: lucamurri.github.io/case-interview-engine](https://lucamurri.github.io/case-interview-engine/)
 
@@ -26,7 +26,7 @@ The cases lean toward the industries I know and care about: **pharma & healthcar
 
 | | |
 |---|---|
-| **30 original cases** | Market sizing (8), profitability (7), market entry (5), pricing (4), M&A / investment (3), operations (3). Pharma & healthcare (10), energy, consumer, tech & AI and more. Beginner to advanced; interviewer-led (McKinsey-style) and candidate-led (BCG/Bain-style). |
+| **50 original cases** | Profitability (10), market sizing (9), market entry (8), pricing (8), operations (8), M&A / investment (7). Pharma & healthcare (10), consumer (9), tech & AI (8), energy (7), plus financial services, industrials, sports, education, nonprofits and more. Beginner to advanced; interviewer-led (McKinsey-style) and candidate-led (BCG/Bain-style). |
 | **Case library** | Search and filter by industry, type, difficulty and format. |
 | **Practice mode** | Step-by-step reveal: prompt → clarifying questions (answered only if you ask) → structure → exhibits → math → synthesis → debrief, with a timer. |
 | **Partner mode** | An interviewer view for practicing with a friend: what to read aloud, what to reveal only if asked, the questions to ask in order, and what a good answer looks like. Exhibits can be shown full-screen to the candidate. |
@@ -47,7 +47,7 @@ Every case includes a client prompt, clarifying information, a MECE issue tree, 
 
 Three automated checks run on every change. If any of them fails, the site is not published.
 
-- **Math test:** recalculates **726 numbers** across the 30 cases from their inputs. Case text never types a result by hand. It refers to checked calculations by name (for example `{{payback_toll}}`), so the walkthrough, the exhibits and the answer can't drift apart. A typed result like "= $19.6M" fails the test.
+- **Math test:** recalculates **1,223 numbers** across the 50 cases from their inputs. Case text never types a result by hand. It refers to checked calculations by name (for example `{{payback_toll}}`), so the walkthrough, the exhibits and the answer can't drift apart. A typed result like "= $19.6M" fails the test.
 - **Content linter:** fails if any case is missing a required section, a clarifying Q&A or an exhibit label, or if any field uses a value outside the allowed list.
 - **Drills test:** generates **5,000 questions** and checks each answer against an independent recalculation from the numbers shown on screen.
 - **Link check:** fails on any broken internal link.

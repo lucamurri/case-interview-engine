@@ -143,7 +143,7 @@ Talvenzo's key US patents expire in 2027. Orvisca has never sold a product in th
 - Q: What is Orvisca's objective and investment criterion?
   A: Build a US business; the investment must pay back within **{{hurdle}}** of launch. Use simple payback.
 - Q: How many competitors are expected?
-  A: {{entrants}} biosimilars in total, including Orvisca, all launching within about a year of each other.
+  A: {{entrants}} in total, including Orvisca, all launching within about a year of each other.
 - Q: Has the investment already been spent?
   A: About half has been committed. Treat the full {{investment}} as the decision amount for simplicity.
 - Q: Can the plant supply the volume?

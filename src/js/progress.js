@@ -97,7 +97,7 @@ function render() {
     ? `
     <section class="panel" aria-labelledby="h-att">
       <h2 id="h-att">Case attempts</h2>
-      <div class="table-scroll" tabindex="0" role="region" aria-label="Case attempts"><table>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Case attempts table, scrollable"><table>
         <thead><tr><th scope="col">Date</th><th scope="col">Case</th><th scope="col">Mode</th><th scope="col">Time</th><th scope="col">Average</th><th scope="col"><abbr title="Structure · Math · Business judgment · Synthesis · Communication">Scores</abbr></th><th scope="col">Notes</th></tr></thead>
         <tbody>${attemptRows}</tbody>
       </table></div>
@@ -114,7 +114,7 @@ function render() {
     ? `
     <section class="panel" aria-labelledby="h-dr">
       <h2 id="h-dr">Drill rounds</h2>
-      <div class="table-scroll" tabindex="0" role="region" aria-label="Drill rounds"><table>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Drill rounds table, scrollable"><table>
         <thead><tr><th scope="col">Date</th><th scope="col">Drill</th><th scope="col">Correct</th><th scope="col">Time</th></tr></thead>
         <tbody>${drillRows}</tbody>
       </table></div>

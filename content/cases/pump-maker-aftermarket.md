@@ -151,7 +151,7 @@ Ostrander's aftermarket revenue: $180M × 60% = **{{am_rev_23}}**, then $200M ×
 
 **2. Profit by business.**
 
-| | FY2023 | FY2025 |
+| Business | FY2023 | FY2025 |
 |---|---|---|
 | New-pump profit (15% margin) | {{eq_profit_23}} | {{eq_profit_25}} |
 | Aftermarket profit (50% margin) | {{am_profit_23}} | {{am_profit_25}} |

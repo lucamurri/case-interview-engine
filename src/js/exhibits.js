@@ -18,7 +18,8 @@ export function renderExhibit(ex) {
 }
 
 function table(ex) {
-  const head = ex.columns.map((c) => `<th scope="col">${c}</th>`).join('');
+  // A blank top-left header still gets a name for screen readers.
+  const head = ex.columns.map((c) => `<th scope="col">${c.trim() ? c : '<span class="visually-hidden">Item</span>'}</th>`).join('');
   const rows = ex.rows
     .map((row) => `<tr>${row.map((cell, i) => (i === 0 ? `<th scope="row">${cell}</th>` : `<td>${cell}</td>`)).join('')}</tr>`)
     .join('');

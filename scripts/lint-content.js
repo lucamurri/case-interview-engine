@@ -10,6 +10,7 @@
  *   - has fewer than 2 clarifying Q&As
  *   - has 0 or more than 3 exhibits, or an exhibit without an "illustrative" note
  *   - (interviewer-led) lacks an "Ask:" question in Structure, Math or Synthesis
+ *   - has a Markdown table with an empty first header cell (bad for screen readers)
  */
 import path from 'node:path';
 import { caseFiles, readCase, ALLOWED, SECTIONS, splitAsk, parseClarifiers } from './load-cases.js';
@@ -61,6 +62,10 @@ for (const file of caseFiles()) {
     else if (!sections[key].trim()) err(`section "## ${heading}" is empty`);
   }
   for (const h of raw.unknownHeadings) err(`unknown heading "## ${h}" (check spelling)`);
+  for (const { key, heading } of SECTIONS) {
+    // Screen readers announce an empty table header as blank, so every column needs a name.
+    if (/^\|\s*\|/m.test(sections[key] || '')) err(`"## ${heading}" has a table whose first header cell is empty (give it a name, e.g. "Item")`);
+  }
   if (sections.clarifiers && parseClarifiers(sections.clarifiers).filter((c) => c.a).length < 2) {
     err('needs at least 2 clarifying Q&As written as "- Q: ..." then "A: ..."');
   }

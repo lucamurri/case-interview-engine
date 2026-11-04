@@ -10,11 +10,15 @@
  *   3. Read every case and write:
  *        dist/data/index.json         (short list for the library page)
  *        dist/data/cases/<id>.json    (full case for the case page)
+ *   4. Render content/frameworks/*.md into frameworks.html
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { load as parseYaml } from 'js-yaml';
+import { marked } from 'marked';
 import { caseFiles, readCase, renderCase, indexEntry } from './load-cases.js';
+import { LABELS } from '../src/js/labels.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(ROOT, 'src');
@@ -59,4 +63,38 @@ for (const file of caseFiles()) {
 }
 fs.writeFileSync(path.join(DIST, 'data', 'index.json'), JSON.stringify(index));
 
-console.log(`✓ Built ${index.length} cases into dist/`);
+// 4. Frameworks cheat sheet
+const FRAMEWORKS = path.join(ROOT, 'content', 'frameworks');
+const frameworks = fs
+  .readdirSync(FRAMEWORKS)
+  .filter((f) => f.endsWith('.md'))
+  .map((f) => {
+    const m = /^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/.exec(fs.readFileSync(path.join(FRAMEWORKS, f), 'utf8'));
+    if (!m) throw new Error(`${f}: missing front matter`);
+    return { ...parseYaml(m[1]), body: m[2], slug: f.replace(/^\d+-/, '').replace(/\.md$/, '') };
+  })
+  .sort((a, b) => a.order - b.order);
+
+const toc = frameworks.map((fw) => `<li><a href="#${fw.slug}">${fw.title}</a></li>`).join('');
+const sections = frameworks
+  .map((fw) => {
+    // Shift headings down one level: "## Use it when" becomes an <h3> inside the section.
+    const body = marked.parse(fw.body.replace(/^## /gm, '### '));
+    const count = index.filter((c) => c.type === fw.type).length;
+    const practice = fw.type
+      ? `<p class="practice-link"><a class="button button-outline" href="index.html?type=${fw.type}">See all ${count} ${LABELS.type[fw.type]} cases <span aria-hidden="true">→</span></a></p>`
+      : '';
+    return `<section class="panel framework prose" id="${fw.slug}" aria-labelledby="h-${fw.slug}">
+      <h2 id="h-${fw.slug}">${fw.title}</h2>
+      <p class="lede">${fw.summary}</p>
+      ${body}${practice}
+    </section>`;
+  })
+  .join('\n');
+const fwFile = path.join(DIST, 'frameworks.html');
+fs.writeFileSync(
+  fwFile,
+  fs.readFileSync(fwFile, 'utf8').replace('<!-- @frameworks -->', `<nav class="toc" aria-label="Frameworks"><ul>${toc}</ul></nav>\n${sections}`),
+);
+
+console.log(`✓ Built ${index.length} cases and ${frameworks.length} framework guides into dist/`);

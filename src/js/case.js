@@ -1,7 +1,11 @@
 /**
- * case.js — practice mode for a single case (case.html?id=...).
+ * case.js — the page for a single case (case.html?id=...).
  *
- * The case unfolds one step at a time:
+ * Two modes, switched with links at the top of the page:
+ *   Practice (default)       — solo, step-by-step reveal (this file)
+ *   Partner (&mode=partner)  — interviewer view with everything visible (partner.js)
+ *
+ * In practice mode the case unfolds one step at a time:
  *   Prompt → Clarifying questions → Structure → Exhibits → Math → Synthesis → Debrief & score
  * Each step shows the interviewer's question first; the model answer stays
  * hidden until the user chooses to reveal it.
@@ -10,9 +14,12 @@ import { label, escapeHtml, difficultyBadge } from './labels.js';
 import { Timer } from './timer.js';
 import { renderExhibit } from './exhibits.js';
 import { rubricForm, initRubric } from './rubric.js';
+import { partnerBody, wirePartner } from './partner.js';
 
 const root = document.querySelector('[data-case-root]');
-const caseId = new URLSearchParams(location.search).get('id');
+const params = new URLSearchParams(location.search);
+const caseId = params.get('id');
+const mode = params.get('mode') === 'partner' ? 'partner' : 'practice';
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const STEPS = [
@@ -145,8 +152,16 @@ function stepBody(key, c) {
 // Page
 // ---------------------------------------------------------------------------
 
+/** Links that switch between practice and partner mode. */
+function modeSwitch(c) {
+  const href = (m) => `case.html?id=${encodeURIComponent(c.id)}${m === 'partner' ? '&mode=partner' : ''}`;
+  const link = (m, text) => `<a href="${href(m)}"${m === mode ? ' aria-current="page"' : ''}>${text}</a>`;
+  return `<nav class="mode-switch" aria-label="Mode">${link('practice', 'Practice solo')}${link('partner', 'Partner mode (interviewer view)')}</nav>`;
+}
+
 function renderPage(c) {
-  document.title = `${c.title} — Case Interview Engine`;
+  const partner = mode === 'partner';
+  document.title = `${c.title}${partner ? ' (partner mode)' : ''} — Case Interview Engine`;
   root.innerHTML = `
     <p class="breadcrumb"><a href="index.html"><span aria-hidden="true">←</span> All cases</a></p>
     <header class="case-header">
@@ -162,6 +177,7 @@ function renderPage(c) {
         </ul>
       </div>
       <p class="notice">All numbers in this case are illustrative, created for practice.</p>
+      ${modeSwitch(c)}
     </header>
 
     <div class="case-toolbar">
@@ -172,13 +188,17 @@ function renderPage(c) {
         <button class="button button-small button-quiet" type="button" data-reset aria-label="Reset timer">Reset</button>
         <span class="visually-hidden" aria-live="polite" data-announce></span>
       </div>
-      <nav class="stepper" aria-label="Case steps">
+      ${partner ? '' : `<nav class="stepper" aria-label="Case steps">
         <ol>
           ${STEPS.map((st, i) => `<li><button type="button" data-goto="${i}" disabled><span class="step-num">${i + 1}</span><span class="step-name">${st.title}</span></button></li>`).join('')}
         </ol>
-      </nav>
+      </nav>`}
     </div>
+    ${partner ? partnerBody(c) : practiceBody(c)}`;
+}
 
+function practiceBody(c) {
+  return `
     <section class="intro" data-intro aria-labelledby="h-intro">
       <h2 id="h-intro">Practice mode</h2>
       <p>The case reveals itself step by step, like a real interview. At each step, answer out loud (or on paper) <em>before</em> revealing the model answer. The timer starts when you begin.</p>
@@ -225,7 +245,7 @@ function wireEvents(c) {
       intro.hidden = true;
       timer.start();
       goTo(0);
-    } else if (t.matches('[data-toggle]') && !intro.hidden) {
+    } else if (t.matches('[data-toggle]') && intro && !intro.hidden) {
       // Pressing the timer's Start before beginning also opens the case.
       // (The Timer itself handles starting the clock.)
       intro.hidden = true;
@@ -253,9 +273,11 @@ function wireEvents(c) {
 
   initRubric(root.querySelector('.score'), {
     caseId: c.id,
+    mode,
     getSeconds: () => timer.seconds,
     onSaved: () => timer.pause(),
   });
+  if (mode === 'partner') wirePartner(root, c);
 }
 
 async function init() {

@@ -51,7 +51,7 @@ export function rubricForm() {
 }
 
 /** Wire up the form. `getSeconds` returns the timer's elapsed time. */
-export function initRubric(container, { caseId, getSeconds, onSaved }) {
+export function initRubric(container, { caseId, mode = 'practice', getSeconds, onSaved }) {
   const form = container.querySelector('[data-rubric]');
   const error = form.querySelector('[data-error]');
   const result = form.querySelector('[data-result]');
@@ -92,7 +92,7 @@ export function initRubric(container, { caseId, getSeconds, onSaved }) {
       return;
     }
     error.hidden = true;
-    const attempt = { caseId, seconds: Math.round(getSeconds()), scores, notes: form.elements.notes.value.trim() };
+    const attempt = { caseId, mode, seconds: Math.round(getSeconds()), scores, notes: form.elements.notes.value.trim() };
     const ok = addAttempt(attempt);
     result.textContent = ok
       ? `Saved. Average score ${averageScore(attempt).toFixed(1)} / 5 in ${formatDuration(attempt.seconds)}.`

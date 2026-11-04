@@ -114,10 +114,6 @@ scripts/              build, tests, link checker, local server
 .github/workflows/    test-and-deploy pipeline
 ```
 
-## Built with Claude Code
-
-This project was built with [Claude Code](https://claude.com/claude-code) as an AI-augmented workflow. I set the product vision, the content requirements and the quality bar, and reviewed and approved each phase. Claude Code helped with the planning, the code, the testing pipeline and the first drafts of the cases. The approach was the same one I'd use with any team: clear specifications, automated checks so quality doesn't depend on trust, and human review at every step.
-
 ## License
 
 - **Code:** [MIT](LICENSE)

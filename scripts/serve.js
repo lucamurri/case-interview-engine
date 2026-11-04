@@ -6,6 +6,10 @@
  *
  * Needed because browsers block loading the case data files when a page is
  * opened directly from disk (file://). Not used on the live site.
+ *
+ * To mimic GitHub Pages, which serves the site from a subfolder:
+ *   node scripts/serve.js --base /case-interview-engine --port 8091
+ * then open http://localhost:8091/case-interview-engine/
  */
 import http from 'node:http';
 import fs from 'node:fs';
@@ -13,7 +17,13 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const DIST = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
-const PORT = Number(process.env.PORT) || 8080;
+const arg = (name) => {
+  const i = process.argv.indexOf(`--${name}`);
+  return i > -1 ? process.argv[i + 1] : undefined;
+};
+const PORT = Number(process.env.PORT || arg('port')) || 8080;
+const BASE = (arg('base') || '').replace(/\/$/, ''); // e.g. "/case-interview-engine"
+
 const TYPES = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -26,7 +36,15 @@ const TYPES = {
 
 http
   .createServer((req, res) => {
-    const urlPath = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+    let urlPath = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+    if (BASE) {
+      if (urlPath === BASE) urlPath += '/';
+      if (!urlPath.startsWith(`${BASE}/`)) {
+        res.writeHead(404, { 'Content-Type': 'text/plain' }).end('Not found (outside the base path)');
+        return;
+      }
+      urlPath = urlPath.slice(BASE.length);
+    }
     let file = path.join(DIST, urlPath);
     // Never serve files outside dist/
     if (!file.startsWith(DIST)) {
@@ -43,4 +61,4 @@ http
       res.end(data);
     });
   })
-  .listen(PORT, () => console.log(`Serving dist/ at http://localhost:${PORT}`));
+  .listen(PORT, () => console.log(`Serving dist/ at http://localhost:${PORT}${BASE}/`));

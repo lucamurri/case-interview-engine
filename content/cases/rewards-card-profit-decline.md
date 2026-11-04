@@ -3,7 +3,7 @@ id: rewards-card-profit-decline
 title: "Points That Cost Too Much: A Premium Rewards Card Losing Profit"
 client: "Harbor & Pine Bank (fictional), a US bank with a premium rewards credit card"
 summary: "A bank's premium rewards card added cardholders and spend, yet profit fell. Split profit per cardholder into revolvers and transactors to find out who the growth really brought in, then choose a fix."
-industry: other
+industry: financial-services
 sub_industry: "Financial services / Credit cards"
 type: profitability
 difficulty: intermediate

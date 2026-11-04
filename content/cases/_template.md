@@ -9,7 +9,7 @@ id: my-new-case                 # lowercase-with-dashes; must match the file nam
 title: "Catchy Title: What the Case Is About"
 client: "Clientco (fictional), one-line description"
 summary: "One or two sentences shown on the library card."
-industry: pharma-healthcare     # pharma-healthcare | energy | consumer-retail | tech-ai | other
+industry: pharma-healthcare     # pharma-healthcare | energy | consumer-retail | tech-ai | financial-services | industrials | public-sector | media-sports
 sub_industry: "Free text tag, e.g. Medtech"
 type: profitability             # market-sizing | profitability | market-entry | pricing | m-and-a | operations
 difficulty: intermediate        # beginner | intermediate | advanced

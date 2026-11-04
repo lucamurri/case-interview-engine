@@ -3,7 +3,7 @@ id: school-bus-route-redesign
 title: "Staggering the Bells: Fixing a School District's Bus Shortage"
 client: "Maple Ridge Unified School District (fictional), a suburban US school district with 16,000 bus riders"
 summary: "A school district is short of bus drivers and over budget because every school starts at the same time. Staggered bell times let each bus run several routes, but the cheapest plan puts teenagers on buses before dawn."
-industry: other
+industry: public-sector
 sub_industry: "Public sector / K-12 education"
 type: operations
 difficulty: intermediate

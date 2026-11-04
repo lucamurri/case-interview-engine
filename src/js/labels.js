@@ -16,7 +16,10 @@ export const LABELS = {
     energy: 'Energy',
     'consumer-retail': 'Consumer & retail',
     'tech-ai': 'Tech & AI',
-    other: 'Other',
+    'financial-services': 'Financial services',
+    industrials: 'Industrials',
+    'public-sector': 'Public & nonprofit',
+    'media-sports': 'Media & sports',
   },
   difficulty: {
     beginner: 'Beginner',

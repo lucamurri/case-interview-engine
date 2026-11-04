@@ -3,7 +3,7 @@ id: wealth-manager-flat-fee
 title: "One Percent or a Flat Fee? Repricing Advice for the Mass Affluent"
 client: "Larkspur Wealth Partners (fictional), a US wealth manager with human financial advisers"
 summary: "A wealth manager that charges 1% of assets wants a flat annual fee for clients with $100K–$500K, to fend off robo-advisers and win younger clients. Work out what each fee schedule does to revenue and profit, and why one flat fee for the whole tier is a costly mistake."
-industry: other
+industry: financial-services
 sub_industry: "Wealth management"
 type: pricing
 difficulty: intermediate

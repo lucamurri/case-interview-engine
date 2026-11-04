@@ -3,7 +3,7 @@ id: specialty-chemical-price-increase
 title: "Passing It On: A Specialty Chemical Maker Facing Higher Input Costs"
 client: "Kessler Polymer Additives (fictional), a US maker of additives for paints and coatings"
 summary: "Raw-material costs jumped and margins shrank. A chemicals maker wants to raise its price but fears losing customers. How much volume can it lose and still come out ahead?"
-industry: other
+industry: industrials
 sub_industry: "Chemicals"
 type: pricing
 difficulty: beginner

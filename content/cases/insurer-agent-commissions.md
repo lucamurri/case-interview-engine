@@ -3,7 +3,7 @@ id: insurer-agent-commissions
 title: "Paid to Grow: Agent Commissions at a Home-and-Auto Insurer"
 client: "Brightwater Mutual (fictional), a US home and auto insurer selling direct and through independent agents"
 summary: "Premiums are up 20% but underwriting profit has halved. The losses sit with independent agents who are paid on volume, and the fix is a commission plan that pays for good business without driving the best agents away."
-industry: other
+industry: financial-services
 sub_industry: "Insurance"
 type: profitability
 difficulty: advanced

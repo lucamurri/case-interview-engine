@@ -3,7 +3,7 @@ id: national-park-timed-entry
 title: "Book Your Slot: Timed Entry at a Crowded National Park"
 client: "Ridgeback Canyon National Park (fictional), a busy mountain park run by a national parks agency"
 summary: "A national park is jammed at midday and short of money for repairs. A timed-entry reservation with a peak-hour fee can spread visitors through the day, but the fee that raises the most money is not the right one."
-industry: other
+industry: public-sector
 sub_industry: "Public sector / Parks"
 type: pricing
 difficulty: beginner

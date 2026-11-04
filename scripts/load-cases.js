@@ -21,7 +21,7 @@ export const CASES_DIR = path.join(ROOT, 'content', 'cases');
 
 /** Allowed values for the tag-like metadata fields. */
 export const ALLOWED = {
-  industry: ['pharma-healthcare', 'energy', 'consumer-retail', 'tech-ai', 'other'],
+  industry: ['pharma-healthcare', 'energy', 'consumer-retail', 'tech-ai', 'financial-services', 'industrials', 'public-sector', 'media-sports'],
   type: ['market-sizing', 'profitability', 'market-entry', 'pricing', 'm-and-a', 'operations'],
   difficulty: ['beginner', 'intermediate', 'advanced'],
   format: ['interviewer-led', 'candidate-led'],

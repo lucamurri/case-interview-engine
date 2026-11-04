@@ -26,7 +26,7 @@ The cases lean toward the industries I know and care about: **pharma & healthcar
 
 | | |
 |---|---|
-| **60 original cases** | Profitability (12), market sizing (10), operations (10), pricing (10), market entry (9), M&A / investment (9). Consumer (11), pharma & healthcare (10), tech & AI (9), energy (7), plus financial services, industrials, public sector, sports, education, nonprofits and more. Beginner to advanced; interviewer-led (McKinsey-style) and candidate-led (BCG/Bain-style). |
+| **60 original cases** | Profitability (12), market sizing (10), operations (10), pricing (10), market entry (9), M&A / investment (9). Consumer & retail (12), pharma & healthcare (10), tech & AI (9), energy (7), financial services (7), public & nonprofit (6), industrials (5), media & sports (4). Beginner to advanced; interviewer-led (McKinsey-style) and candidate-led (BCG/Bain-style). |
 | **Case library** | Search and filter by industry, type, difficulty and format. |
 | **Practice mode** | Step-by-step reveal: prompt → clarifying questions (answered only if you ask) → structure → exhibits → math → synthesis → debrief, with a timer. |
 | **Partner mode** | An interviewer view for practicing with a friend: what to read aloud, what to reveal only if asked, the questions to ask in order, and what a good answer looks like. Exhibits can be shown full-screen to the candidate. |
@@ -65,7 +65,7 @@ Cases are plain text files. You can add one without touching any code.
    ```yaml
    id: your-case-id
    title: "Hook: What the Case Is About"
-   industry: pharma-healthcare     # pharma-healthcare | energy | consumer-retail | tech-ai | other
+   industry: pharma-healthcare     # pharma-healthcare | energy | consumer-retail | tech-ai | financial-services | industrials | public-sector | media-sports
    type: profitability             # market-sizing | profitability | market-entry | pricing | m-and-a | operations
    difficulty: intermediate        # beginner | intermediate | advanced
    format: interviewer-led         # interviewer-led | candidate-led

@@ -3,7 +3,7 @@ id: university-online-masters
 title: "Logging In at a Loss: A University's Online Master's Program"
 client: "Calloway University (fictional), a private nonprofit university in the US Midwest"
 summary: "A new online master's program lost almost $5M in its second year and the board wants it to break even within three years. The loss looks structural until you separate one-time launch costs from the per-student economics."
-industry: other
+industry: public-sector
 sub_industry: "Higher education"
 type: profitability
 difficulty: intermediate

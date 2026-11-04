@@ -3,7 +3,7 @@ id: minor-league-team-acquisition
 title: "Buying the Ballclub: Is a Minor-League Team Worth the Asking Price?"
 client: "Copperline Sports Partners (fictional), a group of local investors"
 summary: "An investor group is offered a minor-league baseball team at 25 times its EBITDA. The seller's attendance plan justifies the price, but the stadium, its lease and the major-league affiliation decide whether that plan can happen."
-industry: other
+industry: media-sports
 sub_industry: "Sports"
 type: m-and-a
 difficulty: intermediate

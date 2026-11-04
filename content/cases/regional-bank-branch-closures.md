@@ -3,7 +3,7 @@ id: regional-bank-branch-closures
 title: "Closing the Doors: Which Branches Should a Regional Bank Shut?"
 client: "Three Rivers Bank (fictional), a regional bank with 300 branches in Ohio and Pennsylvania"
 summary: "A regional bank wants to close a third of its branches to save $100M a year. Weigh the cost saved against the deposits that walk out the door, and find out why the answer depends on how far customers must travel to the next branch."
-industry: other
+industry: financial-services
 sub_industry: "Retail banking"
 type: operations
 difficulty: advanced

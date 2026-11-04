@@ -326,7 +326,8 @@ textarea:hover { border-color: var(--muted); }
 
 .filters {
   display: grid;
-  grid-template-columns: 2fr repeat(4, 1fr) auto;
+  /* Each dropdown sizes to its longest option; search takes the rest. */
+  grid-template-columns: minmax(10rem, 1fr) repeat(4, auto) auto;
   align-items: end;
   gap: 0.75rem;
   padding: 1rem;
@@ -335,7 +336,7 @@ textarea:hover { border-color: var(--muted); }
   background: var(--surface);
   box-shadow: var(--shadow);
 }
-@media (max-width: 960px) {
+@media (max-width: 1100px) {
   .filters { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
   .field-search { grid-column: 1 / -1; }
   .filters .button { grid-column: 1 / -1; }

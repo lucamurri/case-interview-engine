@@ -3,7 +3,7 @@ id: womens-soccer-league-expansion
 title: "Expansion Season: A Soccer Owner Bets on the Women's Game"
 client: "Torvane Sports Group (fictional), owner of Harbor City FC, a men's professional soccer club"
 summary: "A men's club owner can buy an expansion team in a fast-growing women's league for $60M. Build the season-by-season cash flow, find the breakeven year, and see how much the answer depends on the next media deal."
-industry: other
+industry: media-sports
 sub_industry: "Sports"
 type: market-entry
 difficulty: intermediate

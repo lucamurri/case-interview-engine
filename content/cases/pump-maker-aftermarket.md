@@ -3,7 +3,7 @@ id: pump-maker-aftermarket
 title: "After the Sale: An Industrial Pump Maker's Service Business"
 client: "Ostrander Fluid Systems (fictional), a US maker of industrial pumps"
 summary: "Revenue is up but profit is down at an industrial pump maker. The answer is not in new pumps; it is in the spare parts and service customers buy after the sale."
-industry: other
+industry: industrials
 sub_industry: "Industrials"
 type: profitability
 difficulty: intermediate

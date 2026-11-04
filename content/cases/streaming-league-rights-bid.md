@@ -3,7 +3,7 @@ id: streaming-league-rights-bid
 title: "Going for Goal: A Streaming Service Bidding for Soccer Rights"
 client: "Arcwave (fictional), a US subscription streaming service"
 summary: "A streaming service must set its maximum bid for five years of exclusive rights to a pro soccer league. The sign-up forecast looks strong, until you ask who would have joined anyway and who leaves when the season ends."
-industry: other
+industry: media-sports
 sub_industry: "Media & sports"
 type: m-and-a
 difficulty: advanced

@@ -3,7 +3,7 @@ id: pe-hvac-services-buyout
 title: "Keeping It Cool: A Private Equity Bid for an HVAC Maintenance Company"
 client: "Harrow Lane Partners (fictional), a mid-market private equity fund"
 summary: "A PE fund is offered a commercial HVAC maintenance company at a fixed asking price. Rebuild the real EBITDA, value the business at exit, and decide whether the seller's margin plan is credible."
-industry: other
+industry: industrials
 sub_industry: "Industrial services"
 type: m-and-a
 difficulty: intermediate

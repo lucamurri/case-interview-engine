@@ -3,7 +3,7 @@ id: hotel-chain-extended-stay
 title: "Longer Stays: A Midscale Hotel Chain Weighs Extended-Stay"
 client: "Larchmont Hotels (fictional), a US owner-operator of 150 midscale hotels"
 summary: "A midscale hotel chain wants to launch an extended-stay brand. Owning the new hotels earns more per hotel; franchising earns far more per dollar invested. Ask the right question and you find the new brand also takes guests from the old one."
-industry: other
+industry: consumer-retail
 sub_industry: "Hospitality"
 type: market-entry
 difficulty: intermediate

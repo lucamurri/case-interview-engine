@@ -3,7 +3,7 @@ id: pickleball-courts-us
 title: "Dink and Drive: Sizing US Spending on New Pickleball Courts"
 client: "Baseline Court Works (fictional), a US builder of tennis and basketball courts"
 summary: "A sports-court builder wonders whether the pickleball boom is worth chasing. Size annual US spending on new pickleball courts, working from players to courts needed to new builds per year."
-industry: other
+industry: media-sports
 sub_industry: "Sports & leisure"
 type: market-sizing
 difficulty: beginner

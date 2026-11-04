@@ -3,7 +3,7 @@ id: insurer-claims-backlog
 title: "Claims Backlog: Speeding Up an Insurer's Claims Processing"
 client: "Wexcombe Mutual (fictional), a regional US auto and home insurer"
 summary: "Open claims have piled up to 26,000 and customers wait over seven weeks for a settlement. Find the bottleneck, size a burn-down plan and rank three fixes."
-industry: other
+industry: financial-services
 sub_industry: "Financial services"
 type: operations
 difficulty: intermediate

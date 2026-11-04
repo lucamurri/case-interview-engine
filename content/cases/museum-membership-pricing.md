@@ -3,7 +3,7 @@ id: museum-membership-pricing
 title: "Members Only? Closing a Nonprofit Museum's Deficit"
 client: "Calloway Museum of Art (fictional), a nonprofit art museum in a mid-sized US city"
 summary: "A nonprofit museum must close a $2M deficit. Raising admission looks like the obvious fix, but it falls far short and turns visitors away. Can a membership program do better?"
-industry: other
+industry: public-sector
 sub_industry: "Nonprofit / Arts"
 type: pricing
 difficulty: beginner

@@ -3,7 +3,7 @@ id: city-transit-fare-redesign
 title: "Fare Play: Redesigning a Mid-Sized City's Transit Fares"
 client: "Harlow Bay Regional Transit (fictional), the bus and light-rail agency of a mid-sized US city"
 summary: "A city council wants more riders and fairer fares without blowing up the transit budget. A flat fare increase raises money but drives riders away — can a smarter fare structure do better on every goal?"
-industry: other
+industry: public-sector
 sub_industry: "Public sector"
 type: pricing
 difficulty: intermediate

@@ -3,7 +3,7 @@ id: industrial-robots-mexico-auto
 title: "Robots on the Line: Industrial Robot Demand in Mexican Auto Plants"
 client: "Kestrelgard Robotics (fictional), a mid-sized European maker of industrial robot arms"
 summary: "A European robot maker is weighing a local sales and service hub in Mexico. Size annual robot demand from the Mexican auto industry two ways, then test whether the hub breaks even — with and without new plants."
-industry: other
+industry: industrials
 sub_industry: "Industrials"
 type: market-sizing
 difficulty: advanced

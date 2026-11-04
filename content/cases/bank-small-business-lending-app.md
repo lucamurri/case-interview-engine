@@ -3,7 +3,7 @@ id: bank-small-business-lending-app
 title: "Main Street Lending: A Regional Bank's Small-Business Loan App"
 client: "Prairie Ledger Bank (fictional), a regional bank in the US Midwest"
 summary: "Fintech lenders are winning small-business loans with fast online approvals. Should a regional bank launch its own lending app — and should it build the technology or rent it?"
-industry: other
+industry: financial-services
 sub_industry: "Financial services"
 type: market-entry
 difficulty: beginner

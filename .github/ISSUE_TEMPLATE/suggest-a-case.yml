@@ -26,7 +26,7 @@ body:
     id: industry
     attributes:
       label: Industry
-      options: [Pharma & healthcare, Energy, Consumer & retail, Tech & AI, Other]
+      options: [Pharma & healthcare, Energy, Consumer & retail, Tech & AI, Financial services, Industrials, Public & nonprofit, Media & sports, Other]
     validations:
       required: true
   - type: dropdown

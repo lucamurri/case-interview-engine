@@ -3,7 +3,7 @@ id: airport-security-wait-times
 title: "Hurry Up and Wait: Peak-Hour Lines at Airport Security"
 client: "Harrowgate Regional Airport Authority (fictional), operator of a mid-sized Australian airport"
 summary: "Morning security lines at a regional airport reach more than 20 minutes. Find the slowest step in a screening lane, work out how many lanes the peak needs, and compare more officers with faster bag screening."
-industry: other
+industry: public-sector
 sub_industry: "Public sector / Airports"
 type: operations
 difficulty: beginner

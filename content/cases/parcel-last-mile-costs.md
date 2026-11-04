@@ -3,7 +3,7 @@ id: parcel-last-mile-costs
 title: "Nobody Home: A Parcel Carrier's Rising Delivery Costs"
 client: "Brightway Parcel (fictional), a regional parcel carrier in the US Midwest"
 summary: "Cost per delivery is up 25% in a year and management blames driver wages. The real driver is failed first attempts. Size it, then decide whether pickup lockers are worth building."
-industry: other
+industry: industrials
 sub_industry: "Logistics"
 type: operations
 difficulty: intermediate

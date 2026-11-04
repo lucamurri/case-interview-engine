@@ -3,7 +3,7 @@ id: bank-buy-now-pay-later
 title: "Pay in Four: Should a Bank Launch Buy Now, Pay Later?"
 client: "Meridian Trust Bank (fictional), a large US consumer bank"
 summary: "A bank wants to offer buy-now-pay-later at online retailers. Work out what it earns on each dollar of sales, the volume it needs to cover its platform cost, and whether the retailers it has lined up get it there."
-industry: other
+industry: financial-services
 sub_industry: "Consumer lending"
 type: market-entry
 difficulty: beginner

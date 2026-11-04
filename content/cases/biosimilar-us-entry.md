@@ -90,7 +90,7 @@ exhibits:
     insight: |
       The average is a round {{bios_share}}, but the self-injected autoimmune
       analog (closest to Talvenzo) sits below it. Patients and doctors are slower
-      to switch when the patient injects at home and the pharmacy benefit decides.
+      to switch when the patient injects at home and the PBM, not the doctor, decides coverage.
   - id: exhibit-2
     title: "Go-alone launch assumptions"
     kind: table
@@ -109,7 +109,7 @@ exhibits:
     note: "Illustrative data created for this practice case. Orvisca and Talvenzo are fictional."
     insight: |
       Two assumptions carry the case: the equal-split share and the slow ramp.
-      With a fixed sales team, both hit profit almost one-for-one.
+      With a fixed sales team, any shortfall in volume falls straight through to operating profit, so profit drops faster than volume.
   - id: exhibit-3
     title: "Private-label offer from a large pharmacy benefit manager (PBM)"
     kind: table
@@ -145,7 +145,7 @@ Talvenzo's key US patents expire in 2027. Orvisca has never sold a product in th
 - Q: How many competitors are expected?
   A: {{entrants}} in total, including Orvisca, all launching within about a year of each other.
 - Q: Has the investment already been spent?
-  A: About half has been committed. Treat the full {{investment}} as the decision amount for simplicity.
+  A: About half has been committed. Treat the full {{investment}} as the decision amount for simplicity; it is the same under any entry option.
 - Q: Can the plant supply the volume?
   A: After expansion, the plant can supply about {{capacity}} a year.
 

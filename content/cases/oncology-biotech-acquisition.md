@@ -78,7 +78,7 @@ exhibits:
       - ["KLV-101", "Second-line lung cancer", "Phase 3 (readout in 12 months)", "{{peak1}}", "{{pos1}}"]
       - ["KLV-202", "Ovarian cancer", "Phase 2", "{{peak2}}", "{{pos2}}"]
       - ["KLV-303", "Solid tumors (bispecific antibody)", "Phase 1", "{{peak3}}", "{{pos3}}"]
-      - ["Remaining trial costs", "All assets, risk-adjusted", "", "", "{{rd_cost}} total"]
+      - ["Remaining trial costs", "{{rd_cost}} in total across all assets, risk-adjusted", "", "", ""]
     note: "Illustrative data created for this practice case. Kelvara, its assets and the probabilities are fictional."
     insight: |
       The biggest prize (KLV-303) is the least likely to happen. Once you weight
@@ -129,7 +129,7 @@ Brennholt's CEO asks us: **is Kelvara worth that price, and if not, how should B
 - Q: How does Brennholt value a drug in development?
   A: It uses a rule of thumb: a launched drug is worth about **{{profit_multiple}} its peak annual operating profit** (a shortcut for the discounted profits over its patent life). Oncology drugs earn about **{{margin}}** operating margin at peak. Multiply by the probability of approval to get a risk-adjusted value.
 - Q: Does Kelvara have any cash or debt?
-  A: Ignore both; the cash it holds is roughly what it will burn before KLV-101 reads out.
+  A: Ignore both; the cash it holds roughly covers its overhead until KLV-101 reads out. The remaining trial costs are listed separately.
 - Q: When do we learn whether KLV-101 works?
   A: The Phase 3 trial reads out in about 12 months. Approval would follow roughly a year later.
 - Q: Are other buyers interested?
@@ -193,7 +193,7 @@ A contingent value right (CVR) is a promise to pay more later if a milestone is 
 Expected cost = {{cvr_upfront}} + 60% × {{cvr_payment}} = {{cvr_upfront}} + {{cvr_expected_payment}} = **{{cvr_expected_cost}}**.
 That is below the walk-away price of {{value_to_buyer}}, so Brennholt creates about **{{cvr_npv}}** of value — while Kelvara's shareholders see a headline price of **{{cvr_headline}}**, above the {{offer}} they asked for.
 
-*Why both sides can say yes:* Kelvara's board probably believes KLV-101 is more likely to succeed than 60%. The CVR lets them be paid for that belief, and Brennholt only pays the extra {{cvr_payment}} in the world where the drug is approved and the deal is clearly worth it.
+*Why both sides can say yes:* Kelvara's board probably believes KLV-101 is more likely to succeed than 60%. The CVR lets them be paid for that belief, and Brennholt only pays the extra {{cvr_payment}} in the world where the drug is approved and the deal is clearly worth it. The catch: the closing cash is only a {{cvr_upfront_premium}} premium over market value, so expect the board to push for more cash upfront, especially if a rival bids. Brennholt can raise the closing cash by up to about $0.1B before the expected cost reaches its walk-away.
 
 ## Synthesis
 
@@ -235,4 +235,4 @@ Group the risks by **people, science and commercial execution**:
 - **Commercial:** the global-launch synergy needs early preparation — payer evidence and pricing strategy in major markets should start before the Phase 3 readout, not after approval.
 - **Portfolio:** if KLV-101 fails, have a plan for KLV-202 and KLV-303 (continue, partner, or out-license) so the remaining value is not written off by default.
 
-A top candidate prioritizes: "Retaining the scientists behind KLV-303 matters most — the Phase 3 asset is largely de-risked by the CVR, but early-stage value walks out the door with people."
+A top candidate prioritizes: "Retaining the scientists behind KLV-202 and KLV-303 matters most — the CVR shares part of the Phase 3 risk with the sellers, but early-stage value walks out the door with people."

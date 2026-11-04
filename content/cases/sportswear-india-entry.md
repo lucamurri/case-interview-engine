@@ -111,7 +111,7 @@ The CEO sees India — a huge population, a growing middle class and a booming r
 - Q: Who are the competitors?
   A: The big global sportswear brands are all present and spend heavily on marketing; a few specialist running brands entered in the last five years. Local brands compete mainly at lower price points.
 - Q: Does Veltrup have any presence in India today?
-  A: No. Some Indian runners buy its shoes abroad or through grey-market resellers online, which suggests some brand awareness among serious runners.
+  A: No. Some Indian runners buy its shoes abroad or through gray-market resellers online, which suggests some brand awareness among serious runners.
 - Q: How do Indian consumers buy premium sportswear?
   A: Through a mix of mall stores, multi-brand retail chains and online marketplaces. Online is growing quickly, especially outside the largest cities.
 - Q: Are there partnership options?
@@ -151,7 +151,7 @@ Fixed cost = 20 stores × $0.6M + $10M = **{{own_fixed}}** per year.
 Each $1 of retail sales contributes $0.50, so break-even sales = $22M ÷ 50% = **{{own_be_rev}}**.
 Share needed = $44M ÷ $2,000M = **{{own_be_share}}** — above even the best recent entrant ({{entrant_high}}).
 
-*Sanity check:* that is {{own_be_per_store}} of sales per store, against a typical premium sportswear store in an Indian mall at {{store_benchmark}}. The own-store model does not work at this scale.
+*Sanity check:* that is {{own_be_per_store}} of sales per store (counting website sales too), against a typical premium sportswear store in an Indian mall at {{store_benchmark}}. The own-store model does not work at this scale.
 
 **3. Partner — break-even.**
 Veltrup earns {{wholesale_share}} of the retail price, and keeps {{partner_cm}} of that, so each $1 of retail sales contributes 50% × 40% = **{{partner_cm_retail}}**.
@@ -160,7 +160,7 @@ Break-even sales = $4M ÷ 20% = **{{partner_be_rev}}**, i.e. a share of $20M ÷ 
 **4. Profit at a realistic share.** Assume Veltrup reaches the middle of the benchmark range, {{plan_share}}, i.e. retail sales of 1.5% × $2,000M = **{{plan_rev}}**.
 - Own stores: contribution $30M × 50% = {{own_contrib}}, minus {{own_fixed}} fixed cost — a loss of **{{own_loss}}** a year.
 - Partner: contribution $30M × 20% = {{partner_contrib}}, minus {{partner_fixed}} — a profit of **{{partner_profit}}** a year.
-- Partner payback = $6M ÷ $2M = **{{partner_payback}}**, inside the hurdle of {{hurdle_years}}. The own-store model never pays back at this share.
+- Partner payback at the 2028 run rate = $6M ÷ $2M = **{{partner_payback}}**. That is a simple measure: years one and two are a ramp-up with little or no profit, so counted from launch the money comes back around year five, even with profit growing with the market after 2028. The partner model meets the payback hurdle of {{hurdle_years}} only if the board counts it from 2028 or share ramps faster than planned, so a strong candidate flags this. The own-store model never pays back at this share.
 
 **5. When would own stores make sense?** Own stores earn {{cm_gap}} more margin on each dollar of retail sales (50% versus 20%) but carry **{{fixed_gap}}** more fixed cost. They win once sales exceed $18M ÷ 30% = **{{crossover_rev}}**, i.e. a share of **{{crossover_share}}** — above anything recent entrants have achieved.
 
@@ -168,13 +168,13 @@ Break-even sales = $4M ÷ 20% = **{{partner_be_rev}}**, i.e. a share of $20M ÷ 
 
 > **Ask:** The CEO asks for your recommendation. What do you tell her?
 
-**Veltrup should enter India, but through the exclusive retail partner rather than its own stores: the partner model breaks even at a {{partner_be_share}} share and pays back in {{partner_payback}}, while own stores would need {{own_be_share}} — more than any recent foreign entrant has reached.**
+**Veltrup should enter India, but through the exclusive retail partner rather than its own stores: the partner model breaks even at a {{partner_be_share}} share and earns back its {{partner_upfront}} in about {{partner_payback}} of 2028-level profit, while own stores would need {{own_be_share}} — more than any recent foreign entrant has reached.**
 
 1. **The market is worth entering:** premium running is expected to reach {{market_multiple}} its 2025 size by 2028, and Veltrup has real running credibility in a crowded athleisure field.
 2. **Fixed cost decides the entry model:** at a realistic {{plan_share}} share the partner earns about {{partner_profit}} a year, while own stores would lose about {{own_loss}} a year and need {{own_be_per_store}} of sales per store.
 3. **Keep the option to go direct later:** own stores only beat the partner above a {{crossover_share}} share, so negotiate a partner contract that lets Veltrup open a few flagship stores or take over distribution once it reaches that scale.
 
-**Risks and next steps:** partner execution (store standards, discounting that could hurt the brand); import duties and sizing differences for Indian feet; marketing spend needed to stand out against global brands. Next, test product-market fit with a marketplace-only launch in two or three large cities, and negotiate minimum marketing commitments and price controls with the partner.
+**Risks and next steps:** partner execution (store standards, discounting that could hurt the brand); import duties and sizing differences for Indian feet; marketing spend needed to stand out against global brands; payback counted from launch is closer to five years than three, so agree with the board whether the payback hurdle of {{hurdle_years}} runs from launch or from 2028. Next, test product-market fit with a marketplace-only launch in two or three large cities, and negotiate minimum marketing commitments and price controls with the partner.
 
 ## Common mistakes
 

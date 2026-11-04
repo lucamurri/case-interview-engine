@@ -48,6 +48,10 @@ calculations:
   - { id: cost_day_b, label: "Total extra cost per day, option B", formula: "temp_cost_day + putaway_shift_cost", expected: 5500, unit: "$/day" }
   - { id: cost_a, label: "Total cost of option A", formula: "temp_cost_day * days_a / 1000", expected: 480, unit: "$K" }
   - { id: cost_b, label: "Total cost of option B", formula: "cost_day_b * days_b / 1000", expected: 330, unit: "$K" }
+  # --- After the backlog clears ---
+  - { id: per_inspector, label: "Items inspected per inspector per day", formula: "shift_hours * inspect_rate", expected: 200, unit: "items/day" }
+  - { id: keep_temps, label: "Temporary inspectors still needed to keep up with inflow", formula: "backlog_growth / (shift_hours * inspect_rate)", expected: 10, unit: "inspectors" }
+  - { id: keep_cost_day, label: "Daily cost of the inspectors kept on", formula: "keep_temps * shift_hours * temp_wage", expected: 2000, unit: "$/day" }
 
 answer:
   calc: days_b
@@ -150,6 +154,9 @@ Cost: $4,000 + $1,500 = {{cost_day_b}}, or about **{{cost_b}}** in total.
 
 Option B costs more per day but is cheaper overall, because it finishes in {{days_b}} instead of {{days_a}}.
 
+**5. After the backlog clears.**
+Returns still arrive at {{inflow}}, and the permanent team inspects only {{insp_cap}}. Each inspector handles 8 × 25 = **{{per_inspector}}**, so the center needs to keep 2,000 ÷ 200 = **{{keep_temps}}** from the agency for as long as returns stay this high, at about {{keep_cost_day}}. Put-away (11,000 items/day) keeps up on its own, so the evening shift can stop.
+
 ## Synthesis
 
 > **Ask:** The candidate should close with a clear recommendation for the head of operations.
@@ -160,7 +167,7 @@ Option B costs more per day but is cheaper overall, because it finishes in {{day
 2. **Fixing one step moves the bottleneck:** with extra inspectors, put-away caps the center at {{system_a}}, so both steps need help.
 3. **Waiting is expensive:** the backlog holds {{backlog_value}} of stock and loses about {{markdown_month}} of value a month — more than the whole option B plan costs.
 
-**Next steps:** start with the items that lose value fastest (seasonal fashion) to cut markdown losses; check that the agency can supply trained inspectors quickly; then fix the root cause — why so many items come back, and whether simple returns can skip full inspection.
+**Next steps:** once the pile is gone, keep {{keep_temps}} from the agency ({{keep_cost_day}}) and end the evening shift, or the backlog starts growing again; start with the items that lose value fastest (seasonal fashion) to cut markdown losses; check that the agency can supply trained inspectors quickly; then fix the root cause — why so many items come back, and whether simple returns can skip full inspection.
 
 ## Common mistakes
 

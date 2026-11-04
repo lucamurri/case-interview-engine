@@ -139,6 +139,8 @@ The CEO wants a credible estimate of **how big the US market for paid AI coding-
   A: No — seat subscriptions only.
 - Q: How many developers work for companies versus freelance?
   A: About **{{employed_share}}** are employed by a company; the rest are freelancers or independents.
+- Q: Do freelancers pay for these tools themselves?
+  A: Some do — about **{{indie_adopt}}** of freelance and independent developers pay for their own individual seat.
 
 ## Structure
 
@@ -173,14 +175,14 @@ Company-paid seats = {{employed_devs_m:3}} × {{business_adopt}} = **{{business_
 Self-paid seats = {{indie_devs_m}} × {{indie_adopt}} ≈ **{{indie_seats_m}}**.
 
 **4. Revenue.**
-Company-paid = {{business_seats_m}} × $30 × 12 = 1.53m × $360 ≈ **{{business_rev}}**.
+Company-paid = {{business_seats_m}} × $30 × 12 = 1.53 million × $360 ≈ **{{business_rev}}**.
 Self-paid = {{indie_seats_m:3}} × $10 × 12 ≈ **{{indie_rev}}**.
 
 **5. Total.** {{business_rev}} + {{indie_rev}} ≈ **{{total_rev}} per year**.
 
 **Follow-up — Lumen's goal.** If Lumen wins {{target_share}} of today's market, that is about **{{lumen_rev}}** in annual revenue.
 
-*Mental-math tip:* round 3.825m to 3.8m early if you like — you'll land at roughly $567M, which is just as good in an interview. Say that you're rounding.
+*Mental-math tip:* round 3.825 million to 3.8 million early if you like — you'll land at roughly $567M, which is just as good in an interview. Say that you're rounding.
 
 ## Synthesis
 

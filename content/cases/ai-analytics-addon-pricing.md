@@ -101,7 +101,7 @@ Tallyforge has built an **AI analytics module**: dashboards and alerts, demand f
 - Q: What is the objective?
   A: Maximize gross profit from the module over the next year, while keeping customers happy — Tallyforge does not want the add-on to cause customers to leave.
 - Q: Who are the customers?
-  A: Three segments: {{small_accts}} small, {{mid_accts}} mid-size and {{large_accts}} large accounts.
+  A: Three segments: small ({{small_accts}}), mid-size ({{mid_accts}}) and large ({{large_accts}}).
 - Q: Do we know what customers would pay?
   A: Yes — a survey asked customers the most they would pay for each feature package (Exhibit 1).
 - Q: Does the module cost anything to run?
@@ -145,11 +145,11 @@ The best single price is $300: {{single_300}} a month, or **{{single_annual}}** 
 
 **On paper**, that earns 2,000 × ($100 − $20) + 1,500 × ($300 − $50) + 500 × ($800 − $150) = **{{naive_monthly}}** a month. But customers choose the package that leaves them the most value (willingness to pay minus price — their "surplus"):
 - A mid-size account gets $150 − $100 = **{{mid_basic_surplus}}** of surplus on Basic, but nothing on Pro at $300 — so it **trades down** to Basic.
-- A large account gets {{large_basic_surplus}} on Basic and $400 − $300 = {{naive_large_pro_surplus}} on Pro, but nothing on Enterprise at $800 — it trades down too.
+- A large account gets {{large_basic_surplus}} of surplus on Basic and $400 − $300 = {{naive_large_pro_surplus}} on Pro, but nothing on Enterprise at $800 — it trades down too.
 
 > **Ask:** So what prices would actually keep each segment in its tier, and how much gross profit would the tiers earn?
 
-**1. Pro price.** Mid-size accounts must get at least {{mid_basic_surplus}} of surplus on Pro: $300 − $50 = **{{pro_price}}**.
+**1. Pro price.** Mid-size accounts must get at least the {{mid_basic_surplus}} of surplus they would get on Basic: $300 − $50 of surplus = **{{pro_price}}**. (We assume a customer who is indifferent takes the higher tier; in practice, price a few dollars lower to be safe.)
 
 **2. Enterprise price.** At a Pro price of $250, a large account gets $400 − $250 = **{{large_pro_surplus}}** on Pro (more than the {{large_basic_surplus}} it gets on Basic). So Enterprise must leave it at least that: $800 − $150 = **{{ent_price}}**.
 

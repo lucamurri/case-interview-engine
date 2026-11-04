@@ -15,7 +15,7 @@ time_minutes: 25
 inputs:
   adults_m:        { value: 250,  unit: "million",      label: "US adults" }
   eligible_share:  { value: 0.48, unit: "%",            label: "Adults who meet the label criteria for a weight-management GLP-1" }
-  treated_share:   { value: 0.10, unit: "%",            label: "Eligible adults on a GLP-1 for weight management today" }
+  treated_share:   { value: 0.10, unit: "%",            label: "Eligible adults treated with a weight-management GLP-1 at some point during the year" }
   pen_share:       { value: 0.75, unit: "%",            label: "Treated patients using a weekly pen (vs. a daily pill)" }
   persist_share:   { value: 0.50, unit: "%",            label: "Pen patients who stay on therapy all year" }
   weeks_year:      { value: 52,   unit: "weeks",        label: "Weeks in a year (one pen per week)" }
@@ -30,8 +30,8 @@ inputs:
 calculations:
   - { id: capacity_m, label: "Installed US filling capacity for GLP-1 pens", formula: "own_cap_m + large_cap_m + small_cap_m", expected: 240, unit: "million pens" }
   - { id: eligible_m, label: "Eligible adults", formula: "adults_m * eligible_share", expected: 120, unit: "million" }
-  - { id: treated_m, label: "Adults on a weight-management GLP-1", formula: "eligible_m * treated_share", expected: 12, unit: "million" }
-  - { id: pen_patients_m, label: "Patients on a weekly pen", formula: "treated_m * pen_share", expected: 9, unit: "million" }
+  - { id: treated_m, label: "Adults treated with a weight-management GLP-1 during the year", formula: "eligible_m * treated_share", expected: 12, unit: "million" }
+  - { id: pen_patients_m, label: "Patients who use a weekly pen during the year", formula: "treated_m * pen_share", expected: 9, unit: "million" }
   - { id: pens_per_patient, label: "Average pens per pen patient per year", formula: "persist_share * weeks_year + (1 - persist_share) * stop_weeks", expected: 32, unit: "pens/year" }
   - { id: pen_demand_m, label: "Annual US pen demand", formula: "pen_patients_m * pens_per_patient", expected: 288, unit: "million pens" }
   - { id: naive_demand_m, label: "Pen demand if every patient used 52 pens (the wrong way)", formula: "pen_patients_m * weeks_year", expected: 468, unit: "million pens" }
@@ -57,7 +57,7 @@ exhibits:
     rows:
       - ["US adults", "{{adults_m}}"]
       - ["Meet the label criteria (obesity, or overweight with a related condition)", "{{eligible_share}}"]
-      - ["Of eligible adults, on a weight-management GLP-1 today", "{{treated_share}}"]
+      - ["Of eligible adults, treated with a weight-management GLP-1 at some point during the year", "{{treated_share}}"]
       - ["Of treated patients, using a weekly pen (rest take a daily pill)", "{{pen_share}}"]
       - ["Of pen patients, stay on therapy all year", "{{persist_share}}"]
       - ["Patients who stop: average time on therapy", "{{stop_weeks}}"]
@@ -102,6 +102,8 @@ Quillmark is considering building a **new dedicated filling line for GLP-1 pens*
   A: About **{{line_cap_m}}** a year once ramped up. Quillmark earns a filling fee of about **{{fill_fee}}**.
 - Q: Are we sizing today or the future?
   A: Today first. The client also has a three-year forecast for the treated share, if you want to stress-test the decision.
+- Q: Does the treated share count patients on therapy on a given day, or everyone treated during the year?
+  A: Everyone treated at some point during the year, including patients who start and then stop.
 
 ## Structure
 
@@ -139,6 +141,7 @@ Half stay all year (52 pens) and half stop after about 12 weeks:
 
 **3. Annual demand.**
 {{pen_patients_m}} × 32 pens = **{{pen_demand_m}}** a year.
+This works because the funnel counts everyone treated during the year. If it counted only patients on therapy on a given day, each of them would use a pen every week (people who stop are replaced by new starters), and the persistence adjustment would not apply.
 
 **4. Room for a new line? (Exhibit 2)**
 Installed capacity = 160 + 60 + 20 = **{{capacity_m}}**.

@@ -92,7 +92,7 @@ exhibits:
       - ["Speed while running", "{{actual_speed}} versus {{rated_speed}} rated", "No change"]
       - ["Doses passing quality checks", "{{quality_yield}}", "Fix the stopper feeder: raise to {{yield_new}}"]
       - ["Second filling line (for reference)", "—", "Large capital project, about two years to build and validate"]
-    note: "Illustrative data created for this practice case."
+    note: "Illustrative data created for this practice case. Running the filling line costs about {{line_cost}} a week, whatever its output."
     insight: |
       The biggest loss is availability: the line is only running {{availability}}
       of its scheduled time. Speed and quality losses are much smaller.
@@ -113,7 +113,7 @@ The COO asks us: **why is the plant short, and what is the fastest way to reach 
 - Q: Is the bulk vaccine (the drug substance) a constraint?
   A: No — there is enough bulk vaccine in storage and production for well over the contract volume.
 - Q: Does the filling line make only this vaccine?
-  A: No. It also fills two older vaccines in small batches, which is why it has frequent product changeovers, each followed by sterile cleaning.
+  A: No. It also fills two older vaccines in small batches, which is why it has frequent product changeovers, each followed by sterile cleaning. Those batches are short, so treat the line's running time as running time for the new vaccine.
 - Q: How fast do we need a fix?
   A: The government wants a credible recovery plan within a month and full volumes within six months.
 - Q: What does the contract pay?

@@ -36,6 +36,7 @@ inputs:
   enroll_share:   { value: 0.50, unit: "%", label: "Share of self-pay visits that could be enrolled in Medicaid" }
   recapture:      { value: 15,   unit: "thousand", label: "Low-acuity commercial visits a fast-track lane could win back" }
   fast_track_rev: { value: 600,  unit: "$/visit", label: "Net revenue per fast-track commercial visit" }
+  fast_track_cost: { value: 2,   unit: "$M", label: "Annual cost of staffing the fast-track lane" }
 
 calculations:
   # --- Revenue per visit and the ED P&L ---
@@ -82,9 +83,9 @@ calculations:
   - { id: breakeven_loss, label: "Break-even visit loss (% of visits)", formula: "breakeven_visits / visits_25", expected: 0.0333, unit: "%", decimals: 1 }
   # --- Better levers ---
   - { id: enroll_gain, label: "Gain from enrolling self-pay patients in Medicaid", formula: "sp_25 * enroll_share * (price_mcd - price_sp) / 1000", expected: 2.7, unit: "$M", decimals: 1 }
-  - { id: recapture_gain, label: "Gain from a fast-track lane for low-acuity commercial patients", formula: "recapture * (fast_track_rev - var_cost) / 1000", expected: 6.6, unit: "$M", decimals: 1 }
-  - { id: levers_total, label: "Total from the two levers", formula: "enroll_gain + recapture_gain", expected: 9.3, unit: "$M", decimals: 1 }
-  - { id: op_after, label: "ED result after the two levers", formula: "op_25 + levers_total", expected: -16.7, unit: "$M", decimals: 1 }
+  - { id: recapture_gain, label: "Gain from a fast-track lane for low-acuity commercial patients, after its staffing cost", formula: "recapture * (fast_track_rev - var_cost) / 1000 - fast_track_cost", expected: 4.6, unit: "$M", decimals: 1 }
+  - { id: levers_total, label: "Total from the two levers", formula: "enroll_gain + recapture_gain", expected: 7.3, unit: "$M", decimals: 1 }
+  - { id: op_after, label: "ED result after the two levers", formula: "op_25 + levers_total", expected: -18.7, unit: "$M", decimals: 1 }
 
 answer:
   calc: op_swing
@@ -120,7 +121,8 @@ exhibits:
     insight: |
       Commercial patients, who pay by far the most per visit,
       fell from {{comm_23}} to {{comm_25}}. Low-acuity insured patients went to
-      the new urgent-care clinics; sicker and less well-insured patients stayed.
+      the new urgent-care clinics; sicker and less well-insured patients stayed,
+      and Medicaid and self-pay visits even grew.
   - id: exhibit-3
     title: "The CFO's proposal and the ED's link to inpatient care"
     kind: table
@@ -159,6 +161,8 @@ The CEO has asked us: **why have the emergency departments gone from profit to l
   A: Yes, about {{admit_rate}} of ED visits end in a hospital admission. Data on this is available if the candidate asks.
 - Q: Have insurance rates changed?
   A: No, rates per visit for each payer are flat. Assume the same rates in both years.
+- Q: Has the team scoped any ways to win back patients or improve collections?
+  A: Two ideas. A fast-track lane with online check-in could win back about **{{recapture}}** low-acuity commercial visits a year, at about **{{fast_track_rev}}** in net revenue (minor visits bill at lower levels than the commercial average), and would cost about **{{fast_track_cost}}** a year to staff. A financial counselor in each ED could enroll about **{{enroll_share}}** of self-pay patients in Medicaid; the counselors' cost is small enough to ignore.
 
 ## Structure
 
@@ -219,7 +223,7 @@ Lost visits = 180k × 5% = **{{lost_visits}}**.
 
 **6. Better levers.**
 - Enroll eligible self-pay patients in Medicaid (a financial counselor in the ED): 27k × 50% × ($300 − $100) = **{{enroll_gain}}**.
-- A fast-track lane with online check-in to win back low-acuity commercial patients: 15k × ($600 − $160) = **{{recapture_gain}}**.
+- A fast-track lane with online check-in to win back low-acuity commercial patients: 15k × ($600 − $160) − $2M staffing = $6.6M − $2M = **{{recapture_gain}}**.
 - Together **{{levers_total}}**, improving the ED result to about **{{op_after}}**.
 
 ## Synthesis

@@ -150,7 +150,7 @@ Days 1 and 2 account for (60 + 45) ÷ 140 = **{{early_share}}** of sales. Two sm
 
 **5. The new plan.**
 Revenue = 135 × $20 = {{new_revenue}}; cost = 150 × $12 = {{new_cost}}.
-Profit = $2,700 − $1,800 − $600 = **{{new_profit_wk}}** per store per week, with sell-through of {{new_st}}.
+Profit = $2,700 − $1,800 − $600 = **{{new_profit_wk}}** per store, with sell-through of {{new_st}}.
 Across the chain that is **{{new_annual}}** a year, an improvement of **{{annual_swing}}**, even though weekly sales per store drop by {{lost_sales}}.
 
 ## Synthesis

@@ -355,3 +355,39 @@ export function indexEntry(meta) {
     time_minutes: meta.time_minutes,
   };
 }
+
+/** Strip HTML tags and decode the few entities marked produces. */
+const htmlToText = (html) =>
+  String(html || '')
+    .replace(/<\/(p|li|tr|h\d)>/g, '\n')
+    .replace(/<(td|th)[^>]*>/g, ' | ')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
+/** A rendered case as plain text, exactly as a reader sees it (all numbers filled in). */
+export function caseAsText(c) {
+  const out = [`# ${c.title}`, c.client, `Answer: ${htmlToText(c.answer)}`, ''];
+  out.push('## prompt', htmlToText(c.sections.prompt.html), '');
+  out.push('## clarifiers', ...c.clarifiers.map((q) => `Q: ${htmlToText(q.q)}\nA: ${htmlToText(q.a)}`), '');
+  for (const ex of c.exhibits) {
+    out.push(`## Exhibit ${ex.number}: ${htmlToText(ex.title)}`);
+    if (ex.ask) out.push(`Ask: ${htmlToText(ex.ask)}`);
+    if (ex.columns.length) out.push(ex.columns.map(htmlToText).join(' | '), ...ex.rows.map((r) => r.map(htmlToText).join(' | ')));
+    out.push(...ex.data.map((d) => `${d.label}: ${d.display}`));
+    if (ex.reference) out.push(`Reference: ${ex.reference.label} ${ex.reference.display}`);
+    out.push(`Note: ${htmlToText(ex.note)}`, `Insight: ${htmlToText(ex.insight)}`, '');
+  }
+  for (const [key, s] of Object.entries(c.sections)) {
+    if (key === 'prompt') continue;
+    out.push(`## ${key}`);
+    if (s.ask) out.push(`Ask: ${htmlToText(s.ask)}`);
+    out.push(htmlToText(s.html), '');
+  }
+  return out.join('\n');
+}

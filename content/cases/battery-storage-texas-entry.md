@@ -128,7 +128,7 @@ Halden's first project would be a **100 MW, 2-hour battery**. The board has aske
 - Q: Does Halden have any US presence?
   A: No US team, but it has a site option and a grid connection agreement for this project.
 - Q: Are there contracted alternatives to selling into the market?
-  A: Yes — a local electricity retailer has offered a tolling contract (it would rent the battery for a fixed fee). Details are available if the candidate asks.
+  A: Yes — a local electricity retailer has offered a tolling contract (it would rent the battery for a fixed fee). The client can share the terms.
 - Q: Should we use a discount rate / NPV?
   A: Halden screens projects on simple payback; a 10-year cash comparison is fine for anything else.
 
@@ -183,7 +183,7 @@ Revenue = 100,000 kW × $9 × 12 = **{{toll_rev}}**; cash = $10.8M − $1.6M = *
 Payback = $60M ÷ $9.2M ≈ **{{payback_toll}}** — it **passes**.
 
 **5. Negotiation floor.**
-To pay back in 7 years Halden needs $60M ÷ 7 ≈ {{cash_needed}} of cash a year, i.e. {{rev_needed}} of revenue (adding back O&M), i.e. **~{{min_toll_price:2}}**. Any toll above that clears the hurdle.
+To pay back in 7 years Halden needs $60M ÷ 7 ≈ {{cash_needed}} of cash a year, or {{rev_needed}} of revenue once O&M is added back. Spread over 100,000 kW × 12 months, that is **~{{min_toll_price:2}}** — Halden's walk-away price. Any toll above that clears the hurdle, so the $9 offer leaves only about $0.50 of room.
 
 **6. Ten-year comparison.**
 Merchant: 2 × $9.8M + 8 × $6.8M = **{{cash10_merchant}}**. Tolled: 10 × $9.2M = **{{cash10_toll}}**. The toll is worth about **{{toll_advantage}}** more, unless scarcity revenue turns out far higher than average.

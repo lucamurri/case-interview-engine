@@ -55,6 +55,7 @@ calculations:
   - { id: stable_demand, label: "Demand without new capacity", formula: "demand_a - growth_robots", expected: 6000, unit: "robots/year" }
   - { id: stable_value, label: "Market value without new capacity", formula: "stable_demand * robot_price_k / 1000", expected: 300, unit: "$M" }
   - { id: breakeven_share_stable, label: "Share needed to cover the hub without new capacity", formula: "hub_cost / (stable_value * contrib_margin)", expected: 0.1333, unit: "%", decimals: 0 }
+  - { id: stable_contrib, label: "Kestrelgard contribution at target share without new capacity", formula: "stable_value * target_share * contrib_margin", expected: 9, unit: "$M" }
 
 answer:
   calc: demand_a
@@ -91,7 +92,7 @@ exhibits:
     note: "Illustrative data created for this practice case."
     insight: |
       Demand has three sources: replacing old robots, equipping new capacity
-      and automating existing plants further. Only replacement is reliable;
+      and automating existing plants further. Replacement and automation are fairly steady;
       new capacity is {{growth_share}} of demand and depends on investment decisions.
   - id: exhibit-3
     title: "Plant-level buying patterns"
@@ -182,18 +183,19 @@ Break-even share = $12M ÷ ($500M × 30%) = **{{breakeven_share}}**.
 **5. Stress test — no new plants.**
 New capacity is {{growth_share}} of demand. Without it, demand = 10,000 − 4,000 = **{{stable_demand}}**, worth **{{stable_value}}**.
 Break-even share = $12M ÷ ($300M × 30%) ≈ **{{breakeven_share_stable}}** — above the {{target_share}} target.
+Put the other way: at a {{target_share}} share, this steady demand earns $300M × 10% × 30% = **{{stable_contrib}}** of contribution, so a hub costing no more than that would still pay for itself.
 
 ## Synthesis
 
 > **Ask:** What is your recommendation to the CEO?
 
-**The Mexican auto industry buys about {{demand_a}} (~{{market_value}}), and a local hub breaks even at a market share of {{breakeven_share}} — so Kestrelgard should open it, but in a way that works on replacement demand alone, because new-plant demand could vanish with a change in US trade policy.**
+**The Mexican auto industry buys about {{demand_a}} (~{{market_value}}), and a local hub breaks even at a market share of {{breakeven_share}} — so Kestrelgard should open it, but start with a leaner hub that pays for itself on steady demand alone, because new-plant demand could vanish with a change in US trade policy.**
 
 - **The market is real and cross-checked:** installed-base and plant-level methods agree within {{method_gap}}.
 - **The economics are thin but positive:** a {{target_share}} share gives {{kg_contrib}} of contribution, {{hub_profit}} above the hub's cost.
 - **The risk is concentrated in growth:** {{growth_share}} of demand comes from new capacity; without it the break-even share jumps to {{breakeven_share_stable}}.
 
-**How to enter:** start with a lean service hub focused on supplier plants and the replacement cycle (the steady part of demand), and add sales and demo capacity only as new-plant tenders are won. **Next steps:** check which assembly plants have changeovers in the next three years; test win rates with five or six supplier plants; agree service-contract pricing, which adds recurring revenue on the installed base.
+**How to enter:** start with a service hub costing no more than about {{stable_contrib}} a year (what a {{target_share}} share of steady demand earns), focused on supplier plants and the replacement cycle, and add sales and demo capacity only as new-plant tenders are won. The full {{hub_cost}} hub needs new plants to keep coming. Note that reaching {{target_share}} takes about three years, so the hub will run at a loss at first. **Next steps:** check which assembly plants have changeovers in the next three years; test win rates with five or six supplier plants; agree service-contract pricing, which adds recurring revenue on the installed base.
 
 ## Common mistakes
 

@@ -86,7 +86,7 @@ The founder's finance lead has proposed pricing the plan using cost plus a targe
 - Q: Who are the customers?
   A: Dog owners who already think of their pet as family, many of whom currently buy premium kibble or a fresh competitor's plan.
 - Q: How is Tuckerbrook different from competitors?
-  A: Its recipes are designed with veterinary nutritionists and it sources ingredients from local farms. In a survey, customers said they would pay about {{premium_wtp}} more than they pay fresh competitors.
+  A: Its recipes are designed with veterinary nutritionists and it sources ingredients from local farms. In a survey, customers said they would pay about {{premium_wtp}} more than fresh competitors charge.
 - Q: Is the price the same for every dog?
   A: No — it scales with the dog's size. We'll focus on a typical 30 lb dog; other sizes follow the same logic.
 - Q: How often is food delivered?
@@ -163,8 +163,8 @@ How could Tuckerbrook reduce the number of subscribers who cancel in the first t
 A strong answer follows the customer's early experience:
 
 - **First impressions:** a smooth first delivery, a simple guide to switching a dog's food gradually, and a check-in from a nutrition advisor after week one.
-- **Flexibility:** easy options to pause, skip a delivery or change portion sizes instead of cancelling.
+- **Flexibility:** easy options to pause, skip a delivery or change portion sizes instead of canceling.
 - **Showing the benefit:** photo and weight tracking, and reminders of changes owners notice (coat, energy, digestion).
 - **Rewarding loyalty:** small perks after three and six months, such as free treats or a toy.
 
-A top candidate prioritizes: "Make pausing as easy as cancelling — many owners cancel only because they have too much food in the freezer."
+A top candidate prioritizes: "Make pausing as easy as canceling — many owners cancel only because they have too much food in the freezer."

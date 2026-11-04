@@ -66,6 +66,7 @@ calculations:
   - { id: program_net, label: "Net profit from the program", formula: "program_gain - program_cost", expected: 9, unit: "$M" }
   - { id: new_capture, label: "Capture rate with the program", formula: "capture_25 + capture_gain", expected: 0.55, unit: "%" }
   - { id: new_profit, label: "Operating profit with the program", formula: "profit_25 + program_net", expected: 115, unit: "$M" }
+  - { id: objective_gain, label: "Capture gain needed to return to FY2023 profit", formula: "(profit_23 - profit_25 + program_cost) / (pool_25 * am_margin)", expected: 0.14, unit: "pts" }
 
 answer:
   calc: program_net
@@ -178,7 +179,8 @@ Pumps aged 6+ years account for $200M × 50% = {{old_spend}} of spend, and Ostra
 Each point of capture is worth $200M × 1% × 50% = **{{value_per_point}}** of profit.
 Break-even: $6M ÷ $1M per point = **{{breakeven_gain}}** of capture.
 At the expected {{capture_gain}}: $200M × 15% × 50% = {{program_gain}} − $6M = **{{program_net}}** a year.
-Profit would rise to $106M + $9M = **{{new_profit}}**, above the FY2023 level, with capture at {{new_capture}}.
+Profit would rise to $106M + $9M = **{{new_profit}}**, just above the FY2023 level, with capture at {{new_capture}}.
+But the objective is tighter than break-even: getting back to {{profit_23}} takes ($8M + $6M) ÷ $1M = **{{objective_gain}}**, nearly all of the expected gain. Further growth in new pumps and the installed base over the next two years gives some extra room.
 
 ## Synthesis
 
@@ -188,7 +190,7 @@ Profit would rise to $106M + $9M = **{{new_profit}}**, above the FY2023 level, w
 
 1. **The real business is the aftermarket:** it earns a {{am_margin}} margin versus {{equip_margin}} on new pumps, and was {{am_profit_share_23}} of profit in FY2023.
 2. **The leak is out-of-warranty pumps:** Ostrander captures only {{cap_old}} on pumps over six years old, and these represent {{old_leak_share}} of the spend going to competitors.
-3. **The program has a wide safety margin:** it needs {{breakeven_gain}} to break even and the team expects {{capture_gain}}.
+3. **The program pays off easily, but the profit goal is tight:** it needs {{breakeven_gain}} to break even and the team expects {{capture_gain}}, yet returning to FY2023 profit takes {{objective_gain}}. So manage the program against a 14-point goal, not just break-even; continued growth in new pumps and the installed base gives a little extra room.
 
 **Risks and next steps:** independent suppliers may cut prices further, so the offer must compete on uptime and reliability, not just price; distributors may resist if Ostrander sells service directly, so share margin with them; pilot with the largest water-utility customers; track contract attach rates on every new pump sold.
 

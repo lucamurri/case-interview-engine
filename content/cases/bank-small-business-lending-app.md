@@ -23,7 +23,7 @@ inputs:
   build_run:        { value: 2,      unit: "$M",         label: "Build in-house: running cost per year" }
   partner_upfront:  { value: 1.25,   unit: "$M",         label: "Partner: setup and integration cost", decimals: 2 }
   partner_fee:      { value: 500,    unit: "$",          label: "Partner: platform fee per loan" }
-  partner_fixed:    { value: 0.5,    unit: "$M",         label: "Partner: fixed cost per year (licence and small team)", decimals: 1 }
+  partner_fixed:    { value: 0.5,    unit: "$M",         label: "Partner: fixed cost per year (license and small team)", decimals: 1 }
   hurdle_years:     { value: 3,      unit: "years",      label: "Bank's maximum payback for new products" }
 
 calculations:
@@ -105,7 +105,7 @@ When these businesses need a small loan, though, more and more of them go to onl
 - Q: What does Prairie want to achieve?
   A: Win back small-business borrowers and reach **{{target_share}}** of small loans in its region by year 3. Any new product must pay back within **{{hurdle_years}}**.
 - Q: How does the bank make money on a loan?
-  A: It earns interest above its own funding cost (**{{net_spread}}** of the loan per year), minus expected losses on loans that are not repaid (**{{loss_rate}}** per year).
+  A: It earns interest above its own funding cost (**{{net_spread}}** of the loan per year), minus expected losses on loans that are not repaid (**{{loss_rate}}** per year). Assume the existing credit and operations teams can handle the app's loans, so the only new costs are the technology.
 - Q: How big is the market?
   A: There are about {{small_biz}} in the region, and roughly {{borrow_rate}} of them take out a small loan each year.
 - Q: Does Prairie already have relationships with these businesses?
@@ -141,7 +141,7 @@ At a {{target_share}} share, Prairie makes 40,000 × 5% = **{{target_loans}}** a
 
 **5. Partner.** Each loan earns $2,000 − $500 = **{{partner_per_loan}}** after the platform fee. Profit = 2,000 × $1,500 − $0.5M = **{{partner_profit}}** a year. Payback = $1.25M ÷ $2.5M × 12 ≈ **{{partner_payback_m}}** — it **passes** easily.
 
-**6. When would building win?** Building costs **{{fixed_gap}}** more per year in fixed cost but saves the $500 fee on every loan. It only wins above $1.5M ÷ $500 = **{{crossover_loans}}** a year — a share of **{{crossover_share}}**, well above the target.
+**6. When would building win?** Building costs **{{fixed_gap}}** more per year in fixed cost but saves the $500 fee on every loan. Its yearly costs only fall below the partner's above $1.5M ÷ $500 = **{{crossover_loans}}** a year — a share of **{{crossover_share}}**, well above the target. Even then, it would need still more volume to earn back its much larger upfront cost.
 
 ## Synthesis
 

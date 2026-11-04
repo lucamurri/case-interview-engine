@@ -130,7 +130,7 @@ exhibits:
 
 Our client, Marrock Energy, is a US integrated oil company. Besides oil production and refining, it owns **1,500 branded fuel stations** along highways, most with a convenience store. Gasoline volumes at those stations are expected to decline slowly as electric vehicles (EVs) gain share.
 
-Marrock has been offered the chance to buy **Lumaro Charge**, a fast-growing network of {{chargers}} public fast chargers. Lumaro's owners, a venture-capital-backed founding team, are asking **{{ask_price}}**.
+Marrock has been offered the chance to buy **Lumaro Charge**, a fast-growing public fast-charging network with {{chargers}}. Lumaro's owners, a venture-capital-backed founding team, are asking **{{ask_price}}**.
 
 Marrock's CEO asks us: **is Lumaro worth {{ask_price}} to Marrock, and should we buy it?**
 
@@ -139,7 +139,7 @@ Marrock's CEO asks us: **is Lumaro worth {{ask_price}} to Marrock, and should we
 - Q: Why does Marrock want to own EV charging?
   A: To keep drivers — and their store spending — coming to Marrock sites as cars electrify, and to build a profitable low-carbon business that investors will value.
 - Q: How should we value a business that is still growing fast?
-  A: Estimate EBITDA after {{years}}, when the network is roughly mature; value it at **{{exit_multiple}} EBITDA**, like other mature infrastructure; then discount back to today at **{{discount_rate}}** a year.
+  A: Estimate EBITDA after {{years}}, when the network is roughly mature; value it at **{{exit_multiple}} EBITDA**, like other mature infrastructure; then discount back to today at **{{discount_rate}}** a year. For simplicity, ignore the cash earned before then; it roughly covers software, customer acquisition and charger upgrades.
 - Q: How does a charger make money?
   A: Lumaro buys electricity and resells it to drivers. Gross margin is about **{{margin_kwh}}**. Costs per charger (site rent, maintenance, software, card fees) are mostly fixed.
 - Q: Could Marrock simply install chargers at its own stations without buying Lumaro?
@@ -196,7 +196,7 @@ Value in year 5 = $68M × 10 = {{value_y5}}. Discount factor = 1 ÷ 1.1^5 ≈ 1 
 - With the rollout: {{value_no_rollout}} + {{station_npv}} ≈ **{{value_total}}**, so buying at {{ask_price}} creates about **{{deal_npv}}**.
 
 **6. Slow EV adoption ({{mwh_low}} per charger in year 5).**
-- Standalone EBITDA = 2,000 × (180 × $0.20 − $14K) = 2,000 × $22K = {{ebitda_y5_low}} → value ≈ $440M × 0.62 ≈ **{{standalone_low}}**.
+- Standalone EBITDA = 2,000 × (180 MWh × $0.20/kWh − $14K) = 2,000 × ($36K − $14K) = 2,000 × $22K = {{ebitda_y5_low}} → value ≈ $440M × 0.62 ≈ **{{standalone_low}}**.
 - Station EBITDA = 1,000 × ($36K + $18K store − $8K) = {{station_ebitda_low}} → net value ≈ $460M × 0.62 − $100M ≈ **{{station_npv_low}}**.
 - Total ≈ {{standalone_low}} + {{cost_syn_value}} + {{station_npv_low}} ≈ **{{value_low}}** — Marrock would lose about **{{loss_low}}** at the asking price.
 

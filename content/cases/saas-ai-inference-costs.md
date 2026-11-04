@@ -65,6 +65,7 @@ calculations:
   # --- Lever 1: model routing ---
   - { id: inference_routed, label: "Annual inference cost with routing", formula: "active_seats * avg_q * routed_cost * 12 / 1e6", expected: 12, unit: "$M" }
   - { id: routing_saving, label: "Saving from routing", formula: "inference - inference_routed", expected: 6, unit: "$M" }
+  - { id: gm_routed_only, label: "Gross margin with routing alone", formula: "(gp_pre - inference_routed) / revenue", expected: 0.70, unit: "%" }
   # --- Lever 2: AI Pro add-on with a usage allowance ---
   - { id: pro_seats, label: "Heavy users buying AI Pro", formula: "heavy_seats * pro_uptake", expected: 15000, unit: "seats" }
   - { id: pro_rev, label: "Annual AI Pro revenue", formula: "pro_seats * pro_price * 12 / 1e6", expected: 5.4, unit: "$M", decimals: 1 }
@@ -76,6 +77,7 @@ calculations:
   - { id: new_rev, label: "Annual revenue after both levers", formula: "revenue + pro_rev", expected: 125.4, unit: "$M", decimals: 1 }
   - { id: new_gp, label: "Gross profit after both levers", formula: "new_rev - non_ai_cogs - new_inference", expected: 90.6, unit: "$M", decimals: 1 }
   - { id: new_gm, label: "Gross margin after both levers", formula: "new_gp / new_rev", expected: 0.7225, unit: "%", decimals: 0 }
+  - { id: pricing_gain, label: "Gross profit gained from the AI Pro lever (new revenue plus capped usage)", formula: "pro_rev + cap_saving", expected: 6.6, unit: "$M", decimals: 1 }
   - { id: gp_recovered, label: "Gross profit recovered", formula: "new_gp - gp_now", expected: 12.6, unit: "$M", decimals: 1 }
 
 answer:
@@ -108,7 +110,6 @@ exhibits:
       - { label: "Light users", value: q_light }
       - { label: "Medium users", value: q_med }
       - { label: "Heavy users", value: q_heavy }
-    reference: { value: breakeven_q, label: "Usage at which a seat's gross profit hits zero" }
     note: "Illustrative data created for this practice case. Share of AI-active seats: light {{mix_light}}, medium {{mix_med}}, heavy {{mix_heavy}}."
     insight: |
       Usage is highly skewed. Heavy users cost {{cost_heavy}} in inference on a
@@ -124,7 +125,7 @@ exhibits:
     note: "Illustrative data created for this practice case."
     insight: |
       One lever lowers the cost of every query; the other makes the heaviest
-      users pay for what they use. Light and medium users are unaffected by both.
+      users pay for what they use. Light and medium users see no price change from either.
 ---
 
 ## Prompt
@@ -142,7 +143,7 @@ The CEO has asked us: **why has gross margin fallen, and how can Clausewright re
 - Q: How does Clausewright pay for the AI?
   A: It calls a large language model from an outside provider and pays per query (each request the assistant handles). Today the average is {{cost_query}}.
 - Q: Has the AI brought in any revenue?
-  A: Not directly: it is free. Churn (customers cancelling seats) has improved from {{churn_before}} to {{churn_after}} a year since the launch.
+  A: Not directly: it is free. Churn (customers canceling seats) has improved from {{churn_before}} to {{churn_after}} a year since the launch.
 - Q: Has anything else in the cost base changed?
   A: No. Hosting and support are about {{non_ai_pct}} of subscription revenue, as before.
 - Q: How many people use the AI?
@@ -192,10 +193,10 @@ Gross margin = ($120M − $24M − $18M) ÷ $120M = **{{gm_now}}**, a fall of **
 Heavy users are {{heavy_seat_share}} of all paid seats but **{{heavy_cost_share}}** of the inference bill. A heavy seat brings $50 − $10 hosting − $45 inference = **{{heavy_seat_margin}}** of gross profit: it loses money. Any seat above ~{{breakeven_q}} is underwater.
 
 **4. Does lower churn pay for the AI?**
-Two points less churn retains 200,000 × (10% − 8%) = {{retained_seats}}, worth 4,000 × $50 × 12 = **{{retained_rev}}** a year. That is real value, but it covers only a small part of the {{inference}} bill. The AI has to earn its keep in other ways.
+Two points less churn retains 200,000 × (10% − 8%) = {{retained_seats}}, worth 4,000 × $50 × 12 = **{{retained_rev}}** of revenue a year, and less in gross profit once those seats' own hosting and AI costs are counted. That is real value, but it covers only a small part of the {{inference}} bill. The AI has to earn its keep in other ways.
 
 **5. Lever 1: model routing (Exhibit 3).**
-Inference = 100,000 × 500 × $0.02 × 12 = **{{inference_routed}}**, a saving of **{{routing_saving}}**.
+Inference = 100,000 × 500 × $0.02 × 12 = **{{inference_routed}}**, a saving of **{{routing_saving}}**. On its own, routing brings gross margin to ($96M − $12M) ÷ $120M = **{{gm_routed_only}}**: exactly the board's floor, with no buffer if routing quality forces some tasks back to the large model.
 
 **6. Lever 2: AI Pro add-on.**
 - Upgrades: 20,000 × 75% = {{pro_seats}} at $30 × 12 → **{{pro_rev}}** of new revenue.
@@ -213,12 +214,12 @@ Gross profit = $125.4M − $24M − $10.8M = **{{new_gp}}**, so gross margin ≈
 **Clausewright's gross margin fell from {{gm_pre}} to {{gm_now}} because it gave away an AI feature that costs {{inference}} a year, {{heavy_cost_share}} of it driven by a small group of heavy users. Rather than restricting the AI, it should route simple tasks to cheaper models and launch an AI Pro add-on for heavy users, which lifts gross margin to about {{new_gm}}.**
 
 1. **The cost is concentrated:** heavy users are {{heavy_seat_share}} of seats but {{heavy_cost_share}} of the bill, and each one loses {{heavy_seat_loss}} on today's pricing.
-2. **Engineering is the biggest lever:** model routing saves {{routing_saving}} with no change for customers.
-3. **Pricing fixes the rest:** an AI Pro add-on brings in {{pro_rev}} from the customers who value the AI most and turns them into the most profitable seats ({{pro_seat_margin}} each).
+2. **Engineering reaches the floor:** model routing saves {{routing_saving}} with no price change for customers, which on its own just reaches {{gm_routed_only}}, with no buffer.
+3. **Pricing adds the buffer:** an AI Pro add-on brings in {{pro_rev}} from the customers who value the AI most and turns them into the most profitable seats ({{pro_seat_margin}} each); with the {{cap_saving}} saved on heavy users who stay within the allowance, it is worth {{pricing_gain}}.
 
-**Why not the CFO's idea?** Restricting AI to the top plan would protect margin but give up the churn benefit ({{retained_rev}} a year and growing) and hand an argument to competitors who include it.
+**Why not the CFO's idea?** Restricting AI to the top plan would protect margin but give up the churn benefit ({{retained_rev}} of revenue a year and growing) and hand an argument to competitors who include it.
 
-**Risks and next steps:** check routing quality on real contracts before rollout (a wrong clause is costly for a legal product); set the allowance so medium users are unaffected; build a usage dashboard per customer; model-provider prices are falling, so renegotiate volume pricing and re-check the allowance every six months.
+**Risks and next steps:** check routing quality on real contracts before rollout (a wrong clause is costly for a legal product); check how many medium users go above the {{cap_queries}} allowance, since that is their average, and raise it if too many would hit it; build a usage dashboard per customer; model-provider prices are falling, so renegotiate volume pricing and re-check the allowance every six months.
 
 ## Common mistakes
 

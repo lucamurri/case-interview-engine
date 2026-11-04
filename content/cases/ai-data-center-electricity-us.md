@@ -161,7 +161,7 @@ Sablewood is considering a **1 GW natural-gas plant** in its home region to serv
 - Regional share of new load − rivals' committed capacity = open gap
 - Compare the open gap with Sablewood's plant, in a base case and a slow case
 
-Top candidates keep **power (GW, how much at any moment)** and **energy (TWh, how much over a year)** clearly separate, and size the plant decision in power terms: a plant serving data centers must match their average round-the-clock load.
+Top candidates keep **power (GW, how much at any moment)** and **energy (TWh, how much over a year)** clearly separate, and size the plant decision in power terms: a plant serving data centers must match their average round-the-clock load. (This is a simplification worth saying out loud: peaks above the average and plant outages push the need up, while spare capacity on today's grid pushes it down. The case treats these as offsetting.)
 
 ## Math walkthrough
 
@@ -169,7 +169,7 @@ Top candidates keep **power (GW, how much at any moment)** and **energy (TWh, ho
 
 **1. Chips up (Exhibit 1).**
 - IT power per accelerator = 0.8 kW × 1.5 = **{{it_kw}}**
-- Peak IT power = 10m × 1.2 kW = **{{it_peak_gw}}** (a million kW is a GW)
+- Peak IT power = 10 million × 1.2 kW = **{{it_peak_gw}}** (a million kW is a GW)
 - Average draw = (40% × 85%) + (60% × 60%) = 34% + 36% = **{{avg_util}}**
 - Average IT power = 12 GW × 70% = **{{it_avg_gw}}**
 - Average facility power = 8.4 GW × 1.25 = **{{facility_avg_gw}}**
@@ -188,7 +188,7 @@ New average load = 10.5 − 5.5 = **{{increment_gw}}** nationally.
 - Open gap = 1.5 − 0.8 = **{{region_gap_gw}}**, so a 1 GW plant overshoots by **{{plant_excess_gw}}**
 
 **5. Slow case ({{low_accelerators_m}}).**
-Average facility power = 8m × 1.2 kW × 70% × 1.25 = **{{low_facility_avg_gw}}** (≈ {{low_twh}} a year).
+Average facility power = 8 million × 1.2 kW × 70% × 1.25 = **{{low_facility_avg_gw}}** (≈ {{low_twh}} a year).
 Open gap = (8.4 − 5.5) × 30% − 0.8 = **{{low_region_gap_gw}}** — almost nothing.
 
 *Mental-math tip:* 10.5 × 8,760 is 10 × 8,760 plus half of 8,760, i.e. 87,600 + 4,380 GWh — about {{demand_twh:2}}, since 1 TWh is 1,000 GWh.

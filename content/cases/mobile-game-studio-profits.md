@@ -116,7 +116,9 @@ The founders have asked us: **why is Brambleleaf losing money while revenue grow
 - Q: How do you measure what a player is worth?
   A: With lifetime value (LTV): the total revenue a player brings in over their time in the game, after app-store fees. For simplicity, assume each year's new players deliver their full LTV within that year.
 - Q: Has the game itself changed?
-  A: No major changes. Organic players and their value are steady.
+  A: No major changes. Organic players and their LTV (about **{{ltv_organic}}**) are the same in both years.
+- Q: Where did paid players come from in FY2023?
+  A: All from social-media ads, at a CPI of about **{{cpi_23}}** and an LTV of about **{{ltv_paid_23}}**.
 - Q: What are the fixed costs?
   A: About {{fixed}} a year for the team, servers and tools, unchanged.
 
@@ -181,7 +183,7 @@ Profit = $9M − $2M − $4M = **{{new_profit}}**, an improvement of **{{profit_
 
 - Looking at revenue growth and calling the strategy a success.
 - Using the average LTV and CPI only and recommending cutting all ads, which would also cut the profitable social channel.
-- Comparing LTV with CPI without checking the timing: LTV arrives over months, while CPI is paid upfront. (This case simplifies it away, but say it.)
+- Comparing LTV with CPI without checking the timing: LTV arrives over months, while CPI is paid up front. (This case simplifies it away, but say it.)
 - Forgetting organic players, who bring revenue at no acquisition cost.
 
 ## What top candidates do differently

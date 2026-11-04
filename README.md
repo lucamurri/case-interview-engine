@@ -49,6 +49,7 @@ Three automated checks run on every change. If any of them fails, the site is no
 
 - **Math test:** recalculates **1,223 numbers** across the 50 cases from their inputs. Case text never types a result by hand. It refers to checked calculations by name (for example `{{payback_toll}}`), so the walkthrough, the exhibits and the answer can't drift apart. A typed result like "= $19.6M" fails the test.
 - **Content linter:** fails if any case is missing a required section, a clarifying Q&A or an exhibit label, or if any field uses a value outside the allowed list.
+- **Wording check:** renders every case exactly as a reader sees it and fails on doubled words or units ("400 thousand visits visits", "$11/kg per kg"), a minus sign after a loss word ("lost −$1.6M") and British spellings.
 - **Drills test:** generates **5,000 questions** and checks each answer against an independent recalculation from the numbers shown on screen.
 - **Link check:** fails on any broken internal link.
 
@@ -101,7 +102,7 @@ Requires [Node.js](https://nodejs.org/) 20 or newer.
 git clone https://github.com/lucamurri/case-interview-engine.git
 cd case-interview-engine
 npm install
-npm test                 # content linter, math test, drills test
+npm test                 # content linter, wording check, math test, drills test
 npm run dev              # build, then open http://localhost:8080
 npm run preview -- gene-therapy-pricing   # read one case as plain text
 ```

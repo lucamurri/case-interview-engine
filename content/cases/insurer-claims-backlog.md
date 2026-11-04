@@ -27,6 +27,8 @@ inputs:
   adjuster_cost:       { value: 2400,  unit: "$/week", label: "Fully loaded cost per staff adjuster per week" }
   rental_share:        { value: 0.20,  unit: "%", label: "Share of open claims with a rental car paid by Wexcombe" }
   rental_cost:         { value: 250,   unit: "$/week", label: "Rental car cost per claim per week" }
+  a_live:              { value: 4,     unit: "weeks", label: "Weeks until photo settlement goes live" }
+  c_live:              { value: 6,     unit: "weeks", label: "Weeks until the data-entry IT fix goes live" }
 
 calculations:
   # --- Diagnose ---
@@ -55,6 +57,14 @@ calculations:
   - { id: contractor_week, label: "Contractor cost per week", formula: "contractors * contractor_cost / 1000", expected: 75, unit: "$K" }
   - { id: contractor_total, label: "Contractor cost over the burn-down", formula: "contractors * contractor_cost * weeks_all / 1e6", expected: 0.75, unit: "$M", decimals: 2 }
   - { id: rental_saved, label: "Rental cost avoided by clearing the backlog sooner", formula: "excess / 2 * weeks_saved * rental_share * rental_cost / 1e6", expected: 2.25, unit: "$M", decimals: 2 }
+  # --- Timing from today (levers go live at different times) ---
+  - { id: burn_b_only, label: "Backlog cleared per week with contractors only (weeks 0-4)", formula: "adjuster_cap + contractor_cap - inflow", expected: 200, unit: "claims/week" }
+  - { id: cleared_p1, label: "Excess cleared before photo settlement goes live", formula: "burn_b_only * a_live", expected: 800, unit: "claims" }
+  - { id: burn_ab, label: "Backlog cleared per week with contractors and photo settlement (weeks 4-6)", formula: "adjuster_cap + contractor_cap - adjuster_demand", expected: 1200, unit: "claims/week" }
+  - { id: cleared_p2, label: "Excess cleared between photo settlement and the IT fix", formula: "burn_ab * (c_live - a_live)", expected: 2400, unit: "claims" }
+  - { id: remaining_c, label: "Excess left when all three levers are running", formula: "excess - cleared_p1 - cleared_p2", expected: 14800, unit: "claims" }
+  - { id: weeks_after_c, label: "Weeks to clear the rest once all three levers run", formula: "remaining_c / burn_all", expected: 8.22, unit: "weeks", decimals: 0 }
+  - { id: weeks_today, label: "Weeks from today to the two-week target", formula: "c_live + weeks_after_c", expected: 14.22, unit: "weeks", decimals: 0 }
   # --- Check the next step and unit cost ---
   - { id: rental_ratio, label: "Rental cost avoided per dollar spent on contractors", formula: "rental_saved / contractor_total", expected: 3, unit: "x" }
   - { id: approval_load, label: "Claims reaching approval per week during burn-down", formula: "cap_all + stp_claims", expected: 5800, unit: "claims/week" }
@@ -65,7 +75,7 @@ calculations:
 
 answer:
   calc: weeks_all
-  headline: "Adjusters are the bottleneck; photo settlement, less data entry and 25 temporary contractors clear the excess backlog in {{weeks_all}} — and the contractors more than pay for themselves."
+  headline: "Adjusters are the bottleneck; photo settlement, less data entry and 25 temporary contractors clear the excess backlog in {{weeks_all}} once all three are running (about {{weeks_today}} from today) — and the contractors more than pay for themselves."
 
 exhibits:
   - id: exhibit-1
@@ -113,11 +123,13 @@ The Chief Claims Officer asks us: **what is slowing claims down, and how quickly
 - Q: How many new claims come in?
   A: About **{{inflow}}**, and the claims team expects that rate to continue.
 - Q: What are the steps in handling a claim?
-  A: Intake (the customer reports the claim), triage (sorting by type and complexity), assessment by an adjuster (inspecting the damage and agreeing the amount), and approval and payment.
+  A: Intake (the customer reports the claim), triage (sorting by type and complexity), assessment by an adjuster (inspecting the damage and agreeing on the amount), and approval and payment.
 - Q: What is the target?
   A: An average of **{{target_cycle}}** from report to payment, which is what Wexcombe achieved before the storms.
 - Q: Why does speed matter, apart from customer satisfaction?
   A: About **{{rental_share}}** of open claims have a rental car that Wexcombe pays for, at around {{rental_cost}} per claim. Slow claims also raise the risk of regulatory penalties and customers leaving at renewal.
+- Q: How many adjusters does Wexcombe have?
+  A: **{{adjusters}}** on staff, each settling about **{{claims_per_adj}}**. Each costs about **{{adjuster_cost}}** fully loaded (salary, benefits, vehicle).
 - Q: Can Wexcombe hire permanent adjusters?
   A: Yes, but it takes about six months to recruit and train them, so it won't help with this backlog.
 
@@ -168,24 +180,32 @@ Because the excess shrinks steadily to zero, the *average* excess during the bur
 **6. Check the next step.**
 During the burn-down, approval receives {{cap_all}} from adjusters plus {{stp_claims}} of photo settlements = {{approval_load}}, or **{{approval_util}}** of its capacity. It holds, but with almost no slack.
 
+**7. Timing from today.**
+The burn-down times above count from when the levers are running. Photo settlement takes about a month and the IT fix about six weeks, but contractors can start now:
+- Weeks 0–4, contractors only: 3,600 + 600 − 4,000 = {{burn_b_only}} cleared → {{cleared_p1}}.
+- Weeks 4–6, contractors + photo settlement: 4,200 − 3,000 = {{burn_ab}} cleared → {{cleared_p2}}.
+- From week 6, all three levers: the remaining {{remaining_c}} at 1,800 claims/week takes another {{weeks_after_c}} or so.
+
+So Wexcombe reaches the two-week target about **{{weeks_today}}** from today, roughly the length of the contractors' three-month term.
+
 *Cost per claim:* a staff adjuster costs $2,400 ÷ 24 = {{cost_claim_now}} today and $2,400 ÷ 28 ≈ {{cost_claim_new}} after lever C; a contractor costs {{cost_claim_contractor}} — expensive, which is why contractors should be temporary.
 
 ## Synthesis
 
 > **Ask:** What would you recommend to the Chief Claims Officer?
 
-**Wexcombe can get back to a two-week settlement time in about {{weeks_all}}: adjusters are the bottleneck, so it should take simple claims off their desks with photo settlement, remove duplicate data entry, and bring in {{contractors}} on contract until the backlog is cleared.**
+**Wexcombe can get back to a two-week settlement time in about {{weeks_today}} from today ({{weeks_all}} once all three levers are running): adjusters are the bottleneck, so it should take simple claims off their desks with photo settlement, remove duplicate data entry, and bring in {{contractors}} on contract until the backlog is cleared.**
 
 1. **Photo settlement first (lever A):** it removes {{stp_claims}} from the bottleneck permanently and stops the backlog growing; on its own it would still take {{weeks_a}}.
 2. **Remove duplicate data entry (lever C):** adds {{gain_c}} of capacity for a small IT fix and cuts adjuster cost per claim from {{cost_claim_now}} to {{cost_claim_new}}; with A, the backlog clears in {{weeks_ac}}.
-3. **Contractors as a temporary bridge (lever B):** {{contractor_total}} of cost buys {{weeks_saved}} of speed and avoids about {{rental_saved}} of rental costs.
+3. **Contractors as a temporary bridge (lever B):** start them now, while A and C are being built; {{contractor_total}} of cost buys {{weeks_saved}} of speed and avoids about {{rental_saved}} of rental costs.
 
 **Risks and next steps:** approval runs at {{approval_util}} during the burn-down — add temporary approvers or raise automatic-approval limits for small claims; audit a sample of photo settlements for fraud and overpayment; prioritize claims with rental cars in the queue; and recruit permanent adjusters so the next storm season does not repeat this.
 
 ## Common mistakes
 
 - Dividing the whole backlog by total capacity and forgetting that {{inflow}} new claims keep arriving every week — the backlog only shrinks by capacity *minus* inflow.
-- Trying to clear the backlog to zero. A healthy claims operation always has work in progress; the target is about {{target_wip}} open claims.
+- Trying to clear the backlog to zero. A healthy claims operation always has work in progress; the target is about {{target_wip}} open.
 - Adding resources at intake or approval, which are not the bottleneck.
 - Rejecting contractors because they cost more per claim, without comparing their cost with the cost of the backlog.
 - Not checking whether approval becomes the next bottleneck once adjusters speed up.

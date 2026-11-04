@@ -155,7 +155,7 @@ The team pays for itself once Fernmoor wins $4M ÷ ($172.8M × 30%) ≈ **{{brea
 **US cafés pour about {{total_gal_m}} of plant milk a year, worth about {{market_value}} wholesale; at a {{fernmoor_share}} share of café oat milk, Fernmoor would earn about {{fernmoor_gp}} of gross profit, covering a {{team_cost}} sales team — so the café channel is worth building, but only just.**
 
 - Oat is the largest pool at {{oat_share}} of café volume ({{oat_value}}).
-- The team breaks even at a {{breakeven_share}} share, leaving only a thin cushion below the {{fernmoor_share}} target.
+- The team breaks even at a {{breakeven_share}} share, a thin cushion against the {{fernmoor_share}} target. And {{fernmoor_share}} is a three-year goal, so expect the team to lose money in its first year or two while share builds.
 - The bigger prize may be indirect: baristas influence what customers buy in grocery stores, where Fernmoor already sells.
 
 **Risks / next steps:** large chains buy under national contracts and may need a separate approach; café plant-milk share could keep rising (upside); price competition from established barista brands. Next, pilot the team in two or three cities to test win rates before hiring nationally, and consider selling through foodservice distributors to cut the cost of reaching small cafés.

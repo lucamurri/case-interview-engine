@@ -69,7 +69,7 @@ calculations:
 
 answer:
   calc: profit_drop
-  headline: "Profit fell {{profit_drop}} ({{profit_drop_pct}}), half from lost volume and half from a 20-point jump in gross-to-net — a targeted copay cut adds ~{{op_gain}}."
+  headline: "Profit fell {{profit_drop}} ({{profit_drop_pct}}), half from lost volume and half from a lower net price as gross-to-net jumped 20 points — a targeted copay cut adds ~{{op_gain}}."
 
 exhibits:
   - id: exhibit-1
@@ -78,6 +78,7 @@ exhibits:
     ask: "Here are Dermavel's key numbers. Why did operating profit fall?"
     columns: ["", "FY2023", "FY2025"]
     rows:
+      - ["Category prescriptions (all brands)", "{{market_units}}", "{{market_units}}"]
       - ["Tubes sold", "{{units_23}}", "{{units_25}}"]
       - ["List price per tube", "{{list_23}}", "{{list_25}}"]
       - ["Gross-to-net discount (rebates, copay support, fees)", "{{gtn_23}}", "{{gtn_25}}"]
@@ -185,7 +186,7 @@ That means the cut still pays off unless volume falls by more than **~{{max_volu
 
 1. **Volume ({{volume_effect}}):** share dropped from {{share_23}} to {{share_25}} as the new oral competitor took patients.
 2. **Net price ({{price_effect}}):** PBM rebates (+10 pts) and copay assistance (+7 pts) drove most of the extra discount.
-3. **Action:** trimming copay support by 5 points adds ~{{op_gain}} and stays profitable unless volume drops more than ~{{max_volume_loss}}; target it at patients with good insurance coverage so adherent patients aren't hurt.
+3. **Action:** trimming copay support by 5 points adds ~{{op_gain}} and stays profitable unless volume drops more than ~{{max_volume_loss}}; target it at patients whose insurance already keeps their out-of-pocket cost low, so patients who rely on the support keep it.
 
 **Next steps:** renegotiate PBM contracts using real outcomes data; focus the sales force on dermatologists where Dermavel still wins; prepare a lifecycle plan for the 2028 patent expiry (new formulation, authorized generic).
 

@@ -114,7 +114,7 @@ The city council has asked the agency to **redesign its fares**. The finance tea
 - Q: Is there capacity for more riders?
   A: Yes. Outside the busiest hours, most buses and trains have plenty of empty seats, so extra riders cost almost nothing to carry.
 - Q: Could the agency offer a discount to low-income riders?
-  A: Yes — they could enroll using proof of an existing benefit (such as food assistance), which keeps verification simple. Running enrollment would cost about **{{admin_cost}}** a year.
+  A: Yes — they could enroll using proof of an existing benefit (such as food assistance) or of household income, which keeps verification simple. Running enrollment would cost about **{{admin_cost}}** a year. For a first estimate, assume every low-income rider enrolls.
 - Q: Is there data on how riders react to fare changes?
   A: Yes — a comparable nearby city raised its fares by {{peer_fare_up}} two years ago (Exhibit 2).
 

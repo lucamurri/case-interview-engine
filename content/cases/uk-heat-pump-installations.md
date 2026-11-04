@@ -58,6 +58,7 @@ exhibits:
       - ["Homes heated by a gas or oil boiler", "{{boiler_homes_m}}"]
       - ["Average boiler life", "{{boiler_life}}"]
       - ["Homes suitable for a heat pump without major works (insulation, space for a unit)", "{{suitable_share}}"]
+      - ["Suitable homes choosing a heat pump when their boiler is replaced (today's grant)", "{{conv_now}}"]
       - ["New homes built per year", "{{new_homes}}"]
       - ["New homes built with a heat pump", "{{newbuild_hp_share}}"]
     note: "Illustrative data created for this practice case; not official housing statistics."
@@ -84,7 +85,7 @@ exhibits:
 
 ## Prompt
 
-Our client, Hollowmere Heating, installs and services gas boilers in homes across the UK. It employs about **{{engineers}}** installation engineers. The UK wants homes to move from gas boilers to **heat pumps** — electric units that move heat from the outside air into the home, using far less energy than they deliver.
+Our client, Hollowmere Heating, installs and services gas boilers in homes across the UK. It employs about **{{engineers}}**, all trained installers. The UK wants homes to move from gas boilers to **heat pumps** — electric units that move heat from the outside air into the home, using far less energy than they deliver.
 
 Retraining an engineer to install heat pumps takes several months and costs money, so Hollowmere doesn't want to retrain too many too early — or too few and lose the market to new competitors. The CEO asks: **how many heat pumps are installed in UK homes each year, and how many of our engineers should we retrain?**
 
@@ -150,7 +151,7 @@ Engineers = 160,000 × 2% ÷ 50 = **{{engineers_grant}}**, or {{engineer_share_g
 
 **About {{retrofit}} a year go into existing UK homes — the market Hollowmere can serve — so it should retrain about {{engineers_needed}} now ({{engineer_share}} of its workforce) and line up a second group to reach {{engineers_grant}} if the larger grant is approved.**
 
-- **The market is small today but growing:** heat pumps are only {{hp_share_of_replacements}} of boiler replacements, and most of the {{total_hp}} installed in total go into new homes, which Hollowmere doesn't serve.
+- **Hollowmere's market is small today:** heat pumps are only {{hp_share_of_replacements}} of boiler replacements, and most of the {{total_hp}} installed in total go into new homes, which Hollowmere doesn't serve.
 - **Policy is the swing factor:** the proposed grant would lift existing-home installations to {{grant_multiple}} today's level, about {{retrofit_grant}} a year.
 - **Retraining is a staged bet:** {{engineers_needed}} cover today's share; an option on {{engineers_grant}} protects Hollowmere if the market jumps.
 

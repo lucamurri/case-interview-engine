@@ -88,7 +88,7 @@ Electric cars are taking off in Germany, and many owners install a **wallbox** �
 - Q: What counts as a home charger?
   A: A wallbox installed at a private home. Public chargers and chargers at workplaces are out of scope.
 - Q: How many electric cars are sold each year?
-  A: About **{{ev_sales}}** new electric cars last year; the trend is in an exhibit.
+  A: About **{{ev_sales}}** were sold last year; the trend is in an exhibit.
 - Q: Do buyers of a second EV, or existing owners, need a new wallbox?
   A: Rarely — a household usually keeps one wallbox for its second EV, and replacement demand is small. Focus on households buying their first EV.
 - Q: What does Kalvren need from a new product line?
@@ -108,7 +108,7 @@ A **top-down funnel on the flow of new EV buyers**, because a household buys a w
   - × share with a private parking space (apartment dwellers mostly can't install one)
   - × share of those who actually install a wallbox
 - **Market value**
-  - Hardware: wallboxes × hardware price (what Kalvren would sell today)
+  - Hardware: wallboxes × hardware price (the part Kalvren would make today)
   - Installation: wallboxes × installation price (what electricians earn)
 - **Is it worth it for Kalvren?**
   - Revenue at a realistic share vs. the board's bar
@@ -132,7 +132,7 @@ Good candidates explain why they use **sales (the flow) and not EVs on the road 
 
 **3. Kalvren's opportunity.**
 - At {{target_share}}: {{kalvren_units}} a year.
-- Hardware only: {{hw_market}} × 10% = **{{kalvren_hw_rev}}** — short of the {{revenue_bar}} bar by {{hw_shortfall}}.
+- Hardware only: {{hw_market}} × 10% = **{{kalvren_hw_rev}}** — short of the {{revenue_bar}} bar by {{hw_shortfall}}. And that is at the price households pay: selling through wholesalers and electricians, Kalvren would book less than €800 a box after their markups, so the real gap is wider.
 - Hardware + installation package: {{installed_value}} × 10% = **{{kalvren_bundle_rev}}** — comfortably above the bar.
 
 ## Synthesis
@@ -158,7 +158,7 @@ Good candidates explain why they use **sales (the flow) and not EVs on the road 
 
 - Explain the flow-versus-stock logic before doing any math.
 - Notice that installation is worth more than the hardware and turn that into the recommendation.
-- Use Exhibit 1 to point out the market is growing, so the hardware-only gap of {{hw_shortfall}} may close on its own in a year or two — but they don't rely on it.
+- Use Exhibit 1 to point out the market is growing, so the hardware-only gap of {{hw_shortfall}} may close on its own in a year or two — but they don't rely on it, because the gap is measured at the household's price, before wholesaler and electrician markups.
 
 ## Creative question
 

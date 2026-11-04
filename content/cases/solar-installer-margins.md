@@ -70,6 +70,7 @@ calculations:
   - { id: hh_cost_25, label: "Homeowner's net cost after tax credit, FY2025", formula: "price_25 * (1 - itc)", expected: 15400, unit: "$" }
   - { id: hh_payback_23, label: "Homeowner payback, FY2023", formula: "hh_cost_23 / savings_23", expected: 7, unit: "years" }
   - { id: hh_payback_25, label: "Homeowner payback, FY2025", formula: "hh_cost_25 / savings_25", expected: 11, unit: "years" }
+  - { id: hh_payback_nocredit, label: "Homeowner payback at today's price with no federal tax credit", formula: "price_25 / savings_25", expected: 15.71, unit: "years", decimals: 0 }
   # --- Option A: price cut ---
   - { id: installs_a, label: "Option A: installs", formula: "leads * close_a", expected: 3000, unit: "installs" }
   - { id: contrib_a, label: "Option A: contribution per install", formula: "contrib_25 - price_cut", expected: 9000, unit: "$/install" }
@@ -122,7 +123,7 @@ exhibits:
     note: "Illustrative data created for this practice case."
     insight: |
       The price cut hurts every install to win a few more; the battery adds
-      margin on every install and helps a little with closing.
+      margin on half of all installs and helps a little with closing.
 ---
 
 ## Prompt
@@ -140,7 +141,7 @@ The CEO has asked us: **why has profit collapsed, and what should Brisbury do to
 - Q: How does Brisbury win customers?
   A: It buys leads (online ads, door-to-door partners, home-show events) at about {{cost_per_lead}}, and its sales team turns a share of them into signed contracts. Lead volume and spend have not changed.
 - Q: What exactly changed for homeowners?
-  A: Before the rule change, exported solar earned close to the retail electricity price. Now it earns much less, so a typical homeowner saves about {{savings_25}} instead of {{savings_23}}. Homeowners still get a {{itc}} federal tax credit on the system.
+  A: Before the rule change, exported solar earned close to the retail electricity price. Now it earns much less, so a typical homeowner saves about {{savings_25}} instead of {{savings_23}}. In both years, homeowners who bought a system also got a {{itc}} federal tax credit on it.
 - Q: How are costs structured?
   A: Equipment and install labor scale with each job. Marketing and sales spend and the overhead (designers, warehouses, admin) are fixed in the short run.
 - Q: What is the goal?
@@ -222,7 +223,7 @@ Even if the close rate stays at 6%: 2,400 × $13,000 − $24M = **{{profit_b_fla
 2. **A price cut barely helps:** it adds only {{gain_a}} and needs a close rate of ~{{breakeven_close_a}} just to break even with today.
 3. **Batteries fix the homeowner's problem and Brisbury's:** storing solar instead of exporting it restores savings, and the battery margin adds {{battery_per_install}}. The option is robust: even with no close-rate improvement, profit reaches {{profit_b_flat}}.
 
-**Risks and next steps:** battery supply and install capacity (crews need training); confirm the attach rate with a pilot in one region; in parallel cut the worst lead sources, because with a {{close_25}} close rate each low-quality lead is expensive; grow cheaper referral leads from Brisbury's existing customers.
+**Risks and next steps:** battery supply and install capacity (crews need training); confirm the attach rate with a pilot in one region; in parallel cut the worst lead sources, because with a {{close_25}} close rate each low-quality lead is expensive; grow cheaper referral leads from Brisbury's existing customers. Watch federal policy too: the homeowner tax credit ended for systems installed after 2025, which would stretch payback to about {{hh_payback_nocredit}} on today's numbers. That makes the battery bundle and financing offers (leases and power-purchase agreements) more important, and the close rates in Exhibit 2 need re-testing against it.
 
 ## Common mistakes
 

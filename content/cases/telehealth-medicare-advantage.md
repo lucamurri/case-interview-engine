@@ -34,6 +34,7 @@ calculations:
   # --- Market size ---
   - { id: high_need_m, label: "Members with two or more chronic conditions", formula: "ma_members_m * high_need_share", expected: 12, unit: "million" }
   - { id: tam, label: "Addressable market at the proposed fee (annual)", formula: "high_need_m * fee_pmpm * 12 / 1000", expected: 7.2, unit: "$B", decimals: 1 }
+  - { id: tam_enrolled, label: "Market at the proposed fee if only the typical share of eligible members enroll (annual)", formula: "tam * enroll_rate", expected: 1.44, unit: "$B", decimals: 1 }
   # --- One plan ---
   - { id: plan_eligible, label: "Eligible members in a typical plan", formula: "plan_members * high_need_share", expected: 100000, unit: "members" }
   - { id: plan_enrolled, label: "Enrolled members in a typical plan", formula: "plan_eligible * enroll_rate", expected: 20000, unit: "members" }
@@ -75,6 +76,7 @@ exhibits:
       - ["Cost to serve", "{{cost_pmpm}}"]
       - ["Fixed cost of a Medicare business", "{{fixed_cost}} per year"]
       - ["Sales pipeline", "{{pipeline_plans}} in talks, expected win rate {{win_rate}}"]
+      - ["Price seniors say they would pay out of pocket", "{{b2c_price}}"]
     note: "Illustrative data created for this practice case."
     insight: |
       Only a fifth of eligible members enroll, so each plan brings
@@ -90,7 +92,7 @@ exhibits:
       - { label: "Employer program, year 2", value: 0.05 }
       - { label: "Employer program, year 3", value: savings_comm }
       - { label: "Senior pilot, 9 months (1,000 members)", value: savings_senior }
-    note: "Illustrative data created for this practice case; not results from a real program."
+    note: "Illustrative data created for this practice case; not results from a real program. An eligible senior's medical cost averages about {{baseline_cost}}."
     insight: |
       Savings build over time in the employer program, and the small senior
       pilot looks promising. But the senior evidence is short and small —
@@ -102,7 +104,7 @@ exhibits:
 
 Our client, Hearthline Health, runs a virtual-care program for people with chronic conditions such as diabetes, heart failure and high blood pressure: remote monitoring devices at home, a dedicated nurse and on-demand video visits. Today it sells only to employers and their health plans, which cover people of working age.
 
-Hearthline wants to grow by serving **Medicare Advantage** — private health plans that cover millions of Americans over 65 and are paid a fixed amount per member by the government, so they gain when their members stay healthy. The CEO has asked us: **should Hearthline enter Medicare Advantage, and how?**
+Hearthline wants to grow by serving **Medicare Advantage** — private health plans that cover about {{ma_members_m}} Americans, mostly over 65, and are paid a fixed amount per member by the government, so they gain when their members stay healthy. The CEO has asked us: **should Hearthline enter Medicare Advantage, and how?**
 
 ## Clarifying information
 
@@ -143,7 +145,7 @@ A strong candidate notes that this is a **B2B2C** decision: the plan is the buye
 
 > **Ask:** First, roughly how big is the opportunity? Then, using Exhibit 1, how many plans does Hearthline need to break even? Finally, would it work to sell directly to seniors instead?
 
-**1. Market size.** 30M members × {{high_need_share}} with two or more chronic conditions ≈ **{{high_need_m}}** potential users. At the proposed fee: 12M × $50 × 12 ≈ **{{tam}}** a year. Large enough to matter — even a small share is a big business for Hearthline.
+**1. Market size.** 30M members × {{high_need_share}} with two or more chronic conditions ≈ **{{high_need_m}}** potential users. At the proposed fee: 12M × $50 × 12 ≈ **{{tam}}** a year. That is a ceiling: if only about {{enroll_rate}} of eligible members enroll (Exhibit 1), the reachable market is closer to **{{tam_enrolled}}** a year. Still large enough to matter — even a small share is a big business for Hearthline.
 
 **2. One plan (Exhibit 1).**
 Eligible members = 250,000 × 40% = **{{plan_eligible}}**. Enrolled = 100,000 × 20% = **{{plan_enrolled}}**.
@@ -168,9 +170,9 @@ The pipeline should deliver 6 × 50% = **{{expected_plans}}**, which gives annua
 
 > **Ask:** The CEO wants a recommendation in two minutes. What do you say?
 
-**Hearthline should enter Medicare Advantage by selling its program to health plans on a flat {{fee_pmpm}} fee: it breaks even at {{be_plans}}, its pipeline should deliver about {{expected_plans}}, and plans earn {{plan_roi}} back on every dollar they spend.**
+**Hearthline should enter Medicare Advantage by selling its program to health plans on a flat {{fee_pmpm}} fee: it breaks even at {{be_plans}}, its pipeline should deliver about {{expected_plans}}, and on the senior pilot result plans get {{plan_roi}} back on every dollar they spend.**
 
-1. **The market is large:** about {{high_need_m}} seniors with multiple chronic conditions, worth roughly {{tam}} a year at the proposed fee.
+1. **The market is large:** about {{high_need_m}} seniors with multiple chronic conditions, worth up to {{tam}} a year at the proposed fee, or about {{tam_enrolled}} at today's enrollment rate.
 2. **The plan must be the payer:** seniors would pay less than the cost to serve, while plans keep every dollar of medical cost avoided.
 3. **Start with a flat fee and keep shared savings as an option:** shared savings only beats the flat fee if savings exceed {{be_savings}}, and the senior evidence is thin. Offer shared savings to one anchor plan as a sign of confidence, and widen it once a year of senior data is in.
 
@@ -178,7 +180,7 @@ The pipeline should deliver 6 × 50% = **{{expected_plans}}**, which gives annua
 
 ## Common mistakes
 
-- Sizing the market on all {{ma_members_m}} members instead of the {{high_need_share}} with chronic conditions, or forgetting that only {{enroll_rate}} of eligible members enroll.
+- Sizing the market on all {{ma_members_m}} members instead of the {{high_need_share}} with chronic conditions, or treating {{tam}} as reachable when only {{enroll_rate}} of eligible members enroll.
 - Mixing up monthly and annual figures — PMPM fees must be multiplied by 12.
 - Recommending the shared-savings contract because it pays more at the pilot result, without asking how solid the evidence is.
 - Ignoring the buyer's return: a fee that is profitable for Hearthline but costs a plan more than it saves will not be renewed.

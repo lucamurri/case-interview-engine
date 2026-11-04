@@ -99,7 +99,7 @@ exhibits:
     data:
       - { label: "Single clinic", value: addon_multiple }
       - { label: "Small group (2–10 clinics)", value: 8 }
-      - { label: "Regional platform (30–60 clinics)", value: entry_multiple }
+      - { label: "Regional platform (30–90 clinics)", value: entry_multiple }
       - { label: "National platform (100+ clinics)", value: 12 }
     reference: { value: exit_multiple, label: "Exit multiple in the base case" }
     note: "Illustrative data created for this practice case; not actual transaction statistics."
@@ -112,7 +112,7 @@ exhibits:
 
 ## Prompt
 
-Our client, Calloway Pine Capital, is a mid-market private equity fund. It is considering buying **Orrin Valley Rehab**, a chain of **{{clinics}}** outpatient physical-therapy clinics in the US Midwest. Patients come mostly after surgery, sports injuries or for chronic back pain; most revenue comes from commercial insurers and Medicare.
+Our client, Calloway Pine Capital, is a mid-market private equity fund. It is considering buying **Orrin Valley Rehab**, an outpatient physical-therapy chain with **{{clinics}}** in the US Midwest. Most patients come after surgery or a sports injury, or for chronic back pain; most revenue comes from commercial insurers and Medicare.
 
 The deal team's plan is a classic "roll-up": buy Orrin Valley as a platform, then acquire dozens of small independent clinics and plug them into its systems. The fund's investment committee meets next week and asks: **should Calloway Pine buy Orrin Valley at the asking price?**
 

@@ -13,7 +13,8 @@
     "serve": "node scripts/serve.js",
     "dev": "npm run build && npm run serve",
     "preview": "node scripts/preview-case.js",
-    "test:drills": "node scripts/test-drills.js"
+    "test:drills": "node scripts/test-drills.js",
+    "check:links": "node scripts/check-links.js"
   },
   "devDependencies": {
     "js-yaml": "^5.5.0",

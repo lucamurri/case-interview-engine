@@ -851,3 +851,8 @@ dialog.present::backdrop { background: rgb(0 0 0 / 55%); }
   .site-header, .site-footer, .toc, .practice-link, .theme-toggle { display: none; }
   .panel { box-shadow: none; break-inside: avoid; }
 }
+
+/* Practice mode: write your own clarifying questions first */
+.own-questions { margin-bottom: 0.75rem; }
+[data-show-clarifiers] + .clarifiers,
+.clarifiers:not([hidden]) { margin-top: 1rem; }

@@ -35,7 +35,7 @@ const STEPS = [
 /** Short coaching tips shown at the top of each step. */
 const TIPS = {
   prompt: 'Listen for the objective and jot down the key facts. Play the objective back before moving on.',
-  clarifiers: 'Think of 2–4 focused questions first, then open only the ones you would actually ask.',
+  clarifiers: 'Before looking at anything, write down the 2–4 questions you would ask the interviewer. Then compare with the questions the interviewer has answers for.',
   structure: 'Take about two minutes to sketch an issue tree, then walk through it out loud as if presenting.',
   exhibits: 'Read the title and units first. Say one insight before you start calculating.',
   math: 'Write the equation before plugging in numbers. Round sensibly — and say when you round.',
@@ -84,8 +84,16 @@ function stepBody(key, c) {
       return `<div class="prompt-text prose">${s.prompt.html}</div>`;
 
     case 'clarifiers':
+      // The interviewer's questions stay hidden until the user has written
+      // their own, so they practice choosing what to ask.
       return `
-        <ul class="clarifiers">
+        <div class="field own-questions">
+          <label for="own-questions">Your clarifying questions <span class="muted">(only for you; not saved)</span></label>
+          <textarea id="own-questions" rows="4" placeholder="e.g. What is the client's objective? Over what time frame?"></textarea>
+        </div>
+        <p class="muted">The interviewer has answers ready for ${c.clarifiers.length} questions.</p>
+        <button class="button button-outline" type="button" data-show-clarifiers aria-expanded="false" aria-controls="clarifier-list">I've written mine — show the interviewer's questions</button>
+        <ul class="clarifiers" id="clarifier-list" hidden>
           ${c.clarifiers
             .map(
               (q) => `
@@ -261,6 +269,12 @@ function wireEvents(c) {
       panel.hidden = !open;
       t.setAttribute('aria-expanded', String(open));
       t.textContent = open ? t.dataset.label.replace(/^Show/, 'Hide') : t.dataset.label;
+    } else if (t.matches('[data-show-clarifiers]')) {
+      const list = document.getElementById('clarifier-list');
+      list.hidden = false;
+      t.setAttribute('aria-expanded', 'true');
+      t.hidden = true;
+      list.querySelector('summary').focus();
     } else if (t.matches('[data-show-exhibit]')) {
       const block = root.querySelector(`[data-exhibit="${t.dataset.showExhibit}"]`);
       block.hidden = false;

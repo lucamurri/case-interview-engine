@@ -1,0 +1,20 @@
+{
+  "name": "case-interview-engine",
+  "version": "0.1.0",
+  "description": "A free library of original case interviews with a practice mode.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "lint:content": "node scripts/lint-content.js",
+    "test:math": "node scripts/test-math.js",
+    "test": "npm run lint:content && npm run test:math",
+    "serve": "node scripts/serve.js",
+    "dev": "npm run build && npm run serve"
+  },
+  "devDependencies": {
+    "js-yaml": "^5.5.0",
+    "marked": "^18.1.3"
+  }
+}

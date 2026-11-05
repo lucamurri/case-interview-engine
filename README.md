@@ -32,6 +32,7 @@ The cases lean toward the industries I know and care about: **pharma & healthcar
 | **Partner mode** | An interviewer view for practicing with a friend: what to read aloud, what to reveal only if asked, the questions to ask in order, and what a good answer looks like. Exhibits can be shown full-screen to the candidate. |
 | **Self-score rubric** | Score structure, math, business judgment, synthesis and communication (1–5). Progress is saved in your browser; export it as JSON or CSV. |
 | **Mental math drills** | Randomized percentages, growth rates, break-evens and big-number multiplication, in 10-question rounds or 2-minute sprints. |
+| **Fit interview practice** | 43 original behavioral questions across eight themes, a two-minute answer timer, a five-dimension self-score and a story bank (outlines tagged by theme). Saved in your browser and included in the JSON export. |
 | **Top 10 case frameworks** | The ten questions behind most cases (profits, growth, cost cutting, market entry, launch, pricing, investment, acquisition, competitive response, process), each with an original issue tree and a coach's note, focused on *adapting* a structure rather than reciting it. |
 | **Accessible and mobile-first** | Dark mode, keyboard navigation, screen-reader labels, WCAG AA contrast. Audited with axe-core with zero issues. |
 
@@ -41,6 +42,10 @@ Every case includes a client prompt, clarifying information, a MECE issue tree, 
   <img src="docs/library.png" alt="The case library with search and filters" width="62%">
   &nbsp;
   <img src="docs/mobile.png" alt="Practice mode on a phone, showing a bar-chart exhibit" width="22%">
+</p>
+
+<p align="center">
+  <img src="docs/fit.png" alt="Fit interview practice: choose a theme, answer against a two-minute timer and score yourself" width="62%">
 </p>
 
 ## How quality is enforced

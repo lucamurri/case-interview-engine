@@ -301,6 +301,7 @@ main { padding-block: 2rem 4rem; min-height: 70vh; }
 .field { display: flex; flex-direction: column; gap: 0.3rem; }
 .field label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
 input[type='search'],
+input[type='text'],
 select,
 textarea {
   min-height: 44px;
@@ -857,3 +858,85 @@ dialog.present::backdrop { background: rgb(0 0 0 / 55%); }
 .own-questions { margin-bottom: 0.75rem; }
 [data-show-clarifiers] + .clarifiers,
 .clarifiers:not([hidden]) { margin-top: 1rem; }
+
+/* ==========================================================================
+   Printable partner mode (interviewer sheet)
+   ========================================================================== */
+.print-only { display: none; }
+.print-hint { margin: 0.5rem 0 0; font-size: 0.85rem; }
+
+@media print {
+  @page { margin: 14mm 14mm 16mm; }
+
+  /* Always print black-on-white, even if the screen is in dark mode.
+     (":not(.x)" just raises specificity above the dark-mode rules.) */
+  :root:not(.print-x), :root[data-theme] {
+    --bg: #fff; --surface: #fff; --surface-2: #f4f5f3; --text: #111; --muted: #444;
+    --border: #c9cdc8; --accent: #0f766e; --accent-strong: #0b5c56; --accent-soft: #eaf4f2;
+    --on-accent: #fff; --shadow: none; color-scheme: light;
+  }
+  body { font-size: 10.5pt; line-height: 1.45; background: #fff; color: #111; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Hide everything that only makes sense on screen */
+  .site-header, .site-footer, .skip-link, .breadcrumb, .mode-switch, .case-toolbar,
+  .partner-intro, button, .button, .button-row, dialog, .rubric, .history,
+  .tip, .step-actions, .notice { display: none !important; }
+  .print-only { display: block !important; }
+
+  main { padding: 0; min-height: 0; }
+  .wrap, .wrap-narrow { width: 100%; }
+  .case-header h1 { font-size: 20pt; margin-bottom: 2pt; }
+  .step, .panel { border: 0; box-shadow: none; padding: 0; margin: 0 0 12pt; background: none; }
+  .step h2, .print-scorecard h2 { font-size: 13pt; margin: 14pt 0 6pt; padding-bottom: 3pt; border-bottom: 1.5pt solid #111; break-after: avoid; }
+  .step h2 .step-num { display: none; }
+  h3 { font-size: 11pt; break-after: avoid; }
+  .prompt-text { font-size: 11.5pt; }
+
+  /* Keep each block together on one page where possible */
+  .script-item, .exhibit, .ask, .model-answer, .answer-line, .debrief-card, .clarifier-list dd, tr { break-inside: avoid; }
+  .clarifier-list dt { break-after: avoid; }
+  .script-item { border-top: 0.75pt solid var(--border); }
+  .ask, .model-answer, .answer-line { padding: 6pt 9pt; }
+  .debrief-grid { grid-template-columns: 1fr 1fr; gap: 8pt; }
+  .key-numbers summary { list-style: none; }
+
+  /* Print colored bars and tints instead of dropping them */
+  .bar, .ask, .answer-line, .dot.on, .bar-track, .model-answer {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  /* Scorecard */
+  .print-scorecard { break-before: page; }
+  .print-scorecard table { margin: 8pt 0; }
+  .print-scorecard th, .print-scorecard td { border: 0.75pt solid #999; padding: 8pt 6pt; }
+  .print-scorecard td.box { width: 26pt; text-align: center; color: #666; }
+  .print-scorecard td.notes { width: 45%; }
+
+  /* Candidate handouts: one exhibit per page, nothing else */
+  .handout { break-before: page; padding-top: 10mm; }
+  .handout-label { font-size: 9pt; color: #555; margin-bottom: 10pt; }
+  .handout .exhibit { border: 0; padding: 0; font-size: 13pt; }
+  .handout table { font-size: 12pt; }
+}
+
+/* Fit interview practice */
+.fit-question { margin: 0.25rem 0 1rem; }
+.fit-story-hint { margin: 1rem 0 1.25rem; }
+.fit-story-hint summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.fit-tips dt { font-weight: 650; margin-top: 0.8rem; }
+.fit-tips dd { margin: 0.15rem 0 0; color: var(--muted); }
+.story-list { display: grid; gap: 0.75rem; margin: 1rem 0 1.5rem; padding: 0; list-style: none; }
+.story-card { border: 1px solid var(--border); border-radius: var(--radius-small); padding: 0.9rem 1rem; background: var(--surface); }
+.story-card h3 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+.story-card details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
+.story-card dl { margin: 0.5rem 0 0; }
+.story-card dt { font-weight: 650; font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+.story-card dd { margin: 0; white-space: pre-wrap; }
+.story-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.3rem 0 0.5rem; }
+.story-tag { font-size: 0.78rem; padding: 0.1rem 0.5rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); }
+.story-form { border-top: 1px solid var(--border); padding-top: 1rem; display: grid; gap: 0.85rem; }
+.story-form h3 { margin: 0; }
+.theme-checks { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+.theme-checks label { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.92rem; cursor: pointer; }
+.theme-checks input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }

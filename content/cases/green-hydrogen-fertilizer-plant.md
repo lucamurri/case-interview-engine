@@ -220,7 +220,7 @@ The contract should be take-or-pay (the buyer pays for the agreed volume whether
 
 **Northfield should not build on the current business plan: the subsidy lasts {{subsidy_years}}, not {{life}}, so a project shown earning {{plan_life}} over its life actually loses {{life_loss}}. It should build only if it secures power at about {{power_needed}} or less, for example through a long-term power purchase agreement with its new wind farm, and signs a 20-year take-or-pay contract at the buyer's {{alt_avg}}. Without that cheaper power the project would need {{price_required}}, which the buyer won't pay.**
 
-| Lifetime profit above the capital charge | |
+| Lifetime profit above the capital charge | Amount |
 |---|---|
 | Business plan | {{plan_life}} |
 | Subsidy not paid in years 11–20 | −{{subsidy_loss}} |

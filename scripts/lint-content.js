@@ -10,7 +10,7 @@
  *   - has fewer than 2 clarifying Q&As
  *   - has 0 or more than 3 exhibits, or an exhibit without an "illustrative" note
  *   - (interviewer-led) lacks an "Ask:" question in Structure, Math or Synthesis
- *   - has a Markdown table with an empty first header cell (bad for screen readers)
+ *   - has a Markdown table with any empty header cell (bad for screen readers)
  */
 import path from 'node:path';
 import { caseFiles, readCase, ALLOWED, SECTIONS, splitAsk, parseClarifiers } from './load-cases.js';
@@ -64,7 +64,13 @@ for (const file of caseFiles()) {
   for (const h of raw.unknownHeadings) err(`unknown heading "## ${h}" (check spelling)`);
   for (const { key, heading } of SECTIONS) {
     // Screen readers announce an empty table header as blank, so every column needs a name.
-    if (/^\|\s*\|/m.test(sections[key] || '')) err(`"## ${heading}" has a table whose first header cell is empty (give it a name, e.g. "Item")`);
+    // A header row is the line just above a separator row like |---|---|.
+    const lines = (sections[key] || '').split('\n');
+    lines.forEach((line, i) => {
+      if (!/^\s*\|?\s*:?-{3,}/.test(lines[i + 1] || '') || !line.includes('|')) return;
+      const cells = line.trim().replace(/^\|/, '').replace(/\|$/, '').split('|');
+      if (cells.some((c) => !c.trim())) err(`"## ${heading}" has a table with an empty header cell (give every column a name, e.g. "Item" or "Amount")`);
+    });
   }
   if (sections.clarifiers && parseClarifiers(sections.clarifiers).filter((c) => c.a).length < 2) {
     err('needs at least 2 clarifying Q&As written as "- Q: ..." then "A: ..."');

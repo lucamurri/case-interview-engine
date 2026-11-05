@@ -7,6 +7,7 @@
  */
 import { loadProgress, averageScore, importProgress, resetProgress } from './storage.js';
 import { RUBRIC } from './rubric.js';
+import { FIT_THEMES, FIT_RUBRIC } from './fit-questions.js';
 import { DRILL_CATEGORIES } from './drill-generators.js';
 import { escapeHtml, formatDuration, label } from './labels.js';
 
@@ -153,6 +154,10 @@ function exportCsv(kind) {
     const header = ['date', 'case_id', 'case_title', 'mode', 'seconds', ...RUBRIC.map((d) => d.key), 'average', 'notes'];
     const rows = data.attempts.map((a) => [a.date, a.caseId, caseIndex[a.caseId]?.title || '', a.mode || 'practice', a.seconds, ...RUBRIC.map((d) => a.scores?.[d.key]), averageScore(a).toFixed(2), a.notes || '']);
     download(`case-scores-${today()}.csv`, toCsv([header, ...rows]), 'text/csv');
+  } else if (kind === 'fit') {
+    const header = ['date', 'theme', 'question', 'seconds', ...FIT_RUBRIC.map((d) => d.key), 'average', 'notes'];
+    const rows = data.fit.map((f) => [f.date, FIT_THEMES[f.theme]?.name || f.theme, f.question, f.seconds, ...FIT_RUBRIC.map((d) => f.scores?.[d.key]), fitAverage(f).toFixed(2), f.notes || '']);
+    download(`fit-answers-${today()}.csv`, toCsv([header, ...rows]), 'text/csv');
   } else {
     const header = ['date', 'drill', 'correct', 'total', 'seconds'];
     const rows = data.drills.map((d) => [d.date, DRILL_CATEGORIES[d.category]?.name || d.category, d.correct, d.total, d.seconds]);

@@ -44,6 +44,10 @@ Every case includes a client prompt, clarifying information, a MECE issue tree, 
   <img src="docs/mobile.png" alt="Practice mode on a phone, showing a bar-chart exhibit" width="22%">
 </p>
 
+<p align="center">
+  <img src="docs/fit.png" alt="Fit interview practice: choose a theme, answer against a two-minute timer and score yourself" width="62%">
+</p>
+
 ## How quality is enforced
 
 Three automated checks run on every change. If any of them fails, the site is not published.

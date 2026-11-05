@@ -8,7 +8,7 @@
  * candidate full-screen without revealing the insight.
  */
 import { renderExhibit } from './exhibits.js';
-import { rubricForm } from './rubric.js';
+import { rubricForm, RUBRIC } from './rubric.js';
 
 /** A labelled block: the question to ask, then what good looks like. */
 function scriptItem({ title, ask, fallback, good, goodLabel = 'What good looks like' }) {
@@ -54,6 +54,10 @@ export function partnerBody(c) {
           ? 'This case is <strong>candidate-led</strong>: let the candidate drive, and use the questions below only to nudge if they stall.'
           : 'This case is <strong>interviewer-led</strong>: ask the questions below in order.'
       } Start the timer when you begin reading.</p>
+      <div class="button-row">
+        <button class="button" type="button" data-print>Print interviewer sheet</button>
+      </div>
+      <p class="muted print-hint">Prints the whole run of show, a paper scorecard, and one page per exhibit to hand to the candidate.</p>
       <nav aria-label="Jump to"><ul class="jump-links">
         <li><a href="#p-prompt">Prompt</a></li><li><a href="#p-clarifiers">If asked</a></li><li><a href="#p-run">Run of show</a></li><li><a href="#p-debrief">Debrief</a></li><li><a href="#p-score">Score</a></li>
       </ul></nav>
@@ -96,6 +100,8 @@ export function partnerBody(c) {
       ${rubricForm()}
     </section>
 
+    ${printExtras(c)}
+
     <dialog class="present" data-present-dialog aria-labelledby="present-title">
       <div class="present-inner">
         <div class="present-bar">
@@ -107,7 +113,37 @@ export function partnerBody(c) {
     </dialog>`;
 }
 
-/** Wire the "Show exhibit to the candidate" buttons. */
+/**
+ * Sections that only appear on paper: a scorecard to fill in by hand, and one
+ * page per exhibit to hand to the candidate (the exhibit alone: no question,
+ * no insight).
+ */
+function printExtras(c) {
+  const boxes = [1, 2, 3, 4, 5].map((n) => `<td class="box">${n}</td>`).join('');
+  const rows = RUBRIC.map((d) => `<tr><th scope="row">${d.name}</th>${boxes}<td class="notes"></td></tr>`).join('');
+  const handouts = c.exhibits
+    .map(
+      (ex) => `
+      <section class="handout">
+        <p class="handout-label">Candidate handout · ${c.title}</p>
+        ${renderExhibit(ex).replace(/ id="[^"]*"/, '')}
+      </section>`,
+    )
+    .join('');
+  return `
+    <section class="print-only print-scorecard" aria-hidden="true">
+      <h2>Scorecard</h2>
+      <p>Candidate: ______________________ &nbsp; Date: ____________ &nbsp; Time taken: ______ / ${c.time_minutes} min</p>
+      <table>
+        <thead><tr><th>Skill</th><th colspan="5">Circle a score (1 = struggled, 5 = offer-level)</th><th>Notes</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <p>Overall recommendation: &nbsp; ☐ Strong yes &nbsp; ☐ Yes &nbsp; ☐ Not yet</p>
+    </section>
+    <div class="print-only handouts" aria-hidden="true">${handouts}</div>`;
+}
+
+/** Wire the "Show exhibit to the candidate" and "Print" buttons. */
 export function wirePartner(root, c) {
   const dialog = root.querySelector('[data-present-dialog]');
   const body = dialog.querySelector('[data-present-body]');
@@ -122,8 +158,18 @@ export function wirePartner(root, c) {
       dialog.querySelector('[data-close-present]').focus();
     } else if (t.matches('[data-close-present]')) {
       dialog.close();
+    } else if (t.matches('[data-print]')) {
+      window.print();
     }
   });
+  // Before printing (button or Cmd+P), open every collapsed section so it
+  // appears on paper; close the ones that were closed afterwards.
+  let reopened = [];
+  window.addEventListener('beforeprint', () => {
+    reopened = [...root.querySelectorAll('details:not([open])')];
+    reopened.forEach((d) => (d.open = true));
+  });
+  window.addEventListener('afterprint', () => reopened.forEach((d) => (d.open = false)));
   // Clicking the dark backdrop also closes it. (Escape closes it natively.)
   dialog.addEventListener('click', (e) => {
     if (e.target === dialog) dialog.close();

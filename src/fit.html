@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fit interview practice — Case Interview Engine</title>
+  <meta name="description" content="Practice behavioral (fit) interview questions: original question bank by theme, a two-minute answer timer, a self-scoring rubric and a story bank.">
+  <script>try{var t=localStorage.getItem('cie.theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <!-- @header -->
+
+  <main id="main" class="wrap wrap-narrow">
+    <h1>Fit interview practice</h1>
+    <p class="lede">Most consulting interviews pair a case with a fit round. Pick a theme, answer out loud in about two minutes, then score yourself. Build a small bank of stories so you are never improvising.</p>
+
+    <nav class="toc" aria-label="On this page">
+      <ul>
+        <li><a href="#practice">Practice</a></li>
+        <li><a href="#stories">Story bank</a></li>
+        <li><a href="#how">How to answer</a></li>
+      </ul>
+    </nav>
+
+    <!-- 1. Choose -->
+    <form class="panel" id="practice" data-setup aria-labelledby="h-setup">
+      <h2 id="h-setup">Practice a question</h2>
+      <fieldset class="choice-group">
+        <legend>Theme</legend>
+        <div class="choices" data-themes></div>
+      </fieldset>
+      <p class="tip" data-listen></p>
+      <button class="button button-large" type="submit">Give me a question</button>
+      <p class="muted best" data-best></p>
+    </form>
+
+    <!-- 2. Answer -->
+    <section class="panel" data-play hidden aria-labelledby="h-play" tabindex="-1">
+      <p class="muted" data-theme-name></p>
+      <h2 id="h-play" class="prompt-text fit-question" data-question></h2>
+      <div class="timer" data-timer>
+        <span class="timer-time" data-time aria-hidden="true"></span>
+        <button class="button button-small" type="button" data-toggle>Start</button>
+        <button class="button button-small button-quiet" type="button" data-reset>Reset</button>
+        <span class="visually-hidden" aria-live="polite" data-announce></span>
+      </div>
+      <p class="tip">Say your answer out loud. Aim for about two minutes: a short setup, what <em>you</em> did, the result and the lesson. Then score yourself below.</p>
+      <details class="fit-story-hint">
+        <summary>Which of my stories fits?</summary>
+        <div data-story-matches></div>
+      </details>
+
+      <h3>Score your answer</h3>
+      <div data-rubric-host></div>
+      <div class="button-row">
+        <button class="button button-outline" type="button" data-another>Another question</button>
+        <button class="button button-quiet" type="button" data-change>Change theme</button>
+      </div>
+    </section>
+
+    <!-- Story bank -->
+    <section class="panel" id="stories" aria-labelledby="h-stories">
+      <h2 id="h-stories">Your story bank</h2>
+      <p>Four to six strong stories can answer nearly every fit question. Write each one in outline once, tag the themes it can cover, and reuse it. Saved in this browser only.</p>
+      <div data-story-list></div>
+      <form class="story-form" data-story-form novalidate>
+        <h3 data-story-form-title>Add a story</h3>
+        <div class="field"><label for="s-title">Short title</label><input id="s-title" name="title" type="text" maxlength="80" placeholder="e.g. Rescuing the club fundraiser" required></div>
+        <div class="field"><label for="s-situation">Situation <span class="muted">(context, stakes)</span></label><textarea id="s-situation" name="situation" rows="2" maxlength="600"></textarea></div>
+        <div class="field"><label for="s-task">Task <span class="muted">(what you owned)</span></label><textarea id="s-task" name="task" rows="2" maxlength="600"></textarea></div>
+        <div class="field"><label for="s-action">Action <span class="muted">(what you did and why)</span></label><textarea id="s-action" name="action" rows="4" maxlength="1200"></textarea></div>
+        <div class="field"><label for="s-result">Result <span class="muted">(numbers if you can)</span></label><textarea id="s-result" name="result" rows="2" maxlength="600"></textarea></div>
+        <div class="field"><label for="s-lesson">Lesson</label><textarea id="s-lesson" name="lesson" rows="2" maxlength="600"></textarea></div>
+        <fieldset class="choice-group">
+          <legend>Themes this story can answer</legend>
+          <div class="theme-checks" data-story-themes></div>
+        </fieldset>
+        <p class="form-error" data-story-error role="alert" hidden></p>
+        <div class="button-row">
+          <button class="button" type="submit" data-story-submit>Save story</button>
+          <button class="button button-quiet" type="button" data-story-cancel hidden>Cancel editing</button>
+        </div>
+        <p class="save-result" data-story-status aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- How to answer -->
+    <section class="panel prose" id="how" aria-labelledby="h-how">
+      <h2 id="h-how">How to answer</h2>
+      <p class="lede">A simple five-part outline keeps answers tight. Total: about two minutes.</p>
+      <dl class="fit-tips" data-tips></dl>
+      <h3>Common mistakes</h3>
+      <ul>
+        <li>Saying "we" for everything, so the interviewer cannot tell what you did.</li>
+        <li>Spending most of the time on background and rushing the actions and result.</li>
+        <li>Picking a story with no stakes or no conflict.</li>
+        <li>Giving a "failure" that is really a strength in disguise.</li>
+        <li>Skipping the result, or the lesson.</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- @footer -->
+  <script type="module" src="js/theme.js"></script>
+  <script type="module" src="js/fit.js"></script>
+</body>
+</html>

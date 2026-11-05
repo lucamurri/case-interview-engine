@@ -9,18 +9,31 @@
  *   ],
  *   drills: [
  *     { date, category, length, correct, total, seconds }
+ *   ],
+ *   fit: [
+ *     { date, theme, question, seconds, scores: { relevance, structure, ownership, impact, reflection }, notes }
+ *   ],
+ *   stories: [
+ *     { id, title, situation, task, action, result, lesson, themes: [] }
  *   ]
  * }
  */
 const KEY = 'cie.progress.v1';
 
-const empty = () => ({ version: 1, attempts: [], drills: [] });
+const empty = () => ({ version: 1, attempts: [], drills: [], fit: [], stories: [] });
 
 /** Read saved progress (returns an empty record if none or if unreadable). */
 export function loadProgress() {
   try {
     const data = JSON.parse(localStorage.getItem(KEY));
-    if (data && Array.isArray(data.attempts)) return { ...data, drills: Array.isArray(data.drills) ? data.drills : [] };
+    if (data && Array.isArray(data.attempts)) {
+      return {
+        ...data,
+        drills: Array.isArray(data.drills) ? data.drills : [],
+        fit: Array.isArray(data.fit) ? data.fit : [],
+        stories: Array.isArray(data.stories) ? data.stories : [],
+      };
+    }
   } catch {
     /* fall through */
   }
@@ -63,6 +76,31 @@ export function addDrillResult(result) {
   return saveProgress(data);
 }
 
+/** Save one fit-question practice attempt. */
+export function addFitAttempt(attempt) {
+  const data = loadProgress();
+  data.fit.push({ ...attempt, date: new Date().toISOString() });
+  return saveProgress(data);
+}
+
+/** All saved stories. */
+export const loadStories = () => loadProgress().stories;
+
+/** Add a story, or replace the one with the same id. */
+export function saveStory(story) {
+  const data = loadProgress();
+  const i = data.stories.findIndex((s) => s.id === story.id);
+  if (i >= 0) data.stories[i] = story;
+  else data.stories.push(story);
+  return saveProgress(data);
+}
+
+export function deleteStory(id) {
+  const data = loadProgress();
+  data.stories = data.stories.filter((s) => s.id !== id);
+  return saveProgress(data);
+}
+
 /** Delete all saved progress. */
 export function resetProgress() {
   return saveProgress(empty());
@@ -89,6 +127,20 @@ export function importProgress(json) {
   for (const d of incoming.drills || []) {
     if (d && d.category && d.date && !seen.has(key(d))) {
       data.drills.push(d);
+      added++;
+    }
+  }
+  const fitSeen = new Set(data.fit.map((f) => `${f.date}|${f.theme}`));
+  for (const f of incoming.fit || []) {
+    if (f && f.theme && f.date && f.scores && !fitSeen.has(`${f.date}|${f.theme}`)) {
+      data.fit.push(f);
+      added++;
+    }
+  }
+  const storyIds = new Set(data.stories.map((s) => s.id));
+  for (const st of incoming.stories || []) {
+    if (st && st.id && typeof st.title === 'string' && !storyIds.has(st.id)) {
+      data.stories.push(st);
       added++;
     }
   }

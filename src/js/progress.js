@@ -17,21 +17,23 @@ let caseIndex = {}; // id → { title, type, ... }
 const fmtDate = (iso) => new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
 const mean = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0);
 
+const fitAverage = (f) => mean(Object.values(f.scores || {}).map(Number).filter(Number.isFinite));
+
 function tile(value, caption) {
   return `<div class="stat"><p class="stat-value">${value}</p><p class="stat-caption">${caption}</p></div>`;
 }
 
 function render() {
   const data = loadProgress();
-  const { attempts, drills } = data;
+  const { attempts, drills, fit } = data;
   const total = Object.keys(caseIndex).length;
 
-  if (!attempts.length && !drills.length) {
+  if (!attempts.length && !drills.length && !fit.length) {
     root.innerHTML = `
       <div class="panel empty-panel">
         <h2>Nothing here yet</h2>
         <p>Finish a case and save your score, or complete a round of mental-math drills, and your progress will appear here.</p>
-        <p class="button-row"><a class="button" href="index.html">Pick a case</a> <a class="button button-outline" href="drills.html">Try a drill</a></p>
+        <p class="button-row"><a class="button" href="index.html">Pick a case</a> <a class="button button-outline" href="drills.html">Try a drill</a> <a class="button button-outline" href="fit.html">Practice a fit question</a></p>
       </div>`;
     return;
   }
@@ -48,6 +50,8 @@ function render() {
       ${tile(formatDuration(seconds), 'total practice time')}
       ${tile(drills.length, 'drill rounds')}
       ${tile(drillAcc === null ? '–' : `${Math.round(drillAcc * 100)}%`, 'drill accuracy')}
+      ${tile(fit.length, 'fit answers practiced')}
+      ${tile(fit.length ? mean(fit.map(fitAverage)).toFixed(1) : '–', 'fit average (out of 5)')}
     </div>`;
 
   // --- Average by rubric dimension (bars on a 0–5 scale) ---

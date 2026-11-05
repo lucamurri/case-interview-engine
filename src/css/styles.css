@@ -301,6 +301,7 @@ main { padding-block: 2rem 4rem; min-height: 70vh; }
 .field { display: flex; flex-direction: column; gap: 0.3rem; }
 .field label { font-size: 0.85rem; font-weight: 600; color: var(--muted); }
 input[type='search'],
+input[type='text'],
 select,
 textarea {
   min-height: 44px;
@@ -918,3 +919,24 @@ dialog.present::backdrop { background: rgb(0 0 0 / 55%); }
   .handout .exhibit { border: 0; padding: 0; font-size: 13pt; }
   .handout table { font-size: 12pt; }
 }
+
+/* Fit interview practice */
+.fit-question { margin: 0.25rem 0 1rem; }
+.fit-story-hint { margin: 1rem 0 1.25rem; }
+.fit-story-hint summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.fit-tips dt { font-weight: 650; margin-top: 0.8rem; }
+.fit-tips dd { margin: 0.15rem 0 0; color: var(--muted); }
+.story-list { display: grid; gap: 0.75rem; margin: 1rem 0 1.5rem; padding: 0; list-style: none; }
+.story-card { border: 1px solid var(--border); border-radius: var(--radius-small); padding: 0.9rem 1rem; background: var(--surface); }
+.story-card h3 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+.story-card details summary { cursor: pointer; color: var(--accent); font-size: 0.9rem; }
+.story-card dl { margin: 0.5rem 0 0; }
+.story-card dt { font-weight: 650; font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+.story-card dd { margin: 0; white-space: pre-wrap; }
+.story-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.3rem 0 0.5rem; }
+.story-tag { font-size: 0.78rem; padding: 0.1rem 0.5rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); }
+.story-form { border-top: 1px solid var(--border); padding-top: 1rem; display: grid; gap: 0.85rem; }
+.story-form h3 { margin: 0; }
+.theme-checks { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+.theme-checks label { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.92rem; cursor: pointer; }
+.theme-checks input { width: 1.1rem; height: 1.1rem; accent-color: var(--accent); }

@@ -43,7 +43,8 @@ function checkLink(link, source, pageIds) {
   if (file === 'index.html' && params.get('type') && !ALLOWED.type.includes(params.get('type'))) problems.push(`${source}: unknown case type "${params.get('type')}"`);
 }
 
-const linksIn = (html) => [...html.matchAll(/\s(?:href|src)="([^"]+)"/g)].map((m) => m[1]);
+// <base href> sets where relative links start from; it isn't a link itself.
+const linksIn = (html) => [...html.replace(/<base [^>]*>/g, '').matchAll(/\s(?:href|src)="([^"]+)"/g)].map((m) => m[1]);
 const idsIn = (html) => new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]));
 
 // 1. Every HTML page

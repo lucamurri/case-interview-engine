@@ -34,6 +34,36 @@ const partial = (name) => fs.readFileSync(path.join(PARTIALS, `${name}.html`), '
 const header = partial('header');
 const footer = partial('footer');
 
+// Link previews (LinkedIn, Slack, iMessage, X): Open Graph and Twitter tags are
+// generated from each page's <title> and description. Crawlers don't run
+// JavaScript, so every case shares the site-wide preview image.
+const SITE_URL = 'https://lucamurri.github.io/case-interview-engine/';
+const DEFAULT_DESCRIPTION = `A free library of ${caseFiles().length} original consulting case interviews with a step-by-step practice mode, partner mode, mental-math drills and checked math.`;
+const attr = (s) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+
+function socialTags(html, page) {
+  const title = (/<title>([^<]*)<\/title>/.exec(html)?.[1] || 'Case Interview Engine').replace(/&amp;/g, '&');
+  const description = /<meta name="description" content="([^"]*)"/.exec(html)?.[1] || DEFAULT_DESCRIPTION;
+  const url = SITE_URL + (page === 'index.html' ? '' : page);
+  return [
+    page === '404.html' ? '' : `<link rel="canonical" href="${url}">`,
+    '<meta property="og:type" content="website">',
+    '<meta property="og:site_name" content="Case Interview Engine">',
+    `<meta property="og:title" content="${attr(title)}">`,
+    `<meta property="og:description" content="${attr(description)}">`,
+    `<meta property="og:url" content="${url}">`,
+    `<meta property="og:image" content="${SITE_URL}og-image.png">`,
+    '<meta property="og:image:width" content="1200">',
+    '<meta property="og:image:height" content="630">',
+    '<meta property="og:image:alt" content="Case Interview Engine: free, original consulting case practice">',
+    '<meta name="twitter:card" content="summary_large_image">',
+    '<meta name="theme-color" content="#0f766e">',
+    '<link rel="apple-touch-icon" href="apple-touch-icon.png">',
+  ]
+    .filter(Boolean)
+    .join('\n  ');
+}
+
 function copyDir(from, to) {
   fs.mkdirSync(to, { recursive: true });
   for (const entry of fs.readdirSync(from, { withFileTypes: true })) {
@@ -45,7 +75,8 @@ function copyDir(from, to) {
       // Mark the current page in the navigation for screen readers and styling.
       const page = entry.name;
       const nav = header.replace(`href="${page}"`, `href="${page}" aria-current="page"`);
-      const html = fs.readFileSync(src, 'utf8').replace('<!-- @header -->', nav).replace('<!-- @footer -->', footer);
+      let html = fs.readFileSync(src, 'utf8').replace('<!-- @header -->', nav).replace('<!-- @footer -->', footer);
+      html = html.replace('</head>', `${socialTags(html, page)}\n</head>`);
       fs.writeFileSync(dest, html);
     } else fs.copyFileSync(src, dest);
   }

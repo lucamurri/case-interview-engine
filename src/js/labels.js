@@ -10,6 +10,9 @@ export const LABELS = {
     pricing: 'Pricing',
     'm-and-a': 'M&A / investment',
     operations: 'Operations',
+    growth: 'Growth strategy',
+    'product-launch': 'Product launch',
+    'cost-cutting': 'Cost cutting',
   },
   industry: {
     'pharma-healthcare': 'Pharma & healthcare',

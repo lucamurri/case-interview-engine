@@ -11,7 +11,7 @@ client: "Clientco (fictional), one-line description"
 summary: "One or two sentences shown on the library card."
 industry: pharma-healthcare     # pharma-healthcare | energy | consumer-retail | tech-ai | financial-services | industrials | public-sector | media-sports
 sub_industry: "Free text tag, e.g. Medtech"
-type: profitability             # market-sizing | profitability | market-entry | pricing | m-and-a | operations
+type: profitability             # market-sizing | profitability | market-entry | pricing | m-and-a | operations | growth | product-launch | cost-cutting
 difficulty: intermediate        # beginner | intermediate | advanced
 format: interviewer-led         # interviewer-led | candidate-led
 time_minutes: 30

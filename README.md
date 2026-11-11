@@ -71,7 +71,7 @@ Cases are plain text files. You can add one without touching any code.
    id: your-case-id
    title: "Hook: What the Case Is About"
    industry: pharma-healthcare     # pharma-healthcare | energy | consumer-retail | tech-ai | financial-services | industrials | public-sector | media-sports
-   type: profitability             # market-sizing | profitability | market-entry | pricing | m-and-a | operations
+   type: profitability             # market-sizing | profitability | market-entry | pricing | m-and-a | operations | growth | product-launch | cost-cutting
    difficulty: intermediate        # beginner | intermediate | advanced
    format: interviewer-led         # interviewer-led | candidate-led
    time_minutes: 30

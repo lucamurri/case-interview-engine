@@ -1,6 +1,6 @@
 # Case Interview Engine
 
-**A free library of 60 original consulting case interviews, with a step-by-step practice mode, a partner mode for practicing with a friend, and math that is verified by automated tests.**
+**A free library of 80 original consulting case interviews, with a step-by-step practice mode, a partner mode for practicing with a friend, and math that is verified by automated tests.**
 
 ### ▶ [Try it live: lucamurri.github.io/case-interview-engine](https://lucamurri.github.io/case-interview-engine/)
 
@@ -26,7 +26,7 @@ The cases lean toward the industries I know and care about: **pharma & healthcar
 
 | | |
 |---|---|
-| **60 original cases** | Profitability (12), market sizing (10), operations (10), pricing (10), market entry (9), M&A / investment (9). Consumer & retail (12), pharma & healthcare (10), tech & AI (9), energy (7), financial services (7), public & nonprofit (6), industrials (5), media & sports (4). Beginner to advanced; interviewer-led (McKinsey-style) and candidate-led (BCG/Bain-style). |
+| **80 original cases** | Profitability (13), market sizing (12), operations (11), pricing (11), market entry (10), M&A / investment (10), product launch (5), growth (4), cost cutting (4). Consumer & retail (18), industrials (12), pharma & healthcare (11), tech & AI (10), financial services (10), energy (7), public & nonprofit (7), media & sports (5). Beginner to advanced; interviewer-led (McKinsey-style) and candidate-led (BCG/Bain-style). |
 | **Case library** | Search and filter by industry, type, difficulty and format. |
 | **Practice mode** | Step-by-step reveal: prompt → clarifying questions (answered only if you ask) → structure → exhibits → math → synthesis → debrief, with a timer. |
 | **Partner mode** | An interviewer view for practicing with a friend: what to read aloud, what to reveal only if asked, the questions to ask in order, and what a good answer looks like. Exhibits can be shown full-screen to the candidate. |
@@ -52,7 +52,7 @@ Every case includes a client prompt, clarifying information, a MECE issue tree, 
 
 Three automated checks run on every change. If any of them fails, the site is not published.
 
-- **Math test:** recalculates **1,552 numbers** across the 60 cases from their inputs. Case text never types a result by hand. It refers to checked calculations by name (for example `{{payback_toll}}`), so the walkthrough, the exhibits and the answer can't drift apart. A typed result like "= $19.6M" fails the test.
+- **Math test:** recalculates **2,091 numbers** across the 80 cases from their inputs. Case text never types a result by hand. It refers to checked calculations by name (for example `{{payback_toll}}`), so the walkthrough, the exhibits and the answer can't drift apart. A typed result like "= $19.6M" fails the test.
 - **Content linter:** fails if any case is missing a required section, a clarifying Q&A or an exhibit label, or if any field uses a value outside the allowed list.
 - **Wording check:** renders every case exactly as a reader sees it and fails on doubled words or units ("400 thousand visits visits", "$11/kg per kg"), a minus sign after a loss word ("lost −$1.6M") and British spellings.
 - **Drills test:** generates **5,000 questions** and checks each answer against an independent recalculation from the numbers shown on screen.

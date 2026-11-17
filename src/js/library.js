@@ -64,20 +64,20 @@ function matches(c) {
 function card(c, progress) {
   const stats = caseStats(c.id, progress);
   const status = stats.count
-    ? `<span class="status done">Completed · best ${stats.best.toFixed(1)}/5</span>`
+    ? `<span class="status done">Best ${stats.best.toFixed(1)}/5</span>`
     : `<span class="status">Not started</span>`;
   return `
-    <li class="case-card">
+    <li class="case-row">
       <article>
-        <p class="card-kicker">${escapeHtml(label('type', c.type))}</p>
-        <h2><a class="card-link" href="case.html?id=${encodeURIComponent(c.id)}">${escapeHtml(c.title)}</a></h2>
-        <p class="card-summary">${escapeHtml(c.summary)}</p>
-        <ul class="tags" aria-label="Case details">
-          <li>${escapeHtml(label('industry', c.industry))}</li>
-          <li>${escapeHtml(label('format', c.format))}</li>
-          <li>${escapeHtml(c.time_minutes)} min</li>
-        </ul>
-        <div class="card-foot">${difficultyBadge(c.difficulty)}${status}</div>
+        <p class="case-type">${escapeHtml(label('type', c.type))}</p>
+        <div class="case-main">
+          <h2><a class="card-link" href="case.html?id=${encodeURIComponent(c.id)}">${escapeHtml(c.title)}</a></h2>
+          <p class="card-summary">${escapeHtml(c.summary)}</p>
+        </div>
+        <p class="case-industry">${escapeHtml(label('industry', c.industry))}<span>${escapeHtml(label('format', c.format))}</span></p>
+        <p class="case-level">${difficultyBadge(c.difficulty)}</p>
+        <p class="case-time">${escapeHtml(c.time_minutes)}<span class="visually-hidden"> minutes</span></p>
+        <p class="case-status">${status}</p>
       </article>
     </li>`;
 }

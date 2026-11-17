@@ -74,7 +74,7 @@ function copyDir(from, to) {
     else if (entry.name.endsWith('.html')) {
       // Mark the current page in the navigation for screen readers and styling.
       const page = entry.name;
-      const nav = header.replace(`href="${page}"`, `href="${page}" aria-current="page"`);
+      const nav = header.replace(`<li><a href="${page}"`, `<li><a href="${page}" aria-current="page"`);
       let html = fs.readFileSync(src, 'utf8').replace('<!-- @header -->', nav).replace('<!-- @footer -->', footer);
       html = html.replace('</head>', `${socialTags(html, page)}\n</head>`);
       fs.writeFileSync(dest, html);

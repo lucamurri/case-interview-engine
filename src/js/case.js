@@ -70,7 +70,7 @@ function revealBlock(buttonText, contentHtml, heading = 'Model answer') {
 
 function nextButton(index) {
   const next = STEPS[index + 1];
-  return next ? `<div class="step-actions"><button class="button" type="button" data-next="${index + 1}">Next: ${next.title} <span aria-hidden="true">→</span></button></div>` : '';
+  return next ? `<div class="step-actions"><button class="button" type="button" data-next="${index + 1}">Next: ${next.title}</button></div>` : '';
 }
 
 // ---------------------------------------------------------------------------
@@ -171,19 +171,16 @@ function renderPage(c) {
   const partner = mode === 'partner';
   document.title = `${c.title}${partner ? ' (partner mode)' : ''} — Case Interview Engine`;
   root.innerHTML = `
-    <p class="breadcrumb"><a href="index.html"><span aria-hidden="true">←</span> All cases</a></p>
+    <p class="breadcrumb"><a href="index.html">All cases</a><span class="crumb-sep" aria-hidden="true">/</span>${escapeHtml(label('type', c.type))}</p>
     <header class="case-header">
-      <p class="card-kicker">${escapeHtml(label('type', c.type))}</p>
       <h1>${escapeHtml(c.title)}</h1>
       <p class="client">${escapeHtml(c.client)}</p>
-      <div class="case-meta">
-        ${difficultyBadge(c.difficulty)}
-        <ul class="tags" aria-label="Case details">
-          <li>${escapeHtml(label('industry', c.industry))}</li>
-          <li>${escapeHtml(label('format', c.format))}</li>
-          <li>${escapeHtml(c.time_minutes)} min</li>
-        </ul>
-      </div>
+      <dl class="case-facts">
+        <div><dt>Level</dt><dd>${difficultyBadge(c.difficulty)}</dd></div>
+        <div><dt>Industry</dt><dd>${escapeHtml(label('industry', c.industry))}</dd></div>
+        <div><dt>Format</dt><dd>${escapeHtml(label('format', c.format))}</dd></div>
+        <div><dt>Time</dt><dd>${escapeHtml(c.time_minutes)} min</dd></div>
+      </dl>
       <p class="notice">All numbers in this case are illustrative, created for practice.</p>
       ${modeSwitch(c)}
     </header>
